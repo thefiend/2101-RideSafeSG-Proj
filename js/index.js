@@ -9,18 +9,22 @@ AFRAME.registerComponent("scenario-listener", {
 
       var car_mapping = [
         {
-            pos: "5.387 -3.286 -49.412",
-            end_pos: "5.387 -3.286 44.187",
-            rotation: "0 180 0"
+            type: "#Truck",
+            pos: "7.348 0.881 -49.412",
+            end_pos: "7.348 0.881 44.187",
+            rotation: "0 90 0",
+            speed: "9000",
+            scale: "0.1 0.1 0.1"
         },
         {
+            type: "#RedCar",
             pos: "11.120 -3.286 -49.412",
             end_pos: "11.120 -3.286 44.187",
-            rotation: "0 180 0"
+            rotation: "0 180 0",
+            speed: "8000",
+            scale: "3 3 3"
         },
       ];
-
-    // var car_mapping = ["5.387 -3.286 -49.412", "5.387 -3.286 44.187", "0 180 0"];
 
       var xpos = 0;
       var ypos = 0;
@@ -155,8 +159,8 @@ AFRAME.registerComponent("scenario-listener", {
             // create new car object
            var car = document.createElement("a-box");
             car.setAttribute("id", "car" + count);
-            car.setAttribute("gltf-model", "#RedCar");
-            car.setAttribute("scale", "3 3 3");
+            car.setAttribute("gltf-model", car_mapping[count].type);
+            car.setAttribute("scale", car_mapping[count].scale);
             car.setAttribute("rotation", car_mapping[count].rotation);
             car.setAttribute("position", car_mapping[count].pos);
             document.querySelector("a-scene").appendChild(car);
@@ -165,7 +169,7 @@ AFRAME.registerComponent("scenario-listener", {
             var new_car = document.getElementById("car" + count);
             var car_animation = document.createElement("a-animation");
             car_animation.setAttribute("attribute","position");
-            car_animation.setAttribute("dur","5000");
+            car_animation.setAttribute("dur",car_mapping[count].speed);
             car_animation.setAttribute("repeat","indefinite");
             car_animation.setAttribute("from", car_mapping[count].pos);
             car_animation.setAttribute("to", car_mapping[count].end_pos);
