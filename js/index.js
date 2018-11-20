@@ -7,6 +7,21 @@ AFRAME.registerComponent("scenario-listener", {
       var type_of_car = 0;
       var scenario = 0;
 
+      var car_mapping = [
+        {
+            pos: "5.387 -3.286 -49.412",
+            end_pos: "5.387 -3.286 44.187",
+            rotation: "0 180 0"
+        },
+        {
+            pos: "11.120 -3.286 -49.412",
+            end_pos: "11.120 -3.286 44.187",
+            rotation: "0 180 0"
+        },
+      ];
+
+    // var car_mapping = ["5.387 -3.286 -49.412", "5.387 -3.286 44.187", "0 180 0"];
+
       var xpos = 0;
       var ypos = 0;
       var zpos = 0;
@@ -46,7 +61,7 @@ AFRAME.registerComponent("scenario-listener", {
         zpos = 14.771;
       } else if (x == "setting") {
         console.log("Settings"); //-12.700  1 36.403
-        xpos = -12.7;
+        xpos = -16.469;
         ypos = 1;
         zpos = 36.403;
 
@@ -89,14 +104,6 @@ AFRAME.registerComponent("scenario-listener", {
         var yrot = 0;
         var zrot = 0;
 
-        //Creating new car
-        var el = document.createElement("a-box");
-        document.querySelector("a-scene").appendChild(el);
-        el.setAttribute("id", "car_model2");
-        el.setAttribute("position", "-49.96469777180934 3.251 -71.13");
-        //position="-49.96469777180934 3.251 -71.13" radius="0.5" height="0.5"
-        //color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="depth:10;height:5;width:6"
-        //id="car_model1" rotation="0 90 0"
       } else if (x == "car_val_3") {
         console.log("car_val_3"); //-12.700  1 36.403
         xpos = -12.7;
@@ -140,6 +147,30 @@ AFRAME.registerComponent("scenario-listener", {
         var yrot = 0;
         var zrot = 0;
       }
+
+    console.log("Number of cars: " + num_of_cars);
+    console.log("Position of Car: " + car_mapping[0]);
+        var count;
+        for(count = 0; count < num_of_cars; count++){
+            // create new car object
+           var car = document.createElement("a-box");
+            car.setAttribute("id", "car" + count);
+            car.setAttribute("gltf-model", "#RedCar");
+            car.setAttribute("scale", "3 3 3");
+            car.setAttribute("rotation", car_mapping[count].rotation);
+            car.setAttribute("position", car_mapping[count].pos);
+            document.querySelector("a-scene").appendChild(car);
+
+            // add animation to new car object
+            var new_car = document.getElementById("car" + count);
+            var car_animation = document.createElement("a-animation");
+            car_animation.setAttribute("attribute","position");
+            car_animation.setAttribute("dur","5000");
+            car_animation.setAttribute("repeat","indefinite");
+            car_animation.setAttribute("from", car_mapping[count].pos);
+            car_animation.setAttribute("to", car_mapping[count].end_pos);
+            new_car.appendChild(car_animation);
+        }
 
       //shift camera pos
       var camera = document.getElementById("player");
