@@ -21,7 +21,7 @@ AFRAME.registerComponent("scenario-listener", {
             pos: "-24.422 -3.171 -62.222",
             end_pos: "168 -3.171 -62.222",
             rotation: "0 270 0",
-            speed: "5000",
+            speed: "6500",
             scale: "3 3 3"
         },
         {
