@@ -2,7 +2,6 @@
 <head>
     <meta charset="utf-8"/>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
     <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
     <script src="js/index.js"></script>
@@ -15,6 +14,7 @@
     <a-assets>
         <a-asset-item id="RoadBlock" src="img/RoadBlock/model.gltf"></a-asset-item>
         <a-asset-item id="RedCar" src="img/RedCar/model.gltf"></a-asset-item>
+        <a-asset-item id="Taxi" src="img/Taxi/PUSHILIN_Taxi.gltf"></a-asset-item>
         <a-asset-item id="Truck" src="img/Truck/Truck_1359.gltf"></a-asset-item>
         <a-asset-item id="Building1" src="img/Building1/model.gltf"></a-asset-item>
         <a-asset-item id="Building2" src="img/Building2/model.gltf"></a-asset-item>
@@ -50,14 +50,6 @@
            id="quesiton2_bound" class="box" opacity="0" rotation="0 90 0">
 
     </a-box>
-    <a-box position="-24.422 -3.171 -62.222" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080"
-           text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="depth:10;height:5;width:6"
-           id="car_model1" gltf-model="#RedCar" scale="3 3 3" rotation="0 270 0">
-        <a-animation attribute="position" from="-24.422 -3.171 -62.222" to="168 -3.171 -62.222" dur="5000"
-                     repeat="indefinite"></a-animation>
-
-    </a-box>
-
 
     <!--Question1-->
     <a-entity position="3 4.719 -21" geometry="primitive:plane;height:10;width:15" material="color:#80ffff"

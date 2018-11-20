@@ -9,6 +9,30 @@ AFRAME.registerComponent("scenario-listener", {
 
       var car_mapping = [
         {
+            type: "#Taxi",
+            pos: "23.060 1.890 -55.446",
+            end_pos: "-34.299 1.890 -55.446",
+            rotation: "0 180 0",
+            speed: "6000",
+            scale: "2 2 2"
+        },
+        {
+            type: "#RedCar",
+            pos: "-24.422 -3.171 -62.222",
+            end_pos: "168 -3.171 -62.222",
+            rotation: "0 270 0",
+            speed: "5000",
+            scale: "3 3 3"
+        },
+        {
+            type: "#Taxi",
+            pos: "8.519 2.328 -45.505",
+            end_pos: "8.519 2.328 44.187",
+            rotation: "0 270 0",
+            speed: "6000",
+            scale: "2 2 2"
+        },
+        {
             type: "#Truck",
             pos: "7.348 0.881 -49.412",
             end_pos: "7.348 0.881 44.187",
@@ -18,8 +42,8 @@ AFRAME.registerComponent("scenario-listener", {
         },
         {
             type: "#RedCar",
-            pos: "11.120 -3.286 -49.412",
-            end_pos: "11.120 -3.286 44.187",
+            pos: "11.120 -2.987 -49.412",
+            end_pos: "11.120 -2.987 44.187",
             rotation: "0 180 0",
             speed: "8000",
             scale: "3 3 3"
