@@ -1,13 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta charset="utf-8" />
-<title>Scenario 2</title>
+<title>Scenario 1</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
     <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
     <script src="js/index.js"></script>
 
 </head>
 
-<body class="a-body ">
+<body>
 <a-scene>
     <!--Load all assets-->
     <a-assets>
@@ -29,87 +29,101 @@
     <!--End of load all assets-->
 
     <!--Camera-->
-    <a-camera geometry="" wasd-controls-enabled="true" aabb-collider="objects:a-box" position="-99.89 1 13.554" camera="" look-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0">
+    <a-camera geometry="" wasd-controls-enabled="true" aabb-collider="objects:a-box" position="-99.89 1 13.554
+" camera="" look-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0" wasd-controls="">
+        <!--Start of Move animation after option choosen -->
+        <a-animation begin="S1Q1" attribute="position" from="0.732 3.312 14.771" to="-1.110 1 -45.330" dur="5000"></a-animation>
+        <a-animation begin="S1Q2" attribute="position" from="-1.110 1 -45.330" to="0.285 1 -60.845" dur="5000"></a-animation>
+        
+        <!--End of Move animation after option choosen -->
         <a-cursor color="blue" raycaster="" cursor="fuse:true;fuseTimeout:1000" position="0 0 -1">
             <a-animation begin="click" easing="ease-in" attribute="scale" dur="1000" fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
             <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1000" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
         </a-cursor>
-   </a-camera>
+   <a-box id="user_vehicle" position="0 -0.8 -1" radius="0.5" height="0.5" material="color:red"></a-box><a-box id="user_vehicle" position="0 -0.8 -1" radius="0.5" height="0.5" material="color:red" geometry=""></a-box></a-camera>
 
     <a-sky color="#aaf4f9"></a-sky>
 
     <a-box bound-collider="" static-body="" position="14.567 1 -11.86" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="quesiton1_bound" class="box" opacity="0">
 
     </a-box>
-    <a-box bound-collider="" static-body="" position="86.012 1 -70.975" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="quesiton2_bound" class="box" opacity="0" rotation="0 90 0">
+    <a-box bound-collider="" static-body="" position="0.732 1 -45.33" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="quesiton2_bound" class="box" opacity="0">
+    </a-box>
+
+    <a-box bound-collider="" static-body="" position="0.285 1 -60.845" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="scenario1_end" class="box" opacity="0">
 
     </a-box>
 
     <!--Question1-->
-    <a-entity position="-1.033 4.024 -18.871" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_1">
+    <a-entity position="-1.033 4.024 -18.871" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_1" visible="false">
     </a-entity>
 
 
-    <a-entity position="3 4.719 -30" geometry="primitive:plane;height:10;width:15" material="color:red" text="align:center;color:red" material.color="#ff0000" id="Question_1_Result_Wrong" visible="false">
-    </a-entity>
+    
 
-    <a-entity position="3 4.719 -30" geometry="primitive:plane;height:10;width:15" material="color:green" text="align:center;color:green" material.color="#ff0000" id="Question_1_Result_Correct" visible="false">
-    </a-entity>
+    
 
 
-    <a-entity position="-0.826 6.476 -18" geometry="primitive:plane;height:2;width:10" material="color:#ff0000" text="align:center;color:#400040;value:Question 1.What is the most  important thing you need before riding on the road?" material.color="#ff0000" id="Question_1_description">
+    <a-entity position="-0.826 6.476 -18" geometry="primitive:plane;height:2;width:10" material="color:#ff0000" text="align:center;color:#400040;value:Question 1.What is the most  important thing you need before riding on the road?" material.color="#ff0000" id="Question_1_description" visible="false">
         <a-animation attribute="material.color" from="#ff0000" to="red" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="red" to="#ff0000" begin="mouseleave"></a-animation>
     </a-entity>
     <!--End of Question1-->
 
     <!--Options for Question1-->
-    <a-entity select-option-listener="" position="-3.582 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.SmartPhone" material.color="#808080" id="q1_option1">
+    <a-entity select-option-listener="" position="-3.582 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.SmartPhone" material.color="#808080" id="q1_option1" visible="false">
         <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
 
-    <a-entity select-option-listener="" position="1.674 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Helmet" material.color="#808080" id="q1_option2">
+    <a-entity select-option-listener="" position="1.674 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Helmet" material.color="#808080" id="q1_option2" visible="false">
         <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
 
-    <a-entity select-option-listener="" position="1.666 1.45 -17.999" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Money" material.color="#808080" id="q1_option4">
+    <a-entity select-option-listener="" position="1.666 1.45 -17.999" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Money" material.color="#808080" id="q1_option4" visible="false">
         <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
 
-    <a-entity select-option-listener="" position="-3.595 1.45 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Snack" material.color="#808080" id="q1_option3">
+    <a-entity select-option-listener="" position="-3.595 1.45 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Snack" material.color="#808080" id="q1_option3" visible="false">
         <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
     <!--End for Options for Question1-->
 
-    <!-- Question 2 -->
-    <a-entity position="93.184 4.719 -63.474" geometry="primitive:plane;height:10;width:15" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_2" rotation="0 -90 0" visible="false">
+    <!--Question2-->
+    <a-entity position="-1.033 4.024 -52" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_2" visible="false">
     </a-entity>
 
-    <a-entity position="100 4.719 -63.474" geometry="primitive:plane;height:10;width:15" material="color:#ff0000" text="align:center;color:#400040" material.color="#ff0000" id="Question_2_Result_Wrong" rotation="0 -90 0" visible="false">
+    <a-entity position="-0.826 6.476 -51" geometry="primitive:plane;height:2;width:10" material="color:#ff0000" text="align:center;color:#400040;value:Question 2.You are about to cross a road with passing vehicles, what should you do?" material.color="#ff0000" id="Question_2_description" visible="false">
+        <a-animation attribute="material.color" from="#ff0000" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff0000" begin="mouseleave"></a-animation>
     </a-entity>
+    <!--End of Question2-->
 
-    <a-entity position="100 4.719 -63.474" geometry="primitive:plane;height:10;width:15" material="color:#00ff00" text="align:center;color:#400040" material.color="#ff0000" id="Question_2_Result_Correct" rotation="0 -90 0" visible="false">
-    </a-entity>
-
-    <a-entity position="91.938 8.258 -63.338" geometry="primitive:plane;height:2;width:13" material="color:#ff80ff" text="align:center;color:#400040;value:Question 2. Vehicles incoming!!! what should you do?" material.color="#ff0000" id="Question_2_description" rotation="0 -90 0" visible="false">
-    </a-entity>
-    <!--End of Question 2 -->
     <!--Options for Question2-->
-    <a-entity select-option-listener="" position="91.938 6.155 -65.827" geometry="primitive:plane;height:2;width:5" material="color:#ff80ff" text="align:center;color:#400040;value:Option 1." material.color="#ff0000" id="q2_option1" rotation="0 -90 0" visible="false">
+    <a-entity select-option-listener="" position="-3.582 3.7 -51" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.Speed Through!" material.color="#808080" id="q2_option1" visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
 
-    <a-entity select-option-listener="" position="91.938 3.825 -65.827" geometry="primitive:plane;height:2;width:5" material="color:#ff80ff" text="align:center;color:#400040;value:Option 3." material.color="#ff0000" id="q2_option3" rotation="0 -90 0" visible="false">
+    <a-entity select-option-listener="" position="1.674 3.7 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Let it pass then move" material.color="#808080" id="q2_option2" visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
 
-    <a-entity select-option-listener="" position="91.938 6.121 -60.611" geometry="primitive:plane;height:2;width:5" material="color:#ff80ff" text="align:center;color:#400040;value:Option 2." material.color="#ff0000" id="q2_option2" rotation="0 -90 0" visible="false">
+    <a-entity select-option-listener="" position="1.666 1.45 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.ABANDON SHIP" material.color="#808080" id="q2_option4" visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
 
-    <a-entity select-option-listener="" position="91.938 3.806 -60.611" geometry="primitive:plane;height:2;width:5" material="color:#ff80ff" text="align:center;color:#400040;value:Option 4." material.color="#ff0000" id="q2_option4" rotation="0 -90 0" visible="false">
+    <a-entity select-option-listener="" position="-3.595 1.45 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Turn Back" material.color="#808080" id="q2_option3" visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
     </a-entity>
+    <!--End for Options for Question2-->
+
     <!--Vehicle Selection Menu-->
     <a-entity position="-114.553 2 16.283" geometry="primitive:plane;height:10;width:10" material="color:#808080" text="" material.color="#808080" id="Menu2" rotation="0 90 0">
         <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
@@ -300,8 +314,21 @@
     </a-plane>
 
 
-<a-box id="car0" gltf-model="img/Taxi/PUSHILIN_Taxi.gltf" scale="2 2 2" rotation="0 180 0" position="-24.27810982305513 1.89 -55.446" material=""><a-animation attribute="position" dur="6000" repeat="indefinite" from="23.060 1.890 -55.446" to="-34.299 1.890 -55.446"></a-animation></a-box><a-box id="car1" gltf-model="img/RedCar/model.gltf" scale="3 3 3" rotation="0 270 0" position="-8.076727661356394 -3.171 -62.222" material=""><a-animation attribute="position" dur="6500" repeat="indefinite" from="-24.422 -3.171 -62.222" to="168 -3.171 -62.222"></a-animation></a-box></a-scene>
+<a-box bound-collider="" static-body="" id="car0" gltf-model="img/Taxi/PUSHILIN_Taxi.gltf" scale="2 2 2" rotation="0 180 0" position="8.577075701926463 1.31 -55.446" material=""><a-animation attribute="position" dur="6000" repeat="indefinite" from="23.060 1.310 -55.446" to="-34.299 1.310 -55.446"></a-animation></a-box>
+<a-box bound-collider="" static-body="" id="car1" gltf-model="img/RedCar/model.gltf" scale="3 3 3" rotation="0 270 0" position="-19.776 -3.752 -54.845" material=""><a-animation attribute="position" dur="6500" repeat="indefinite" from="-24.422 -3.752 -54.845" to="168 -3.752 -54.845"></a-animation></a-box>
+<!--Score Board-->
+      <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s1" visible="false"></a-entity>
 
+      <a-entity position="0.7 3.5 -70" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s1" visible="false">
+        <a-text value="1" geometry="primitive:plane" color="black" id="scoreval_s1" position="0 0 0.947"></a-text>
+      </a-entity>
+
+      <a-entity score-listener="" position="0.7 1.836 -69" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s1" visible="false">
+              <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
+              <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
+      </a-entity><!--score_s1 scoreText_s1 score_submit_s1 -->
+</a-scene>
+      <!--End of ScoreBoard-->
 <script type="text/javascript">
 
 </script>

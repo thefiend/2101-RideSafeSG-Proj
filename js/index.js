@@ -69,7 +69,7 @@ AFRAME.registerComponent("scenario-listener", {
       } 
       else if (x == "scenario2_plane") {//-99.60014797922804 1 16.280552465306243
         console.log("Scenario 2");
-        window.location.replace("index.html");        
+        window.location.replace("ParkScenario.html");        
       } 
       else if (x == "scenario3_plane") {
         console.log("Scenario 3");
@@ -382,8 +382,8 @@ AFRAME.registerComponent("bound-collider", {
     var x = this.el.getAttribute("id");
 
     this.el.addEventListener("hitstart", e => {
-      // Collision ! increment the score
-
+      // Collision ! increment the scoreboard
+      var camera = document.getElementById("player");
       console.log(x + " has collided");
       if (x == "quesiton1_bound") {
         // enable user to move
@@ -405,7 +405,7 @@ AFRAME.registerComponent("bound-collider", {
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true);
-        camera.setAttribute("position", { x:  -0.924, y: 1, z: -11.860}); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: -1.110, y: 1, z: -11.860}); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else if (x == "quesiton2_bound") {
         //show question 1
@@ -421,7 +421,27 @@ AFRAME.registerComponent("bound-collider", {
         o1.setAttribute("visible", true);
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
-        o4.setAttribute("visible", true);
+        o4.setAttribute("visible", true);//-1.110
+         camera.setAttribute("position", { x:  -1.110, y: 1, z: -45.330}); //0.732 3.312 14.771
+        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+      }
+
+      else if(x == "scenario1_end"){
+        //score_s1 scoreText_s1 score_submit_s1
+        var scoreboard = document.getElementById("score_s1");
+        var scoreVal = document.getElementById("scoreText_s1");
+        var scoresubmit = document.getElementById("score_submit_s1");
+
+        scoreboard.setAttribute("visible","true");
+        scoreVal.setAttribute("visible","true");
+        scoresubmit.setAttribute("visible","true");
+        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+      }
+      else if(x == "car0"){
+        console.log("You got hit by car");
+      }
+      else if(x == "car1"){
+        console.log("You got hit by car");
       }
     });
   }
@@ -433,7 +453,7 @@ AFRAME.registerComponent("select-option-listener", {
     this.el.addEventListener("click", function(evt) {
       console.log(x + " has been selected");
       if (x == "q1_option1") {
-        var result = document.getElementById("Question_1_Result_Wrong");
+       
         var question = document.getElementById("Question_1");
         var question_desc = document.getElementById("Question_1_description");
         var o1 = document.getElementById("q1_option1");
@@ -447,14 +467,15 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "red");
+       
         console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
+        // camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-      } else if (x == "q1_option2") {
-        var result = document.getElementById("Question_1_Result_Wrong");
+        document.querySelector('#player').emit('S1Q1');
+      } 
+      else if (x == "q1_option2") {
+        
         var question = document.getElementById("Question_1");
         var question_desc = document.getElementById("Question_1_description");
         var o1 = document.getElementById("q1_option1");
@@ -468,14 +489,14 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "red");
-        console.log("Wrong");
-        var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 0.732, y: 1, z: -26 }); //0.732 3.312 14.771
+    
+        console.log("Correct");
+       var camera = document.getElementById("player");
+        // camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        document.querySelector('#player').emit('S1Q1');
       } else if (x == "q1_option3") {
-        var result = document.getElementById("Question_1_Result_Wrong");
+       
         var question = document.getElementById("Question_1");
         var question_desc = document.getElementById("Question_1_description");
         var o1 = document.getElementById("q1_option1");
@@ -489,14 +510,14 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "red");
+        
         console.log("Wrong");
-        var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 0.732, y: 1, z: -26 }); //0.732 3.312 14.771
+       var camera = document.getElementById("player");
+        // camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        document.querySelector('#player').emit('S1Q1');
       } else if (x == "q1_option4") {
-        var result = document.getElementById("Question_1_Result_Correct");
+       
         var question = document.getElementById("Question_1");
         var question_desc = document.getElementById("Question_1_description");
         var o1 = document.getElementById("q1_option1");
@@ -510,14 +531,14 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "green");
-        console.log("Correct");
+        
+        console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 0.732, y: 1, z: -26 }); //0.732 3.312 14.771
+        // camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        document.querySelector('#player').emit('S1Q1');
       } else if (x == "q2_option1") {
-        var result = document.getElementById("Question2_Result_Wrong");
+        
         var question = document.getElementById("Question_2");
         var question_desc = document.getElementById("Question_2_description");
         var o1 = document.getElementById("q2_option1");
@@ -531,14 +552,15 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "red");
+
+        //answer Wrong
         console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
-        camera.setAttribute("rotation", { x: 90, y: 0, z: 0 });
+        // camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        document.querySelector('#player').emit('S1Q2');
       } else if (x == "q2_option2") {
-        var result = document.getElementById("Question_2_Result_Wrong");
+       
         var question = document.getElementById("Question_2");
         var question_desc = document.getElementById("Question_2_description");
         var o1 = document.getElementById("q2_option1");
@@ -552,15 +574,15 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "red");
-        console.log("Wrong"); //93.184
+        //answer Correct
+        console.log("Correct"); //93.184
 
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
-        camera.setAttribute("rotation", { x: 90, y: 0, z: 0 });
+        // camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        document.querySelector('#player').emit('S1Q2');
       } else if (x == "q2_option3") {
-        var result = document.getElementById("Question_2_Result_Wrong");
+        
         var question = document.getElementById("Question_2");
         var question_desc = document.getElementById("Question_2_description");
         var o1 = document.getElementById("q2_option1");
@@ -574,14 +596,14 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "red");
+        //answer wrong
         console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
-        camera.setAttribute("rotation", { x: 90, y: 0, z: 0 });
+        // camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        document.querySelector('#player').emit('S1Q2');
       } else if (x == "q2_option4") {
-        var result = document.getElementById("Question_2_Result_Correct");
+        
         var question = document.getElementById("Question_2");
         var question_desc = document.getElementById("Question_2_description");
         var o1 = document.getElementById("q2_option1");
@@ -595,12 +617,12 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        result.setAttribute("visible", true);
-        result.setAttribute("color", "green");
-        console.log("Correct");
+        //answer wrong
+        console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
-        camera.setAttribute("rotation", { x: 0, y: 90, z: 0 });
+        // camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        document.querySelector('#player').emit('S1Q2');
       }
 
       //write into temp file and shift camera pos
