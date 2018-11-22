@@ -1,0 +1,357 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
+    <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
+    <script src="js/index.js"></script>
+
+</head>
+
+<body class="a-body">
+<a-scene id="scene">
+    <!--Load all assets-->
+    <a-assets>
+      <a-asset-item id="RoadSidewalk2" src="img/RoadSidewalk2/Road_Straight_01.gltf"></a-asset-item>
+      <a-asset-item id="ParkingLot" src="img/ParkingLot/ParkingLot.gltf"></a-asset-item>
+      <a-asset-item id="Bus" src="img/Bus/model.gltf"></a-asset-item>
+      <a-asset-item id="BusStop" src="img/BusStop/bust stop 1.gltf"></a-asset-item>
+      <a-asset-item id="Doctor" src="img/Doctor/Doctor_01.gltf"></a-asset-item>
+      <a-asset-item id="Trump" src="img/Trump/model.gltf"></a-asset-item>
+      <a-asset-item id="Cinema" src="img/Cinema/Cinema.gltf"></a-asset-item>
+      <a-asset-item id="Bank" src="img/Bank/Bank_1245.gltf"></a-asset-item>
+      <a-asset-item id="Church" src="img/Church/CUPIC_CHURCH.gltf"></a-asset-item>
+      <a-asset-item id="Forest" src="img/Forest/PUSHILIN_forest.gltf"></a-asset-item>
+      <a-asset-item id="House" src="img/House/PUSHILIN_house.gltf"></a-asset-item>
+    </a-assets>
+    <!--End of load all assets-->
+
+    <!--Camera-->
+    <a-camera geometry="" wasd-controls-enabled="false" aabb-collider="objects:a-box" position="-12.7 1 14.962"
+              camera="" look-controls=""
+              wasd-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0">
+        <a-cursor color="blue" raycaster="" cursor="fuse:true;fuseTimeout:1000" position="0 0 -1">
+            <a-animation begin="click" easing="ease-in" attribute="scale" dur="1000" fill="forwards" from="0.1 0.1 0.1"
+                         to="1 1 1"></a-animation>
+            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1000" fill="backwards"
+                         from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+        </a-cursor>
+    </a-camera>
+
+    <a-sky color="#aaf4f9"></a-sky>
+
+    <a-box bound-collider="" static-body="" position="14.567 1 -10" radius="0.5" height="0.5" color="#FFC65D"
+           material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40"
+           id="quesiton1_bound" class="box" opacity="0">
+
+    </a-box>
+    <a-box bound-collider="" static-body="" position="86.012 1 -70.975" radius="0.5" height="0.5" color="#FFC65D"
+           material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40"
+           id="quesiton2_bound" class="box" opacity="0" rotation="0 90 0">
+
+    </a-box>
+
+    <!--Question1-->
+    <a-entity position="3 4.719 -21" geometry="primitive:plane;height:10;width:15" material="color:#80ffff"
+              text="align:center;color:#400040" material.color="#ff0000" id="Question_1" visible="false">
+    </a-entity>
+
+
+    <a-entity position="3 4.719 -30" geometry="primitive:plane;height:10;width:15" material="color:red"
+              text="align:center;color:red" material.color="#ff0000" id="Question_1_Result_Wrong" visible="false">
+    </a-entity>
+
+    <a-entity position="3 4.719 -30" geometry="primitive:plane;height:10;width:15" material="color:green"
+              text="align:center;color:green" material.color="#ff0000" id="Question_1_Result_Correct" visible="false">
+    </a-entity>
+
+
+    <a-entity position="3 8.217 -20.454" geometry="primitive:plane;height:2;width:13" material="color:#ff0000"
+              text="align:center;color:#400040;value:Question 1. Vehicle is crossing, what should you do?"
+              material.color="#ff0000" id="Question_1_description" visible="false">
+        <a-animation attribute="material.color" from="#ff0000" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff0000" begin="mouseleave"></a-animation>
+    </a-entity>
+    <!--End of Question1-->
+
+    <!--Options for Question1-->
+    <a-entity select-option-listener="" position="-0.998 5.475 -20.927" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff0080" text="value:1.Speed through" material.color="#808080" id="q1_option1"
+              visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+    </a-entity>
+
+    <a-entity select-option-listener="" position="6.985 5.475 -20.927" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff0080" text="value:2.Jump" material.color="#808080" id="q1_option2" visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+    </a-entity>
+
+    <a-entity select-option-listener="" position="6.985 2.429 -20.927" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff0080" text="value:4.Let it pass then move" material.color="#808080" id="q1_option4"
+              visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+    </a-entity>
+
+    <a-entity select-option-listener="" position="-0.992 2.429 -20.927" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff0080" text="value:3. Keep Moving" material.color="#808080" id="q1_option3"
+              visible="false">
+        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+    </a-entity>
+    <!--End for Options for Question1-->
+
+    <!-- Question 2 -->
+    <a-entity position="93.184 4.719 -63.474" geometry="primitive:plane;height:10;width:15" material="color:#80ffff"
+              text="align:center;color:#400040" material.color="#ff0000" id="Question_2" rotation="0 -90 0"
+              visible="false">
+    </a-entity>
+
+    <a-entity position="100 4.719 -63.474" geometry="primitive:plane;height:10;width:15" material="color:#ff0000"
+              text="align:center;color:#400040" material.color="#ff0000" id="Question_2_Result_Wrong" rotation="0 -90 0"
+              visible="false">
+    </a-entity>
+
+    <a-entity position="100 4.719 -63.474" geometry="primitive:plane;height:10;width:15" material="color:#00ff00"
+              text="align:center;color:#400040" material.color="#ff0000" id="Question_2_Result_Correct"
+              rotation="0 -90 0" visible="false">
+    </a-entity>
+
+    <a-entity position="91.938 8.258 -63.338" geometry="primitive:plane;height:2;width:13" material="color:#ff80ff"
+              text="align:center;color:#400040;value:Question 2. Vehicles incoming!!! what should you do?"
+              material.color="#ff0000" id="Question_2_description" rotation="0 -90 0" visible="false">
+    </a-entity>
+    <!--End of Question 2 -->
+    <!--Options for Question2-->
+    <a-entity select-option-listener="" position="91.938 6.155 -65.827" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff80ff" text="align:center;color:#400040;value:Option 1." material.color="#ff0000"
+              id="q2_option1" rotation="0 -90 0" visible="false">
+    </a-entity>
+
+    <a-entity select-option-listener="" position="91.938 3.825 -65.827" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff80ff" text="align:center;color:#400040;value:Option 3." material.color="#ff0000"
+              id="q2_option3" rotation="0 -90 0" visible="false">
+    </a-entity>
+
+    <a-entity select-option-listener="" position="91.938 6.121 -60.611" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff80ff" text="align:center;color:#400040;value:Option 2." material.color="#ff0000"
+              id="q2_option2" rotation="0 -90 0" visible="false">
+    </a-entity>
+
+    <a-entity select-option-listener="" position="91.938 3.806 -60.611" geometry="primitive:plane;height:2;width:5"
+              material="color:#ff80ff" text="align:center;color:#400040;value:Option 4." material.color="#ff0000"
+              id="q2_option4" rotation="0 -90 0" visible="false">
+    </a-entity>
+    <!--Vehicle Selection Menu-->
+    <a-entity position="74.614 16.129 4.962" geometry="primitive:plane;height:10;width:10" material="color:#808080" text=""
+              material.color="#808080" id="Menu2">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="grey" begin="mouseleave"></a-animation>
+    </a-entity>
+
+    <a-entity select-vehicle-listener="" position="72.328 16.975 6.939" geometry="primitive:plane;height:3;width:3"
+              material="color:#ff8080" text="align:center;value:PMD;wrapCount:10" material.color="#ff8080"
+              id="PMD_select">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity select-vehicle-listener="" position="76.873 16.975 6.939" geometry="primitive:plane;height:3;width:3"
+              material="color:#ff8080" text="align:center;value:Bike;wrapCount:10" material.color="#ff0000"
+              id="Bike_select">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+    </a-entity>
+    <!--End Vehicle Selection Menu-->
+
+    <!--Scenario Menu-->
+    <a-entity position="-13.858 2 4.962" geometry="primitive:plane;height:10;width:10" material="color:#808080" text=""
+              material.color="#808080" id="Menu1">
+    </a-entity>
+
+    <a-entity position="-16.247 4.787 6.939" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="scenario1_plane" text="align:center;value:Scenario 1;wrapCount:10">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-11.715 4.785 6.939" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" text="align:center;value:Scenario 3;wrapCount:10" material.color="#ff8080"
+              id="scenario3_plane">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+    <a-entity position="-13.981 4.799 6.939" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" text="align:center;value:Scenario 2;wrapCount:10" material.color="#ff8080"
+              id="scenario2_plane">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+    <a-entity position="-13.956 2.483 6.939" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" text="align:center;value:Scenario 5;wrapCount:10" material.color="#ff8080"
+              id="scenario5_plane">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+    <a-entity position="-11.644 2.483 6.939" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" text="align:center;value:Setting;wrapCount:10" material.color="#ff8080"
+              id="setting">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+    <a-entity position="-16.278 2.488 6.939" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" text="align:center;value:Scenario 4;wrapCount:10" material.color="#ff8080"
+              id="scenario4_plane">
+        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+    </a-entity>
+    <!--End of Scenario Menu-->
+    <!--Settings Car-->
+    <a-entity position="-25.211 5.038 35.857" geometry="width:15;primitive:plane;height:10" material="color:#ffffff"
+              text="" material.color="#808080" id="Menu3" rotation="0 90 0">
+    </a-entity>
+
+    <a-entity position="-24.209 6.657 40.64" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="car_val_0" text="value:0 cars;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-24.209 8.721 35.609" geometry="width:10;primitive:plane;height:2" material="color:#ff8080"
+              wrapcount:10
+    "="" material.color="#ff0000" id="car_header" text="value:Cars;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-24.209 6.634 37.53" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="car_val_1" text="value:1 cars;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-24.209 4.039 37.53" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="car_val_4" text="value:4 cars;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-24.209 4.039 34.108" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="car_val_5" text="value:5 cars;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-24.209 1.886 30.749" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="return_main" text="value:Main Menu;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-24.209 6.658 34.129" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="car_val_2" text="value:2 cars;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+
+    </a-entity>
+
+    <a-entity position="-24.209 6.636 30.794" scenario-listener="" geometry="primitive:plane;height:2;width:2"
+              material="color:#ff8080" wrapcount:10
+    "="" material.color="#ff0000" id="car_val_3" text="value:3 cars;align:center;wrapCount:10" rotation="0 90 0">
+    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+    </a-entity>
+    <!--End of Settingv Car-->
+
+
+    <!--Junaidi-->
+    <a-plane position="12.432 -0.842 -2.107" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane>
+
+    <a-plane position="12.432 -0.842 -59.076" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-2" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane>
+
+    <a-plane position="12.432 -0.842 -116.029" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-3" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane>
+
+    <a-box position="-16.737 -0.65 -51.824" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="ParkingLot" gltf-model="img/ParkingLot/ParkingLot.gltf" scale="9.969999999999999 4.87 12.21"></a-box>
+
+    <a-box position="2.338 -0.376 -17.963" width="10" height="10" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:1" id="BusStop1" gltf-model="img/BusStop/bust stop 1.gltf" scale="0.001 0.001 0.001" rotation="-90 180 0"></a-box>
+
+    <a-box position="8.976 -2.206 15.803" rotation="2.7300000000000004 47.540000000000006 -3.2299999999999995" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:100" id="Bus" gltf-model="img/Bus/model.gltf" scale="2.8 2.8 2.8"></a-box>
+
+    <a-box position="4.065 -0.385 -14.508" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+
+    <a-box position="3.309 -0.385 -18.477" rotation="0 43.18000000000001 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-3" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+
+    <a-box position="3.209 -0.385 -21.2" rotation="0 67.84 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-2" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+
+    <a-box position="3.209 -0.385 -21.889" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-4" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+
+    <a-box position="4.865 -0.882 -11.366" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
+
+    <a-box position="6.206 -0.882 -18.806" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2-2" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
+
+    <a-box position="5.982 -0.882 -22.867" rotation="0 120 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2-3" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
+
+    <a-plane position="-22.631 -0.407 -2.19" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" id="Grass1" material="color:#4e760a" geometry="width:50.06;height:57"></a-plane>
+
+    <a-plane position="47.613 -0.632 -58.375" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" id="Grass1-3" geometry="width:50.06;height:180" material="color:#4e760a"></a-plane>
+
+    <a-plane position="-22.631 -0.644 -108.08" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" id="Grass1-2" geometry="width:50.06;height:74" material="color:#4e760a"></a-plane>
+
+    <a-box position="-11.391 -1.826 -84.584" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Bank" gltf-model="img/Bank/Bank_1245.gltf" scale="0.2 0.2 0.2"></a-box>
+
+    <a-box position="30.676 -0.882 -114.675" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Church" gltf-model="img/Church/CUPIC_CHURCH.gltf" scale="0.04 0.04 0.04"></a-box>
+
+    <a-box position="-4.751 2.022 -20.375" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+
+    <a-box position="29.917 2.022 -77.101" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="Forest-3" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+
+    <a-box position="29.917 2.022 -19.895" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="Forest-5" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+
+    <a-box position="29.917 2.022 -1.255" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="Forest-6" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+
+    <a-box position="29.917 2.022 -94.679" rotation="0 270 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="Forest-4" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+
+    <a-box position="-5.317 2.022 -5.988" rotation="0 270 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-2" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+
+    <a-box position="29.46 2.489 -62.982" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+
+    <a-box position="29.46 2.489 -55.954" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="House1-2" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+
+    <a-box position="29.46 2.489 -48.943" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="House1-3" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+
+    <a-box position="29.46 2.489 -41.934" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="House1-4" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+
+    <a-box position="29.46 2.489 -34.914" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="House1-5" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+    
+
+</a-scene>
+
+<a style="display: none;" href="blob:null/9f2f8418-07d7-4dfe-9e3d-f067356610a6"
+   download="d-xampp-htdocs-vr_template-special_2-html"></a>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
