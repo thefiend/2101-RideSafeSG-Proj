@@ -1,4 +1,104 @@
+var playerName = "John"; //name of player to be submitted to firebase
 var scenario = 1;
+var scoreCounter = 0; //tracks the score of the user for this scenario
+var scoreSubmitted = 0; //set to 1 if score has been submitted before
+function setup() {
+
+  var config = {
+    apiKey: "AIzaSyA71-oc_-WGW8JYRPKRdJLuSxp2MSp5NxM",
+    authDomain: "ridesafesg-b66f7.firebaseapp.com",
+    databaseURL: "https://ridesafesg-b66f7.firebaseio.com",
+    projectId: "ridesafesg-b66f7",
+    storageBucket: "ridesafesg-b66f7.appspot.com",
+    messagingSenderId: "574140119144"
+  };
+  firebase.initializeApp(config);
+
+  // Get a reference to the database service
+  database = firebase.database();
+
+  // Start loading the data
+  loadFirebase();
+}
+
+function loadFirebase() {//read
+  var ref = database.ref("leaderboard");
+  //call method to retrieve leaderboard
+  
+  ref.on("value", getLeaderboard, errData);
+
+  //insert dummy data
+   // var postsRef = ref;
+   // var newPostRef = postsRef.push();
+   // newPostRef.set({
+   //   player: "Player",
+   //   score: 2,
+   //   scenario : "scenario2"
+   // });
+
+
+}
+
+function errData(error) {
+  console.log("Something went wrong.");
+  console.log(error);
+}
+
+
+function getLeaderboard(data) {
+	console.log("Retrieving Leaderboard......");
+ //retrieve score
+ //console.log(data);
+ var score_val =  data.val();
+ var keys = Object.keys(score_val);
+
+var usernames = document.getElementById("usernames_leaderboard");
+var scores = document.getElementById("scores_leaderboard");
+var scenarios = document.getElementById("scenarios_leaderboard");
+//var display = " ";
+var highestScore = 0;
+	 var usernameArr = []
+	 var scoreArr = []
+	 var scenarioArr = []
+   for (var i = 0; i < keys.length; i++) {
+     var key = keys[i];
+     var score = score_val[key];
+
+	 
+	 if (score.score >= highestScore){
+		 console.log("TRUE, "+score.score+" is higher or equals to "+highestScore);
+		 highestScore = score.score;
+		 usernameArr.unshift(score.player);
+		 scoreArr.unshift(score.score);
+		 scenarioArr.unshift(score.scenario);
+
+	 }
+	 else{
+		 usernameArr.push(score.player);
+		 scoreArr.push(score.score);
+		 scenarioArr.push(score.scenario);
+		
+	 }     
+   }
+     var display =""; 
+	 var display2 ="";
+	 var display3 ="";
+   for (var i = 0; i< usernameArr.length; i++){
+	 
+       display = display + usernameArr[i]+"\n\n";
+	   display2 = display2 + scoreArr[i]+"\n\n";
+	   display3 = display3 + scenarioArr[i]+"\n\n";
+   }
+
+	
+   //append into leaderboard
+   usernames.setAttribute("value", display);
+   scores.setAttribute("value", display2);
+   scenarios.setAttribute("value", display3);
+   
+}
+
+
 var car_mapping = [
   [
     {
@@ -466,6 +566,7 @@ AFRAME.registerComponent("scenario-listener", {
       var camera = document.getElementById("player");
       camera.setAttribute("position", { x: xpos, y: ypos, z: zpos }); //43.955 3.302 14.771
       camera.setAttribute("rotation", { x: xrot, y: yrot, z: zrot });
+	  setup();
     });
   }
 });
@@ -624,6 +725,7 @@ AFRAME.registerComponent("select-option-listener", {
         o4.setAttribute("visible", false);
 
         console.log("Correct");
+		scoreCounter = scoreCounter + 1; // Increment the score
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
@@ -705,7 +807,7 @@ AFRAME.registerComponent("select-option-listener", {
         o4.setAttribute("visible", false);
         //answer Correct
         console.log("Correct"); //93.184
-
+		scoreCounter = scoreCounter + 1;
         var camera = document.getElementById("player");
         // camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
@@ -756,3 +858,40 @@ AFRAME.registerComponent("select-option-listener", {
     });
   }
 });
+
+function uploadScore(){
+if (scoreSubmitted == 0){
+	var ref = database.ref("leaderboard");
+	   var postsRef = ref;
+	   var newPostRef = postsRef.push();
+	   newPostRef.set({
+		player: playerName,
+	   score: scoreCounter,
+	   scenario :"Scenario "+scenario
+		});
+		scoreSubmitted = 1;
+	}
+else{
+	console.log("Score already submitted for this session.");
+	
+}
+}
+//Score Listener
+AFRAME.registerComponent('score-listener', {
+    init: function () {
+			var x = this.el.getAttribute("id");
+            this.el.addEventListener('click', function (evt) {
+
+	        if (x == "score_submit_s1"){
+	        console.log("UPLOADING SCORE TO FIREBASE....");
+				uploadScore();
+	    	}
+
+	    	else if(x == "leaderboard_view"){
+	    		
+	    	}	  
+        });
+  }
+});
+
+

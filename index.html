@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Scenario 1</title>
-    
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
     <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
     <script src="js/index.js"></script>
@@ -101,7 +101,16 @@
 
         <!-- Leaderboard Menu -->
             <a-entity id="LeaderboardMenu" visible="false">
-                <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0"></a-entity>
+                <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0">
+				
+				<a-text position="-2.0 4 0" id="leaderboardTitle" wrap-count="10" value="Leaders" color="black"></a-text>
+				<a-text position="-3.8 2 0" id="usernames_title" wrap-count="20" value="Username" color="black"></a-text>
+				<a-text position="-3.5 -1 0" id="usernames_leaderboard" wrap-count="30" value=" " color="black"></a-text>
+				<a-text position="-0.9 2 0" id="scores_title" wrap-count="20" value="Score" color="black"></a-text>
+				<a-text position="-0.5 -1 0" id="scores_leaderboard" wrap-count="30" value=" " color="gold"></a-text>
+				<a-text position="1.2 2 0" id="scenarios_title" wrap-count="20" value="Scenario" color="black"></a-text>
+				<a-text position="1.5 -1 0" id="scenarios_leaderboard" wrap-count="30" value=" " color="black"></a-text>
+				</a-entity>
                 
                  <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
                     <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
