@@ -545,6 +545,12 @@ AFRAME.registerComponent("bound-collider", {
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true);
+
+        o1.setAttribute("select-option-listener", "");
+        o2.setAttribute("select-option-listener", "");
+        o3.setAttribute("select-option-listener", "");
+        o4.setAttribute("select-option-listener", "");
+
         camera.setAttribute("position", { x: -1.11, y: 3.096, z: -11.86 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else if (x == "s1quesiton2_bound") {
@@ -558,10 +564,17 @@ AFRAME.registerComponent("bound-collider", {
         var camera = document.getElementById("player");
         question.setAttribute("visible", true);
         question_desc.setAttribute("visible", true); //14.567 1 -10
+
         o1.setAttribute("visible", true);
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true); //-1.110
+
+        o1.setAttribute("select-option-listener", "");
+        o2.setAttribute("select-option-listener", "");
+        o3.setAttribute("select-option-listener", "");
+        o4.setAttribute("select-option-listener", "");
+
         camera.setAttribute("position", { x: -1.11, y: 3.096, z: -45.33 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else if (x == "s1scenario1_end") {
@@ -569,6 +582,33 @@ AFRAME.registerComponent("bound-collider", {
         var scoreboard = document.getElementById("score_s1");
         var scoreVal = document.getElementById("scoreText_s1");
         var scoresubmit = document.getElementById("score_submit_s1");
+
+        // remove clickable for options when scenario ends
+        document
+          .getElementById("s1q1_option1")
+          .removeAttribute("select-option-listener");
+        document
+          .getElementById("s1q1_option2")
+          .removeAttribute("select-option-listener");
+        document
+          .getElementById("s1q1_option3")
+          .removeAttribute("select-option-listener");
+        document
+          .getElementById("s1q1_option4")
+          .removeAttribute("select-option-listener");
+
+        document
+          .getElementById("s1q2_option1")
+          .removeAttribute("select-option-listener");
+        document
+          .getElementById("s1q2_option2")
+          .removeAttribute("select-option-listener");
+        document
+          .getElementById("s1q2_option3")
+          .removeAttribute("select-option-listener");
+        document
+          .getElementById("s1q2_option4")
+          .removeAttribute("select-option-listener");
 
         scoreboard.setAttribute("visible", "true");
         scoreVal.setAttribute("visible", "true");
