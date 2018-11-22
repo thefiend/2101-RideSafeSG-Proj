@@ -52,6 +52,49 @@ AFRAME.registerComponent("scenario-listener", {
             scale: "3 3 3"
         },
       ];
+	  
+	  var people_mapping = [
+        {
+            type: "#Girl",
+            pos: "17.832 -0.357 -50.016",
+            end_pos: "-18.000 -0.357 -50.016",
+            rotation: "0 280.000 0",
+            speed: "15000",
+            scale: "2 2 2"
+        },
+        {
+            type: "#Girl2",
+            pos: "3.850 -0.308 -61.675",
+            end_pos: "3.850 -0.628 -52.540",
+            rotation: "0 0 0",
+            speed: "15000",
+            scale: "2 2 2"
+        },
+        {
+            type: "#OldMen",
+            pos: "-3.980 -0.713 -22.000",
+            end_pos: "-3.980 -0.713 -41.483",
+            rotation: "0 180 0",
+            speed: "30000",
+            scale: "2 2 2"
+        },
+        {
+            type: "#Boy",
+            pos: "7.206 -0.192 0.000",
+            end_pos: "7.206 -0.192 -29.990",
+            rotation: "0 360.000 0",
+            speed: "20000",
+            scale: "1.000 1.000 1.000"
+        },
+        {
+            type: "#Girl3",
+            pos: "16.298 -0.627 -43.395",
+            end_pos: "16.298 -0.627 20.000",
+            rotation: "0.050 0 0",
+            speed: "15000",
+            scale: "2 2 2"
+        },
+      ];
 
       var xpos = 0;
       var ypos = 0;
@@ -171,7 +214,7 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        num_of_cars = 1;
+        num_of_people = 1;
 
         var xrot = 0;
         var yrot = 0;
@@ -182,7 +225,7 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        num_of_cars = 2;
+        num_of_people = 2;
 
         var xrot = 0;
         var yrot = 0;
@@ -194,7 +237,7 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        num_of_cars = 3;
+        num_of_people = 3;
 
         var xrot = 0;
         var yrot = 0;
@@ -205,7 +248,7 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        num_of_cars = 4;
+        num_of_people = 4;
 
         var xrot = 0;
         var yrot = 0;
@@ -216,7 +259,7 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        num_of_cars = 5;
+        num_of_people = 5;
 
         var xrot = 0;
         var yrot = 0;
@@ -322,6 +365,30 @@ AFRAME.registerComponent("scenario-listener", {
             car_animation.setAttribute("from", car_mapping[count].pos);
             car_animation.setAttribute("to", car_mapping[count].end_pos);
             new_car.appendChild(car_animation);
+        }
+		
+	console.log("Number of people: " + num_of_people);
+    console.log("Position of people: " + people_mapping[0]);
+        var count;
+        for(count = 0; count < num_of_people; count++){
+            // create new people object
+           var people = document.createElement("a-box");
+            people.setAttribute("id", "people" + count);
+            people.setAttribute("gltf-model", people_mapping[count].type);
+            people.setAttribute("scale", people_mapping[count].scale);
+            people.setAttribute("rotation", people_mapping[count].rotation);
+            people.setAttribute("position", people_mapping[count].pos);
+            document.querySelector("a-scene").appendChild(people);
+
+            // add animation to new people object
+            var new_people = document.getElementById("people" + count);
+            var people_animation = document.createElement("a-animation");
+            people_animation.setAttribute("attribute","position");
+            people_animation.setAttribute("dur",people_mapping[count].speed);
+            people_animation.setAttribute("repeat","indefinite");
+            people_animation.setAttribute("from", people_mapping[count].pos);
+            people_animation.setAttribute("to", people_mapping[count].end_pos);
+            new_people.appendChild(people_animation);
         }
 
       //shift camera pos
