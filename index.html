@@ -19,6 +19,8 @@
             <a-asset-item id="RedCar" src="img/RedCar/model.gltf"></a-asset-item>
             <a-asset-item id="Taxi" src="img/Taxi/PUSHILIN_Taxi.gltf"></a-asset-item>
             <a-asset-item id="Truck" src="img/Truck/Truck_1359.gltf"></a-asset-item>
+
+            <!-- City Assets - Scene 1 -->
             <a-asset-item id="Building1" src="img/Building1/model.gltf"></a-asset-item>
             <a-asset-item id="Building2" src="img/Building2/model.gltf"></a-asset-item>
             <a-asset-item id="Building3" src="img/Building3/model.gltf"></a-asset-item>
@@ -29,6 +31,12 @@
             <a-asset-item id="GasStation" src="img/GasStation/GasStation.gltf"></a-asset-item>
             <a-asset-item id="GrassPatch" src="img/GrassPatch/model.gltf"></a-asset-item>
             <a-asset-item id="RoadSidewalk2" src="img/RoadSidewalk2/Road_Straight_01.gltf"></a-asset-item>
+
+            <!-- Park Assets - Scene 2 -->
+            <a-asset-item id="ParkRoad" src="img/ParkRoad/Road_1229.gltf"></a-asset-item>
+            <a-asset-item id="OldBridge" src="img/OldBridge/model.gltf"></a-asset-item>
+            <a-asset-item id="Doctor" src="img/Doctor/Doctor_01.gltf"></a-asset-item>
+            <a-asset-item id="Trump" src="img/Trump/model.gltf"></a-asset-item>
 
             <!--People-->
             <a-asset-item id="Girl" src="img/Girl/girl.gltf"></a-asset-item>
@@ -319,6 +327,24 @@
 
         </a-entity>
 
+        <a-entity id="scene2" visible="false">
+            <!--Junaidi-->
+            <a-box position="31.426 -7.406 -19.264" rotation="0 -92.7 0" width="50" height="50" color="#7BC8A4"
+                material="color:#c0c0c0" geometry="width:20;height:100" id="ParkRoad"
+                gltf-model="img/ParkRoad/Road_1229.gltf" scale="0.5 0.5 0.5"></a-box>
+
+            <a-box position="69.174 -8.166 46.411" rotation="0 -171.32 0" width="50" height="50" color="#7BC8A4"
+                material="color:#c0c0c0" geometry="width:20;height:100" id="OldBridge" gltf-model="img/OldBridge/model.gltf"
+                scale="8.99 10 10"></a-box>
+
+            <a-box position="44.869 -1.847 17.031" rotation="0 -219.01 0" width="50" height="50" color="#7BC8A4"
+                material="color:#c0c0c0" geometry="width:20;height:100" id="Doctor" gltf-model="img/Doctor/Doctor_01.gltf"
+                scale="0.4 0.4 0.4"></a-box>
+
+            <a-box position="42.348 -3.321 25.063" rotation="0 300 0" width="50" height="50" color="#7BC8A4"
+                material="color:#c0c0c0" geometry="width:20;height:100" id="Trump" gltf-model="img/Trump/model.gltf"
+                scale="5.5 5.5 5.5"></a-box>
+        </a-entity>
 
         <!--Score Board-->
         <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s1" visible="false"></a-entity>

@@ -161,7 +161,6 @@ AFRAME.registerComponent("scenario-listener", {
       var prev_num_of_people = 0;
       var num_of_people = 2;
       var type_of_car = 0;
-      var scenario = 1;
 
       var title = document.title;
 
@@ -174,19 +173,14 @@ AFRAME.registerComponent("scenario-listener", {
       var zrot = 0;
 
       if (x == "scenario1_plane") {
-        //var change = document.querySelector('a-link').navigate('index.html');
-        //change to scenario 1 url
-        scenario = 1;
+        window.scenario = 1;
         console.log("Scenario 1 Selected");
       } else if (x == "scenario2_plane") {
-        //-99.60014797922804 1 16.280552465306243
-        scenario = 2;
+        window.scenario = 2;
         console.log("Scenario 2");
-        window.location.replace("ParkScenario.html");
       } else if (x == "scenario3_plane") {
-        scenario = 3;
+        window.scenario = 3;
         console.log("Scenario 3");
-        window.location.replace("index.html");
       } else if (x == "car_setting") {
         console.log("Car Settings"); //-12.700  1 36.403
 
@@ -436,55 +430,32 @@ AFRAME.registerComponent("scenario-listener", {
         var zrot = 0;
       } //window.location.href
       else if (x == "scenario_start") {
-        if (title == "Scenario 1") {
-          scenario = 1;
+        //teleport user to choose vehicle
+        xpos = -99.60014797922804;
+        ypos = 1;
+        zpos = 16.280552465306243;
 
-          xpos = -99.60014797922804;
-          ypos = 1;
-          zpos = 16.280552465306243;
+        var xrot = 0;
+        var yrot = 90;
+        var zrot = 0;
 
-          var xrot = 0;
-          var yrot = 90;
-          var zrot = 0;
-        } else if (title == "Scenario 2") {
-          scenario = 2;
-          document.getElementById("scene2").setAttribute("visible", "true");
+        document.getElementById("VehicleMenu").setAttribute("visible", "true");
+        document.getElementById("MainMenu").setAttribute("visible", "false");
 
-          xpos = -99.60014797922804;
-          ypos = 1;
-          zpos = 16.280552465306243;
+        console.log("Real scenario value: " + window.scenario);
 
-          var xrot = 0;
-          var yrot = 90;
-          var zrot = 0;
-        } else if (title == "Scenario 3") {
-          scenario = 3;
-          document.getElementById("scene3").setAttribute("visible", "true");
+        //show selected scene and generate vehicles and pedestrians
+        document
+          .getElementById("scene" + window.scenario)
+          .setAttribute("visible", "true");
+        loadPedestrians(prev_num_of_people, num_of_people);
+        loadCars(prev_num_of_cars, num_of_cars);
 
-          xpos = -99.60014797922804;
-          ypos = 1;
-          zpos = 16.280552465306243;
-
-          var xrot = 0;
-          var yrot = 90;
-          var zrot = 0;
-        }
+        //shift camera pos
+        var camera = document.getElementById("player");
+        camera.setAttribute("position", { x: xpos, y: ypos, z: zpos }); //43.955 3.302 14.771
+        camera.setAttribute("rotation", { x: xrot, y: yrot, z: zrot });
       }
-
-      document.getElementById("VehicleMenu").setAttribute("visible", "true");
-      document.getElementById("MainMenu").setAttribute("visible", "false");
-
-      //show selected scene and generate vehicles and pedestrians
-      document
-        .getElementById("scene" + scenario)
-        .setAttribute("visible", "true");
-      loadPedestrians(prev_num_of_people, num_of_people);
-      loadCars(prev_num_of_cars, num_of_cars);
-
-      //shift camera pos
-      var camera = document.getElementById("player");
-      camera.setAttribute("position", { x: xpos, y: ypos, z: zpos }); //43.955 3.302 14.771
-      camera.setAttribute("rotation", { x: xrot, y: yrot, z: zrot });
     });
   }
 });
