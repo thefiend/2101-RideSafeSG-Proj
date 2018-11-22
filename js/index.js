@@ -402,6 +402,11 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 13.554;
 
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document
+          .getElementById("LeaderboardMenu")
+          .setAttribute("visible", "false");
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -424,6 +429,11 @@ AFRAME.registerComponent("scenario-listener", {
         xpos = -71.322;
         ypos = 1;
         zpos = 47.062;
+
+        document.getElementById("MainMenu").setAttribute("visible", "false");
+        document
+          .getElementById("LeaderboardMenu")
+          .setAttribute("visible", "true");
 
         var xrot = 0;
         var yrot = 270;
