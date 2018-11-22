@@ -80,6 +80,17 @@
         </a-entity>
         <!--End Vehicle Selection Menu-->
 
+        <!-- Leaderboard Menu -->
+            <a-entity id="LeaderboardMenu" visible="false">
+                <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0"></a-entity>
+                
+                 <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
+                    <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+                </a-entity>
+            </a-entity>
+        <!-- End of Leaderboard Menu -->
+
         <!--Scenario Menu-->
         <a-entity id="MainMenu" visible="true">
             <a-entity position="-100 2 6" geometry="primitive:plane;height:8;width:10" material="color:#808080" text="" material.color="#808080"></a-entity>
@@ -99,22 +110,17 @@
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
-                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
-                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-            </a-entity>
-
             <a-entity position="-99.851 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Scenario 2;wrapCount:10" material.color="#ff8080" id="scenario2_plane">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity position="-102 -0.2 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Leaderboard;wrapCount:10" material.color="#ff8080" id="leaderboard">
+            <a-entity position="-97.81 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Car Setting;wrapCount:10" material.color="#ff8080" id="car_setting">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
             </a-entity>
-            
-            <a-entity position="-97.81 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Car Setting;wrapCount:10" material.color="#ff8080" id="car_setting">
+
+            <a-entity position="-102 -0.2 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Leaderboard;wrapCount:10" material.color="#ff8080" id="leaderboard">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
             </a-entity>
@@ -168,7 +174,6 @@
         <!--Settings Car-->
         <a-entity id="CarMenu" visible="false">
             <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0"></a-entity>
-            <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0"></a-entity>
 
             <a-entity position="-100 5.263 26" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" material.color="#ff0000" id="car_header" text="align:center;value:Cars;wrapCount:10" rotation="0 180 0">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>

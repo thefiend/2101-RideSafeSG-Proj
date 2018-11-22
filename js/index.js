@@ -164,9 +164,9 @@ AFRAME.registerComponent("scenario-listener", {
 
       var title = document.title;
 
-      var xpos = 0;
-      var ypos = 0;
-      var zpos = 0;
+      var xpos = -99.60014797922804;
+      var ypos = 1;
+      var zpos = 16.280552465306243;
 
       var xrot = 0;
       var yrot = 0;
@@ -450,12 +450,12 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute("visible", "true");
         loadPedestrians(prev_num_of_people, num_of_people);
         loadCars(prev_num_of_cars, num_of_cars);
-
-        //shift camera pos
-        var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: xpos, y: ypos, z: zpos }); //43.955 3.302 14.771
-        camera.setAttribute("rotation", { x: xrot, y: yrot, z: zrot });
       }
+
+      //shift camera pos
+      var camera = document.getElementById("player");
+      camera.setAttribute("position", { x: xpos, y: ypos, z: zpos }); //43.955 3.302 14.771
+      camera.setAttribute("rotation", { x: xrot, y: yrot, z: zrot });
     });
   }
 });
