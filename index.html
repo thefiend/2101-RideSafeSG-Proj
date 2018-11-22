@@ -11,6 +11,8 @@
 <a-scene>
     <!--Load all assets-->
     <a-assets>
+        <a-asset-item id="Bike" src="img/Bike/Bike.gltf"></a-asset-item>
+        <a-asset-item id="PMD" src="img/PMD/Scooter_1395.gltf"></a-asset-item>
         <a-asset-item id="RoadBlock" src="img/RoadBlock/model.gltf"></a-asset-item>
         <a-asset-item id="RedCar" src="img/RedCar/model.gltf"></a-asset-item>
         <a-asset-item id="Taxi" src="img/Taxi/PUSHILIN_Taxi.gltf"></a-asset-item>
@@ -25,31 +27,31 @@
         <a-asset-item id="GasStation" src="img/GasStation/GasStation.gltf"></a-asset-item>
         <a-asset-item id="GrassPatch" src="img/GrassPatch/model.gltf"></a-asset-item>
         <a-asset-item id="RoadSidewalk2" src="img/RoadSidewalk2/Road_Straight_01.gltf"></a-asset-item>
-		
-		<!--People-->
-		<a-asset-item id="Girl" src="img/Girl/girl.gltf"></a-asset-item>
-		<a-asset-item id="Girl2" src="img/Girl2/girl2.gltf"></a-asset-item>
-		<a-asset-item id="Girl3" src="img/Girl3/girl3.gltf"></a-asset-item>
-		<a-asset-item id="Girl4" src="img/Girl4/girl4.gltf"></a-asset-item>
-		<a-asset-item id="Girl5" src="img/Girl5/girl5.gltf"></a-asset-item>
-		<a-asset-item id="OldMen" src="img/OldMen/oldmen.gltf"></a-asset-item>
-		<a-asset-item id="Boy" src="img/Boy/boy.gltf"></a-asset-item>
+
+  		<!--People-->
+  		<a-asset-item id="Girl" src="img/Girl/girl.gltf"></a-asset-item>
+  		<a-asset-item id="Girl2" src="img/Girl2/girl2.gltf"></a-asset-item>
+  		<a-asset-item id="Girl3" src="img/Girl3/girl3.gltf"></a-asset-item>
+  		<a-asset-item id="Girl4" src="img/Girl4/girl4.gltf"></a-asset-item>
+  		<a-asset-item id="Girl5" src="img/Girl5/girl5.gltf"></a-asset-item>
+  		<a-asset-item id="OldMen" src="img/OldMen/oldmen.gltf"></a-asset-item>
+  		<a-asset-item id="Boy" src="img/Boy/boy.gltf"></a-asset-item>
     </a-assets>
     <!--End of load all assets-->
 
     <!--Camera-->
-    <a-camera geometry="" wasd-controls-enabled="true" aabb-collider="objects:a-box" position="-99.89 1 13.554
+    <a-camera geometry="" wasd-controls-enabled="false" aabb-collider="objects:a-box" position="-99.89 1 13.554
 " camera="" look-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0" wasd-controls="">
         <!--Start of Move animation after option choosen -->
         <a-animation begin="S1Q1" attribute="position" from="0.732 3.312 14.771" to="-1.110 1 -45.330" dur="5000"></a-animation>
         <a-animation begin="S1Q2" attribute="position" from="-1.110 1 -45.330" to="0.285 1 -60.845" dur="5000"></a-animation>
-        
+
         <!--End of Move animation after option choosen -->
         <a-cursor color="blue" raycaster="" cursor="fuse:true;fuseTimeout:1000" position="0 0 -1">
             <a-animation begin="click" easing="ease-in" attribute="scale" dur="1000" fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
             <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1000" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
         </a-cursor>
-   <a-box id="user_vehicle" position="0 -0.8 -1" radius="0.5" height="0.5" material="color:red"></a-box><a-box id="user_vehicle" position="0 -0.8 -1" radius="0.5" height="0.5" material="color:red" geometry=""></a-box></a-camera>
+      </a-camera>
 
     <a-sky color="#aaf4f9"></a-sky>
 
@@ -66,12 +68,6 @@
     <!--Question1-->
     <a-entity position="-1.033 4.024 -18.871" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_1" visible="false">
     </a-entity>
-
-
-    
-
-    
-
 
     <a-entity position="-0.826 6.476 -18" geometry="primitive:plane;height:2;width:10" material="color:#ff0000" text="align:center;color:#400040;value:Question 1.What is the most  important thing you need before riding on the road?" material.color="#ff0000" id="Question_1_description" visible="false">
         <a-animation attribute="material.color" from="#ff0000" to="red" begin="mouseenter"></a-animation>
@@ -156,31 +152,31 @@
     </a-entity>
 
     <a-entity position="-103.021 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="scenario1_plane" text="align:center;value:Scenario 1;wrapCount:10">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+      <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+      <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+    </a-entity>
 
-    </a-entity><a-entity position="-101.989 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="scenario_start" text="align:center;value:Start Scenario 2;wrapCount:10">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
+    <a-entity position="-101.989 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="scenario_start" text="align:center;value:Start Scenario 2;wrapCount:10">
+      <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
+      <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
     </a-entity>
 
     <a-entity position="-96.833 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Scenario 3;wrapCount:10" material.color="#ff8080" id="scenario3_plane">
         <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+    </a-entity>
 
-    </a-entity><a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
+    <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
         <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
     </a-entity>
+
     <a-entity position="-99.851 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Scenario 2;wrapCount:10" material.color="#ff8080" id="scenario2_plane">
         <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
     </a-entity>
-    
-    <a-entity position="-102 -0.2 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:LeaderBoard;wrapCount:10" material.color="#ff8080" id="leaderboard">
+
+    <a-entity position="-102 -0.2 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Leaderboard;wrapCount:10" material.color="#ff8080" id="leaderboard">
         <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
         <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
 
@@ -193,7 +189,7 @@
         <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
 
     </a-entity>
-    
+
     <!--End of Scenario Menu-->
     <!--Settings Car-->
     <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0">
@@ -278,13 +274,13 @@
     <!--End of Settingv Car-->
 
 
-   <!--Junaidi--> 
+   <!--Junaidi-->
    <!--Main Lane 1-->
     <a-plane position="-5.836 -1.342 23.832" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
 
     <a-plane position="-5.836 -1.342 4.233" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1.2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane><a-plane position="-5.836 -1.342 -15.565" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1.2-2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane><a-plane position="-5.836 -1.342 -35.384" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="2-2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane><a-plane position="-5.836 -1.342 -55.185" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="2-3" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
 
-    
+
     <!--Main Lane 1 Right Buildings-->
     <a-box position="-23.276999999999997 -42.06399999999999 34.53899999999999" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building1" gltf-model="img/Building1/model.gltf" scale="20 30 20"></a-box>
 
@@ -322,9 +318,6 @@
     <a-plane position="29.775 -0.368 -53.766" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="RightStretch" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="2.2 1 0.6">
     </a-plane>
 
-
-<a-box bound-collider="" static-body="" id="car0" gltf-model="img/Taxi/PUSHILIN_Taxi.gltf" scale="2 2 2" rotation="0 180 0" position="8.577075701926463 1.31 -55.446" material=""><a-animation attribute="position" dur="6000" repeat="indefinite" from="23.060 1.310 -55.446" to="-34.299 1.310 -55.446"></a-animation></a-box>
-<a-box bound-collider="" static-body="" id="car1" gltf-model="img/RedCar/model.gltf" scale="3 3 3" rotation="0 270 0" position="-19.776 -3.752 -54.845" material=""><a-animation attribute="position" dur="6500" repeat="indefinite" from="-24.422 -3.752 -54.845" to="168 -3.752 -54.845"></a-animation></a-box>
 <!--Score Board-->
       <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s1" visible="false"></a-entity>
 
