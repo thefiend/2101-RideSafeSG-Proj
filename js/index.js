@@ -525,19 +525,19 @@ AFRAME.registerComponent("bound-collider", {
       // Collision ! increment the scoreboard
       var camera = document.getElementById("player");
       console.log(x + " has collided");
-      if (x == "quesiton1_bound") {
+      if (x == "s1quesiton1_bound") {
         // enable user to move
         document
           .querySelector("a-camera")
           .setAttribute("wasd-controls-enabled", "false");
 
         //show question 1
-        var question = document.getElementById("Question_1");
-        var question_desc = document.getElementById("Question_1_description");
-        var o1 = document.getElementById("q1_option1");
-        var o2 = document.getElementById("q1_option2");
-        var o3 = document.getElementById("q1_option3");
-        var o4 = document.getElementById("q1_option4");
+        var question = document.getElementById("s1Question_1");
+        var question_desc = document.getElementById("s1Question_1_description");
+        var o1 = document.getElementById("s1q1_option1");
+        var o2 = document.getElementById("s1q1_option2");
+        var o3 = document.getElementById("s1q1_option3");
+        var o4 = document.getElementById("s1q1_option4");
         var camera = document.getElementById("player");
         question.setAttribute("visible", true);
         question_desc.setAttribute("visible", true); //14.567 1 -10
@@ -547,14 +547,14 @@ AFRAME.registerComponent("bound-collider", {
         o4.setAttribute("visible", true);
         camera.setAttribute("position", { x: -1.11, y: 3.096, z: -11.86 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-      } else if (x == "quesiton2_bound") {
+      } else if (x == "s1quesiton2_bound") {
         //show question 2
-        var question = document.getElementById("Question_2");
-        var question_desc = document.getElementById("Question_2_description");
-        var o1 = document.getElementById("q2_option1");
-        var o2 = document.getElementById("q2_option2");
-        var o3 = document.getElementById("q2_option3");
-        var o4 = document.getElementById("q2_option4");
+        var question = document.getElementById("s1Question_2");
+        var question_desc = document.getElementById("s1Question_2_description");
+        var o1 = document.getElementById("s1q2_option1");
+        var o2 = document.getElementById("s1q2_option2");
+        var o3 = document.getElementById("s1q2_option3");
+        var o4 = document.getElementById("s1q2_option4");
         var camera = document.getElementById("player");
         question.setAttribute("visible", true);
         question_desc.setAttribute("visible", true); //14.567 1 -10
@@ -564,7 +564,7 @@ AFRAME.registerComponent("bound-collider", {
         o4.setAttribute("visible", true); //-1.110
         camera.setAttribute("position", { x: -1.11, y: 3.096, z: -45.33 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-      } else if (x == "scenario1_end") {
+      } else if (x == "s1scenario1_end") {
         //score_s1 scoreText_s1 score_submit_s1
         var scoreboard = document.getElementById("score_s1");
         var scoreVal = document.getElementById("scoreText_s1");
@@ -588,8 +588,8 @@ AFRAME.registerComponent("select-option-listener", {
     var x = this.el.getAttribute("id");
     this.el.addEventListener("click", function(evt) {
       console.log(x + " has been selected");
-      if (x == "q1_option1") {
-        var question = document.getElementById("Question_1");
+      if (x == "s1q1_option1") {
+        var question = document.getElementById("s1Question_1");
         var question_desc = document.getElementById("Question_1_description");
         var o1 = document.getElementById("q1_option1");
         var o2 = document.getElementById("q1_option2");
@@ -608,13 +608,13 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } else if (x == "q1_option2") {
-        var question = document.getElementById("Question_1");
-        var question_desc = document.getElementById("Question_1_description");
-        var o1 = document.getElementById("q1_option1");
-        var o2 = document.getElementById("q1_option2");
-        var o3 = document.getElementById("q1_option3");
-        var o4 = document.getElementById("q1_option4");
+      } else if (x == "s1q1_option2") {
+        var question = document.getElementById("s1Question_1");
+        var question_desc = document.getElementById("s1Question_1_description");
+        var o1 = document.getElementById("s1q1_option1");
+        var o2 = document.getElementById("s1q1_option2");
+        var o3 = document.getElementById("s1q1_option3");
+        var o4 = document.getElementById("s1q1_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -628,13 +628,13 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } else if (x == "q1_option3") {
-        var question = document.getElementById("Question_1");
-        var question_desc = document.getElementById("Question_1_description");
-        var o1 = document.getElementById("q1_option1");
-        var o2 = document.getElementById("q1_option2");
-        var o3 = document.getElementById("q1_option3");
-        var o4 = document.getElementById("q1_option4");
+      } else if (x == "s1q1_option3") {
+        var question = document.getElementById("s1Question_1");
+        var question_desc = document.getElementById("s1Question_1_description");
+        var o1 = document.getElementById("s1q1_option1");
+        var o2 = document.getElementById("s1q1_option2");
+        var o3 = document.getElementById("s1q1_option3");
+        var o4 = document.getElementById("s1q1_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -648,13 +648,13 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } else if (x == "q1_option4") {
-        var question = document.getElementById("Question_1");
-        var question_desc = document.getElementById("Question_1_description");
-        var o1 = document.getElementById("q1_option1");
-        var o2 = document.getElementById("q1_option2");
-        var o3 = document.getElementById("q1_option3");
-        var o4 = document.getElementById("q1_option4");
+      } else if (x == "s1q1_option4") {
+        var question = document.getElementById("s1Question_1");
+        var question_desc = document.getElementById("s1Question_1_description");
+        var o1 = document.getElementById("s1q1_option1");
+        var o2 = document.getElementById("s1q1_option2");
+        var o3 = document.getElementById("s1q1_option3");
+        var o4 = document.getElementById("s1q1_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -668,13 +668,13 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } else if (x == "q2_option1") {
-        var question = document.getElementById("Question_2");
-        var question_desc = document.getElementById("Question_2_description");
-        var o1 = document.getElementById("q2_option1");
-        var o2 = document.getElementById("q2_option2");
-        var o3 = document.getElementById("q2_option3");
-        var o4 = document.getElementById("q2_option4");
+      } else if (x == "s1q2_option1") {
+        var question = document.getElementById("s1Question_2");
+        var question_desc = document.getElementById("s1Question_2_description");
+        var o1 = document.getElementById("s1q2_option1");
+        var o2 = document.getElementById("s1q2_option2");
+        var o3 = document.getElementById("s1q2_option3");
+        var o4 = document.getElementById("s1q2_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -689,13 +689,13 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q2");
-      } else if (x == "q2_option2") {
-        var question = document.getElementById("Question_2");
-        var question_desc = document.getElementById("Question_2_description");
-        var o1 = document.getElementById("q2_option1");
-        var o2 = document.getElementById("q2_option2");
-        var o3 = document.getElementById("q2_option3");
-        var o4 = document.getElementById("q2_option4");
+      } else if (x == "s1q2_option2") {
+        var question = document.getElementById("s1Question_2");
+        var question_desc = document.getElementById("s1Question_2_description");
+        var o1 = document.getElementById("s1q2_option1");
+        var o2 = document.getElementById("s1q2_option2");
+        var o3 = document.getElementById("s1q2_option3");
+        var o4 = document.getElementById("s1q2_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -710,13 +710,13 @@ AFRAME.registerComponent("select-option-listener", {
         // camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q2");
-      } else if (x == "q2_option3") {
-        var question = document.getElementById("Question_2");
-        var question_desc = document.getElementById("Question_2_description");
-        var o1 = document.getElementById("q2_option1");
-        var o2 = document.getElementById("q2_option2");
-        var o3 = document.getElementById("q2_option3");
-        var o4 = document.getElementById("q2_option4");
+      } else if (x == "s1q2_option3") {
+        var question = document.getElementById("s1Question_2");
+        var question_desc = document.getElementById("s1Question_2_description");
+        var o1 = document.getElementById("s1q2_option1");
+        var o2 = document.getElementById("s1q2_option2");
+        var o3 = document.getElementById("s1q2_option3");
+        var o4 = document.getElementById("s1q2_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -730,13 +730,13 @@ AFRAME.registerComponent("select-option-listener", {
         // camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q2");
-      } else if (x == "q2_option4") {
-        var question = document.getElementById("Question_2");
-        var question_desc = document.getElementById("Question_2_description");
-        var o1 = document.getElementById("q2_option1");
-        var o2 = document.getElementById("q2_option2");
-        var o3 = document.getElementById("q2_option3");
-        var o4 = document.getElementById("q2_option4");
+      } else if (x == "s1q2_option4") {
+        var question = document.getElementById("s1Question_2");
+        var question_desc = document.getElementById("s1Question_2_description");
+        var o1 = document.getElementById("s1q2_option1");
+        var o2 = document.getElementById("s1q2_option2");
+        var o3 = document.getElementById("s1q2_option3");
+        var o4 = document.getElementById("s1q2_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
