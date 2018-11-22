@@ -164,9 +164,9 @@ AFRAME.registerComponent("scenario-listener", {
 
       var title = document.title;
 
-      var xpos = 0;
-      var ypos = 0;
-      var zpos = 0;
+      var xpos = -99.60014797922804;
+      var ypos = 1;
+      var zpos = 16.280552465306243;
 
       var xrot = 0;
       var yrot = 0;
@@ -402,6 +402,11 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 13.554;
 
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document
+          .getElementById("LeaderboardMenu")
+          .setAttribute("visible", "false");
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -424,6 +429,11 @@ AFRAME.registerComponent("scenario-listener", {
         xpos = -71.322;
         ypos = 1;
         zpos = 47.062;
+
+        document.getElementById("MainMenu").setAttribute("visible", "false");
+        document
+          .getElementById("LeaderboardMenu")
+          .setAttribute("visible", "true");
 
         var xrot = 0;
         var yrot = 270;
@@ -450,12 +460,12 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute("visible", "true");
         loadPedestrians(prev_num_of_people, num_of_people);
         loadCars(prev_num_of_cars, num_of_cars);
-
-        //shift camera pos
-        var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: xpos, y: ypos, z: zpos }); //43.955 3.302 14.771
-        camera.setAttribute("rotation", { x: xrot, y: yrot, z: zrot });
       }
+
+      //shift camera pos
+      var camera = document.getElementById("player");
+      camera.setAttribute("position", { x: xpos, y: ypos, z: zpos }); //43.955 3.302 14.771
+      camera.setAttribute("rotation", { x: xrot, y: yrot, z: zrot });
     });
   }
 });
