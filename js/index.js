@@ -1,3 +1,5 @@
+var scenario = 0;
+
 AFRAME.registerComponent("scenario-listener", {
   init: function() {
     var x = this.el.getAttribute("id");
@@ -5,8 +7,9 @@ AFRAME.registerComponent("scenario-listener", {
       var num_of_cars = 0;
       var num_of_people = 0;
       var type_of_car = 0;
-      var scenario = 0;
-
+      
+      var title = document.title;
+    
       var car_mapping = [
         {
             type: "#Taxi",
@@ -59,50 +62,46 @@ AFRAME.registerComponent("scenario-listener", {
       var zrot = 0;
 
       if (x == "scenario1_plane") {
-        console.log("Scenario 1");
-        scenario = 1;
-
-        xpos = 43.955;
-        ypos = 1;
-        zpos = 14.771;
-      } else if (x == "scenario2_plane") {
+        //var change = document.querySelector('a-link').navigate('index.html');
+        //change to scenario 1 url
+        window.location.replace("index.html");
+        console.log("Scenario 1 Selected");        
+      } 
+      else if (x == "scenario2_plane") {//-99.60014797922804 1 16.280552465306243
         console.log("Scenario 2");
-        scenario = 2;
-
-        xpos = 43.955;
-        ypos = 1;
-        zpos = 14.771;
-      } else if (x == "scenario3_plane") {
+        window.location.replace("index.html");        
+      } 
+      else if (x == "scenario3_plane") {
         console.log("Scenario 3");
-        xpos = 43.955;
+        window.location.replace("index.html");
+      } 
+      else if (x == "car_setting") {
+        console.log("Car Settings"); //-12.700  1 36.403
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.771;
-      } else if (x == "scenario4_plane") {
-        console.log("Scenario 4");
-        xpos = 43.955;
-        ypos = 1;
-        zpos = 14.771;
-      } else if (x == "scenario5_plane") {
-        console.log("Scenario 5");
-        xpos = 43.955;
-        ypos = 1;
-        zpos = 14.771;
-      } else if (x == "setting") {
-        console.log("Settings"); //-12.700  1 36.403
-        xpos = -16.469;
-        ypos = 1;
-        zpos = 36.403;
+        zpos = 16.280552465306243;
 
         var xrot = 0;
-        var yrot = 90;
+        var yrot = 180;
+        var zrot = 0;
+      }
+
+      else if (x == "pedestrian_setting") {
+        console.log("Pedestrian Settings"); //-12.700  1 36.403
+        xpos = -90.448;
+        ypos = 1;
+        zpos = 20.406;
+
+        var xrot = 0;
+        var yrot = 270;
         var zrot = 0;
       }
       //car_val onwards generate number of cars
       else if (x == "car_val_0") {
         console.log("car_val_0"); //-12.700  1 36.403
-        xpos = -12.7;
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.962;
+        zpos = 16.280552465306243;
 
         num_of_cars = 0;
 
@@ -111,9 +110,9 @@ AFRAME.registerComponent("scenario-listener", {
         var zrot = 0;
       } else if (x == "car_val_1") {
         console.log("car_val_1"); //-12.700  1 36.403
-        xpos = -12.7;
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.962;
+        zpos = 16.280552465306243;
 
         num_of_cars = 1;
 
@@ -122,9 +121,9 @@ AFRAME.registerComponent("scenario-listener", {
         var zrot = 0;
       } else if (x == "car_val_2") {
         console.log("car_val_2"); //-12.700  1 36.403
-        xpos = -12.7;
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.962;
+        zpos = 16.280552465306243;
 
         num_of_cars = 2;
 
@@ -134,9 +133,9 @@ AFRAME.registerComponent("scenario-listener", {
 
       } else if (x == "car_val_3") {
         console.log("car_val_3"); //-12.700  1 36.403
-        xpos = -12.7;
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.962;
+        zpos = 16.280552465306243;
 
         num_of_cars = 3;
 
@@ -145,9 +144,9 @@ AFRAME.registerComponent("scenario-listener", {
         var zrot = 0;
       } else if (x == "car_val_4") {
         console.log("car_val_4"); //-12.700  1 36.403
-        xpos = -12.7;
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.962;
+        zpos = 16.280552465306243;
 
         num_of_cars = 4;
 
@@ -156,24 +155,149 @@ AFRAME.registerComponent("scenario-listener", {
         var zrot = 0;
       } else if (x == "car_val_5") {
         console.log("car_val_5"); //-12.700  1 36.403
-        xpos = -12.7;
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.962;
+        zpos = 16.280552465306243;
 
         num_of_cars = 5;
 
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
-      } else if (x == "return_main") {
-        console.log("return_main"); //-12.7 1 14.962
-        xpos = -12.7;
+      }
+      else if (x == "pedestrian_val1") {
+        console.log("pedestrian_val1"); //-12.700  1 36.403
+        xpos = -99.60014797922804;
         ypos = 1;
-        zpos = 14.962;
+        zpos = 16.280552465306243;
+
+        num_of_cars = 1;
 
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
+      } else if (x == "pedestrian_val2") {
+        console.log("pedestrian_val2"); //-12.700  1 36.403
+        xpos = -99.60014797922804;
+        ypos = 1;
+        zpos = 16.280552465306243;
+
+        num_of_cars = 2;
+
+        var xrot = 0;
+        var yrot = 0;
+        var zrot = 0;
+
+      } else if (x == "pedestrian_val3") {
+        console.log("pedestrian_val3"); //-12.700  1 36.403
+        xpos = -99.60014797922804;
+        ypos = 1;
+        zpos = 16.280552465306243;
+
+        num_of_cars = 3;
+
+        var xrot = 0;
+        var yrot = 0;
+        var zrot = 0;
+      } else if (x == "pedestrian_val4") {
+        console.log("pedestrian_val4"); //-12.700  1 36.403
+        xpos = -99.60014797922804;
+        ypos = 1;
+        zpos = 16.280552465306243;
+
+        num_of_cars = 4;
+
+        var xrot = 0;
+        var yrot = 0;
+        var zrot = 0;
+      } else if (x == "pedestrian_val5") {
+        console.log("pedestrian_val5"); //-12.700  1 36.403
+        xpos = -99.60014797922804;
+        ypos = 1;
+        zpos = 16.280552465306243;
+
+        num_of_cars = 5;
+
+        var xrot = 0;
+        var yrot = 0;
+        var zrot = 0;
+      }
+       else if (x == "return_main") {
+        console.log("return_main"); //-12.7 1 14.962
+        xpos = -99.890;
+        ypos = 1;
+        zpos = 13.554;
+
+        var xrot = 0;
+        var yrot = 0;
+        var zrot = 0;
+      }
+
+      else if (x == "return_main2") {
+        console.log("return_main"); //-12.7 1 14.962
+        xpos = -99.890;
+        ypos = 1;
+        zpos = 13.554;
+
+        var xrot = 0;
+        var yrot = 0;
+        var zrot = 0;
+      }
+      else if(x == "return_main3"){
+         console.log("return_main"); //-12.7 1 14.962
+        xpos = -99.890;
+        ypos = 1;
+        zpos = 13.554;
+
+        var xrot = 0;
+        var yrot = 0;
+        var zrot = 0;
+      }
+      else if (x == "leaderboard") {
+        console.log("return_main"); //-12.7 1 14.962
+        xpos = -71.322;
+        ypos = 1;
+        zpos = 47.062;
+
+        var xrot = 0;
+        var yrot = 270;
+        var zrot = 0;
+      }//window.location.href 
+
+      else if(x == "scenario_start"){
+
+        if(title == "Scenario 1"){
+            scenario = 1;
+
+            xpos = -99.60014797922804;
+            ypos = 1;
+            zpos = 16.280552465306243;
+
+            var xrot = 0;
+            var yrot = 90;
+            var zrot = 0;
+        }
+        else if(title == "Scenario 2"){
+            scenario = 2;
+           
+            xpos = -99.60014797922804;
+            ypos = 1;
+            zpos = 16.280552465306243;
+
+            var xrot = 0;
+            var yrot = 90;
+            var zrot = 0;
+        }
+        else if(title == "Scenario 3"){
+            scenario = 2;
+            xpos = -99.60014797922804;
+            ypos = 1;
+            zpos = 16.280552465306243;
+
+            var xrot = 0;
+            var yrot = 90;
+            var zrot = 0;
+        }
       }
 
     console.log("Number of cars: " + num_of_cars);
@@ -217,22 +341,26 @@ AFRAME.registerComponent("select-vehicle-listener", {
         console.log("PMD Selected " + type_of_car);
 
         var pmd = document.createElement("a-box");
+        var camera = document.getElementById("player");
         pmd.setAttribute("id", "user_vehicle");
         pmd.setAttribute("position", "0 -0.8 -1");
         pmd.setAttribute("radius", "0.5");
         pmd.setAttribute("height", "0.5");
         pmd.setAttribute("material", "color: gray; opacity: 1");
+        camera.setAttribute("rotation", "0 0 0");
         document.querySelector("a-camera").appendChild(pmd);
       } else {
         type_of_car = 1;
         console.log("Bike Selected: " + type_of_car);
 
         var pmd = document.createElement("a-box");
+        var camera = document.getElementById("player");
         pmd.setAttribute("id", "user_vehicle");
         pmd.setAttribute("position", "0 -0.8 -1");
         pmd.setAttribute("radius", "0.5");
         pmd.setAttribute("height", "0.5");
         pmd.setAttribute("material", "color: red; opacity: 1");
+        camera.setAttribute("rotation", "0 0 0");
         document.querySelector("a-camera").appendChild(pmd);
       }
 
@@ -243,8 +371,8 @@ AFRAME.registerComponent("select-vehicle-listener", {
 
       //write into temp file and shift camera pos
       var camera = document.getElementById("player");
-      camera.setAttribute("position", { x: 0.732, y: 2, z: 14.771 }); //0.732 3.312 14.771
-      // camera.setAttribute('rotation', { x: 0, y:0, z: 0 });
+      camera.setAttribute("position", { x: -0.924, y: 1, z: -11.860 }); //0.732 3.312 14.771
+      camera.setAttribute('rotation', { x: 0, y:0, z: 0 });
     });
   }
 });
@@ -277,7 +405,7 @@ AFRAME.registerComponent("bound-collider", {
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true);
-        camera.setAttribute("position", { x: 0.732, y: 2, z: -10 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x:  -0.924, y: 1, z: -11.860}); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else if (x == "quesiton2_bound") {
         //show question 1
@@ -344,7 +472,7 @@ AFRAME.registerComponent("select-option-listener", {
         result.setAttribute("color", "red");
         console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 0.732, y: 1, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else if (x == "q1_option3") {
         var result = document.getElementById("Question_1_Result_Wrong");
@@ -365,7 +493,7 @@ AFRAME.registerComponent("select-option-listener", {
         result.setAttribute("color", "red");
         console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 0.732, y: 1, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else if (x == "q1_option4") {
         var result = document.getElementById("Question_1_Result_Correct");
@@ -386,7 +514,7 @@ AFRAME.registerComponent("select-option-listener", {
         result.setAttribute("color", "green");
         console.log("Correct");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 0.732, y: 2, z: -26 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 0.732, y: 1, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else if (x == "q2_option1") {
         var result = document.getElementById("Question2_Result_Wrong");
@@ -407,7 +535,7 @@ AFRAME.registerComponent("select-option-listener", {
         result.setAttribute("color", "red");
         console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 2, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 90, y: 0, z: 0 });
       } else if (x == "q2_option2") {
         var result = document.getElementById("Question_2_Result_Wrong");
@@ -429,7 +557,7 @@ AFRAME.registerComponent("select-option-listener", {
         console.log("Wrong"); //93.184
 
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 2, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 90, y: 0, z: 0 });
       } else if (x == "q2_option3") {
         var result = document.getElementById("Question_2_Result_Wrong");
@@ -450,7 +578,7 @@ AFRAME.registerComponent("select-option-listener", {
         result.setAttribute("color", "red");
         console.log("Wrong");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 2, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 90, y: 0, z: 0 });
       } else if (x == "q2_option4") {
         var result = document.getElementById("Question_2_Result_Correct");
@@ -471,7 +599,7 @@ AFRAME.registerComponent("select-option-listener", {
         result.setAttribute("color", "green");
         console.log("Correct");
         var camera = document.getElementById("player");
-        camera.setAttribute("position", { x: 97, y: 2, z: -63.474 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 90, z: 0 });
       }
 
