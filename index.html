@@ -1,339 +1,338 @@
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
     <meta charset="utf-8" />
-<title>Scenario 1</title>
+    <title>Scenario 1</title>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
     <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
     <script src="js/index.js"></script>
-
 </head>
 
 <body>
-<a-scene>
-    <!--Load all assets-->
-    <a-assets>
-        <a-asset-item id="Bike" src="img/Bike/Bike.gltf"></a-asset-item>
-        <a-asset-item id="PMD" src="img/PMD/Scooter_1395.gltf"></a-asset-item>
-        <a-asset-item id="RoadBlock" src="img/RoadBlock/model.gltf"></a-asset-item>
-        <a-asset-item id="RedCar" src="img/RedCar/model.gltf"></a-asset-item>
-        <a-asset-item id="Taxi" src="img/Taxi/PUSHILIN_Taxi.gltf"></a-asset-item>
-        <a-asset-item id="Truck" src="img/Truck/Truck_1359.gltf"></a-asset-item>
-        <a-asset-item id="Building1" src="img/Building1/model.gltf"></a-asset-item>
-        <a-asset-item id="Building2" src="img/Building2/model.gltf"></a-asset-item>
-        <a-asset-item id="Building3" src="img/Building3/model.gltf"></a-asset-item>
-        <a-asset-item id="Building4" src="img/Building4/model.gltf"></a-asset-item>
-        <a-asset-item id="Tree1" src="img/Tree1/tree01.gltf"></a-asset-item>
-        <a-asset-item id="TreeBunch" src="img/TreeBunch/trees1.gltf"></a-asset-item>
-        <a-asset-item id="Hostel" src="img/Hostel/Hostel_1275.gltf"></a-asset-item>
-        <a-asset-item id="GasStation" src="img/GasStation/GasStation.gltf"></a-asset-item>
-        <a-asset-item id="GrassPatch" src="img/GrassPatch/model.gltf"></a-asset-item>
-        <a-asset-item id="RoadSidewalk2" src="img/RoadSidewalk2/Road_Straight_01.gltf"></a-asset-item>
-
-  		<!--People-->
-  		<a-asset-item id="Girl" src="img/Girl/girl.gltf"></a-asset-item>
-  		<a-asset-item id="Girl2" src="img/Girl2/girl2.gltf"></a-asset-item>
-  		<a-asset-item id="Girl3" src="img/Girl3/girl3.gltf"></a-asset-item>
-  		<a-asset-item id="Girl4" src="img/Girl4/girl4.gltf"></a-asset-item>
-  		<a-asset-item id="Girl5" src="img/Girl5/girl5.gltf"></a-asset-item>
-  		<a-asset-item id="OldMen" src="img/OldMen/oldmen.gltf"></a-asset-item>
-  		<a-asset-item id="Boy" src="img/Boy/boy.gltf"></a-asset-item>
-    </a-assets>
-    <!--End of load all assets-->
-
-    <!--Camera-->
-    <a-camera geometry="" wasd-controls-enabled="false" aabb-collider="objects:a-box" position="-99.89 1 13.554
-" camera="" look-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0" wasd-controls="">
-        <!--Start of Move animation after option choosen -->
-        <a-animation begin="S1Q1" attribute="position" from="0.732 3.312 14.771" to="-1.110 1 -45.330" dur="5000"></a-animation>
-        <a-animation begin="S1Q2" attribute="position" from="-1.110 1 -45.330" to="0.285 1 -60.845" dur="5000"></a-animation>
-
-        <!--End of Move animation after option choosen -->
-        <a-cursor color="blue" raycaster="" cursor="fuse:true;fuseTimeout:1000" position="0 0 -1">
-            <a-animation begin="click" easing="ease-in" attribute="scale" dur="1000" fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1000" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-        </a-cursor>
-      </a-camera>
-
-    <a-sky color="#aaf4f9"></a-sky>
-
-    <a-box bound-collider="" static-body="" position="14.567 1 -11.86" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="quesiton1_bound" class="box" opacity="0">
-
-    </a-box>
-    <a-box bound-collider="" static-body="" position="0.732 1 -45.33" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="quesiton2_bound" class="box" opacity="0">
-    </a-box>
-
-    <a-box bound-collider="" static-body="" position="0.285 1 -60.845" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="scenario1_end" class="box" opacity="0">
-
-    </a-box>
-
-    <!--Question1-->
-    <a-entity position="-1.033 4.024 -18.871" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_1" visible="false">
-    </a-entity>
-
-    <a-entity position="-0.826 6.476 -18" geometry="primitive:plane;height:2;width:10" material="color:#ff0000" text="align:center;color:#400040;value:Question 1.What is the most  important thing you need before riding on the road?" material.color="#ff0000" id="Question_1_description" visible="false">
-        <a-animation attribute="material.color" from="#ff0000" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff0000" begin="mouseleave"></a-animation>
-    </a-entity>
-    <!--End of Question1-->
-
-    <!--Options for Question1-->
-    <a-entity select-option-listener="" position="-3.582 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.SmartPhone" material.color="#808080" id="q1_option1" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity select-option-listener="" position="1.674 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Helmet" material.color="#808080" id="q1_option2" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity select-option-listener="" position="1.666 1.45 -17.999" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Money" material.color="#808080" id="q1_option4" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity select-option-listener="" position="-3.595 1.45 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Snack" material.color="#808080" id="q1_option3" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-    <!--End for Options for Question1-->
-
-    <!--Question2-->
-    <a-entity position="-1.033 4.024 -52" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_2" visible="false">
-    </a-entity>
-
-    <a-entity position="-0.826 6.476 -51" geometry="primitive:plane;height:2;width:10" material="color:#ff0000" text="align:center;color:#400040;value:Question 2.You are about to cross a road with passing vehicles, what should you do?" material.color="#ff0000" id="Question_2_description" visible="false">
-        <a-animation attribute="material.color" from="#ff0000" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff0000" begin="mouseleave"></a-animation>
-    </a-entity>
-    <!--End of Question2-->
-
-    <!--Options for Question2-->
-    <a-entity select-option-listener="" position="-3.582 3.7 -51" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.Speed Through!" material.color="#808080" id="q2_option1" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity select-option-listener="" position="1.674 3.7 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Let it pass then move" material.color="#808080" id="q2_option2" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity select-option-listener="" position="1.666 1.45 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.ABANDON SHIP" material.color="#808080" id="q2_option4" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity select-option-listener="" position="-3.595 1.45 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Turn Back" material.color="#808080" id="q2_option3" visible="false">
-        <a-animation attribute="material.color" from="gray" to="green" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-    <!--End for Options for Question2-->
-
-    <!--Vehicle Selection Menu-->
-    <a-entity position="-114.553 2 16.283" geometry="primitive:plane;height:10;width:10" material="color:#808080" text="" material.color="#808080" id="Menu2" rotation="0 90 0">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="grey" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity select-vehicle-listener="" position="-114 3.944 16.283" geometry="primitive:plane;height:3;width:6" material="color:#ff8080" text="align:center;value:PMD;wrapCount:10" material.color="#ff8080" id="PMD_select" rotation="0 90 0">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity select-vehicle-listener="" position="-114 -0.005 16.283" geometry="primitive:plane;height:3;width:6" material="color:#ff8080" text="align:center;value:Bike;wrapCount:10" material.color="#ff8080" id="Bike_select" rotation="0 90 0">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-    </a-entity>
-    <!--End Vehicle Selection Menu-->
-
-    <!--Scenario Menu-->
-    <a-entity position="-100 2 6" geometry="primitive:plane;height:8;width:10" material="color:#808080" text="" material.color="#808080" id="Menu1">
-    </a-entity>
-
-    <a-entity position="-103.021 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="scenario1_plane" text="align:center;value:Scenario 1;wrapCount:10">
-      <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-      <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity position="-101.989 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="scenario_start" text="align:center;value:Start Scenario 2;wrapCount:10">
-      <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-      <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity position="-96.833 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Scenario 3;wrapCount:10" material.color="#ff8080" id="scenario3_plane">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity position="-99.851 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Scenario 2;wrapCount:10" material.color="#ff8080" id="scenario2_plane">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-    </a-entity>
-
-    <a-entity position="-102 -0.2 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Leaderboard;wrapCount:10" material.color="#ff8080" id="leaderboard">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-97.81 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Car Setting;wrapCount:10" material.color="#ff8080" id="car_setting">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-97.81 -0.188 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Pedestrians setting;wrapCount:10" material.color="#ff8080" id="pedestrian_setting">
-        <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-        <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <!--End of Scenario Menu-->
-    <!--Settings Car-->
-    <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0">
-    </a-entity><a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0">
-    </a-entity><a-entity position="-84.594 2 19.648" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="pedestrian_plane" rotation="0 270 0">
-    </a-entity>
-
-    <a-entity position="-24.209 6.657 40.64" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="car_val_0" text="align:center;value:0 cars;wrapCount:10" rotation="0 90 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity position="-100 5.263 26" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="car_header" text="align:center;value:Cars;wrapCount:10" rotation="0 180 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-85.21 5.263 19.718" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="Pedestrian_header" text="align:center;value:Pedestrian;wrapCount:10" rotation="0 270 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity position="-96.359 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="car_val_1" text="align:center;value:1 cars;wrapCount:10" rotation="0 180 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-85.21 2.5 16.117" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="pedestrian_val1" text="align:center;value:1 Pedestrian;wrapCount:10" rotation="0 270 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-85.21 2.5 19.882" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="pedestrian_val2" text="align:center;value:2 Pedestrian;wrapCount:10" rotation="0 270 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-85.21 2.5 23.38" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="pedestrian_val3" text="align:center;value:3 Pedestrian;wrapCount:10" rotation="0 270 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-85.21 -0.24 16.108" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="pedestrian_val4" text="align:center;value:4 Pedestrian;wrapCount:10" rotation="0 270 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-85.21 -0.24 19.86" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="pedestrian_val5" text="align:center;value:5 Pedestrian;wrapCount:10" rotation="0 270 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity><a-entity position="-85.21 -0.24 23.411" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="return_main3" text="align:center;value:Main Menu;wrapCount:10" rotation="0 270 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity position="-96.359 0 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="car_val_4" text="align:center;value:4 cars;wrapCount:10" rotation="0 180 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity position="-100.215 0 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="car_val_5" text="align:center;value:5 cars;wrapCount:10" rotation="0 180 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity position="-103.937 0 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="return_main" text="align:center;value:Main Menu;wrapCount:10" rotation="0 180 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity position="-100.215 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff8080" id="car_val_2" text="align:center;value:2 cars;wrapCount:10" rotation="0 180 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-
-    </a-entity>
-
-    <a-entity position="-103.937 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" wrapcount:10="" "="" material.color="#ff0000" id="car_val_3" text="align:center;value:3 cars;wrapCount:10" rotation="0 180 0">
-    <a-animation attribute="material.color" from="gray" to="red" begin="mouseenter"></a-animation>
-    <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-    </a-entity>
-    <!--End of Settingv Car-->
-
-
-   <!--Junaidi-->
-   <!--Main Lane 1-->
-    <a-plane position="-5.836 -1.342 23.832" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
-
-    <a-plane position="-5.836 -1.342 4.233" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1.2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane><a-plane position="-5.836 -1.342 -15.565" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1.2-2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane><a-plane position="-5.836 -1.342 -35.384" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="2-2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane><a-plane position="-5.836 -1.342 -55.185" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="2-3" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
-
-
-    <!--Main Lane 1 Right Buildings-->
-    <a-box position="-23.276999999999997 -42.06399999999999 34.53899999999999" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building1" gltf-model="img/Building1/model.gltf" scale="20 30 20"></a-box>
-
-    <a-box position="-31.319999999999997 -42.886 17.424" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building2" gltf-model="img/Building2/model.gltf" scale="30 30 30"></a-box>
-
-    <a-box position="-1.621 -11.47 -42.976" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building3" gltf-model="img/Building3/model.gltf" scale="20 20 20"></a-box>
-
-    <a-box position="10.582 0 -0.237" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree1" gltf-model="img/Tree1/tree01.gltf" scale="0.02 0.02 0.02"></a-box><a-box position="10.582 0 -31.161" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree1-2" gltf-model="img/Tree1/tree01.gltf" scale="0.02 0.02 0.02"></a-box>
-
-    <a-box position="9.598 -23.621 -12.336" rotation="0 180 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building4" gltf-model="img/Building4/model.gltf" scale="30 30 50"></a-box>
-
-    <a-box position="-17.738 -28.634 -38.325" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building5" gltf-model="img/Building2/model.gltf" scale="20 20 20"></a-box>
-
-    <a-box position="13.861 -0.389 -29.602" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="GrassPatch1" gltf-model="img/GrassPatch/model.gltf" scale="4.05 1 3.17"></a-box>
-
-    <a-box position="13.708 -0.047 2.148" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="GrassPatch1-2" gltf-model="img/GrassPatch/model.gltf" scale="4.05 1 3.17"></a-box>
-
-    <!--Main Lane 1 Left Buildings-->
-    <a-box position="-10.414 -0.482 -3.142" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree2" gltf-model="img/TreeBunch/trees1.gltf" scale="0.03 0.03 0.03"></a-box>
-
-    <a-box position="-13.502 -0.482 -19.057" rotation="0 180 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree3" gltf-model="img/TreeBunch/trees1.gltf" scale="0.03 0.03 0.03"></a-box>
-
-    <a-box position="-6.736 2.62 -37.819" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Hostel1" gltf-model="img/Hostel/Hostel_1275.gltf" scale="0.2 0.2 0.12000000000000001"></a-box>
-
-
-    <!--Side Lanes-->
-    <a-plane position="43.689 0.283 18.564" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#00ff00" geometry="height:35.220000000000006;width:20" id="side_right"></a-plane>
-
-
-    <!--Side Left-->
-    <a-plane position="-12.606 0.05 17.434" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#0f3909" geometry="height:30;width:15" id="sideLeft"></a-plane><a-plane position="13.989 -0.098 -0.292" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#0f3909" geometry="height:10;width:10" id="sideLeft-2"></a-plane><a-plane position="13.989 -0.098 -32.188" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#0f3909" geometry="height:10;width:10" id="sideLeft-3"></a-plane>
-
-    <a-box position="-5.124 -3.049 -70.816" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="GasStation1" gltf-model="img/GasStation/GasStation.gltf" scale="4.539999999999999 5 5"></a-box>
-
-    <a-plane position="29.775 -0.368 -53.766" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="RightStretch" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="2.2 1 0.6">
-    </a-plane>
-
-<!--Score Board-->
-      <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s1" visible="false"></a-entity>
-
-      <a-entity position="0.7 3.5 -70" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s1" visible="false">
-        <a-text value="1" geometry="primitive:plane" color="black" id="scoreval_s1" position="0 0 0.947"></a-text>
-      </a-entity>
-
-      <a-entity score-listener="" position="0.7 1.836 -69" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s1" visible="false">
-              <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
-              <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
-      </a-entity><!--score_s1 scoreText_s1 score_submit_s1 -->
-</a-scene>
-      <!--End of ScoreBoard-->
-<script type="text/javascript">
-
-</script>
-
-
-</body></html>
+    <a-scene>
+        <!--Load all assets-->
+        <a-assets>
+            <a-asset-item id="Bike" src="img/Bike/Bike.gltf"></a-asset-item>
+            <a-asset-item id="PMD" src="img/PMD/Scooter_1395.gltf"></a-asset-item>
+            <a-asset-item id="RoadBlock" src="img/RoadBlock/model.gltf"></a-asset-item>
+            <a-asset-item id="RedCar" src="img/RedCar/model.gltf"></a-asset-item>
+            <a-asset-item id="Taxi" src="img/Taxi/PUSHILIN_Taxi.gltf"></a-asset-item>
+            <a-asset-item id="Truck" src="img/Truck/Truck_1359.gltf"></a-asset-item>
+            <a-asset-item id="Building1" src="img/Building1/model.gltf"></a-asset-item>
+            <a-asset-item id="Building2" src="img/Building2/model.gltf"></a-asset-item>
+            <a-asset-item id="Building3" src="img/Building3/model.gltf"></a-asset-item>
+            <a-asset-item id="Building4" src="img/Building4/model.gltf"></a-asset-item>
+            <a-asset-item id="Tree1" src="img/Tree1/tree01.gltf"></a-asset-item>
+            <a-asset-item id="TreeBunch" src="img/TreeBunch/trees1.gltf"></a-asset-item>
+            <a-asset-item id="Hostel" src="img/Hostel/Hostel_1275.gltf"></a-asset-item>
+            <a-asset-item id="GasStation" src="img/GasStation/GasStation.gltf"></a-asset-item>
+            <a-asset-item id="GrassPatch" src="img/GrassPatch/model.gltf"></a-asset-item>
+            <a-asset-item id="RoadSidewalk2" src="img/RoadSidewalk2/Road_Straight_01.gltf"></a-asset-item>
+
+            <!--People-->
+            <a-asset-item id="Girl" src="img/Girl/girl.gltf"></a-asset-item>
+            <a-asset-item id="Girl2" src="img/Girl2/girl2.gltf"></a-asset-item>
+            <a-asset-item id="Girl3" src="img/Girl3/girl3.gltf"></a-asset-item>
+            <a-asset-item id="Girl4" src="img/Girl4/girl4.gltf"></a-asset-item>
+            <a-asset-item id="Girl5" src="img/Girl5/girl5.gltf"></a-asset-item>
+            <a-asset-item id="OldMen" src="img/OldMen/oldmen.gltf"></a-asset-item>
+            <a-asset-item id="Boy" src="img/Boy/boy.gltf"></a-asset-item>
+        </a-assets>
+        <!--End of load all assets-->
+
+        <!--Camera-->
+        <a-camera geometry="" wasd-controls-enabled="false" aabb-collider="objects:a-box" position="-99.89 1 13.554" camera="" look-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0" wasd-controls="">
+            <!--Start of Move animation after option choosen -->
+            <a-animation begin="S1Q1" attribute="position" from="0.732 3.312 14.771" to="-1.110 1 -45.330" dur="5000"></a-animation>
+            <a-animation begin="S1Q2" attribute="position" from="-1.110 1 -45.330" to="0.285 1 -60.845" dur="5000"></a-animation>
+
+            <!--End of Move animation after option choosen -->
+            <a-cursor color="blue" raycaster="" cursor="fuse:true;fuseTimeout:1000" position="0 0 -1">
+                <a-animation begin="click" easing="ease-in" attribute="scale" dur="1000" fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1000" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+            </a-cursor>
+        </a-camera>
+
+        <a-sky color="#aaf4f9"></a-sky>
+
+        <!--Vehicle Selection Menu-->
+        <a-entity id="VehicleMenu" visible="false">
+            <a-entity position="-114.553 2 16.283" geometry="primitive:plane;height:10;width:10" material="color:#808080" text="" material.color="#808080" id="Menu2" rotation="0 90 0"></a-entity>
+
+            <a-entity select-vehicle-listener="" position="-114 3.944 16.283" geometry="primitive:plane;height:3;width:6" material="color:#ff8080" text="align:center;value:PMD;wrapCount:10" material.color="#ff8080" id="PMD_select" rotation="0 90 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity select-vehicle-listener="" position="-114 -0.005 16.283" geometry="primitive:plane;height:3;width:6" material="color:#ff8080" text="align:center;value:Bike;wrapCount:10" material.color="#ff8080" id="Bike_select" rotation="0 90 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+        </a-entity>
+        <!--End Vehicle Selection Menu-->
+
+        <!--Scenario Menu-->
+        <a-entity id="MainMenu" visible="true">
+            <a-entity position="-100 2 6" geometry="primitive:plane;height:8;width:10" material="color:#808080" text="" material.color="#808080"></a-entity>
+
+            <a-entity position="-103.021 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff8080" id="scenario1_plane" text="align:center;value:Scenario 1; wrapCount:10">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-101.989 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" material.color="#ff8080" id="scenario_start" text="align:center;value:Start Scenario; wrapCount:10">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-96.833 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Scenario 3;wrapCount:10" material.color="#ff8080" id="scenario3_plane">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-99.851 4.518 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Scenario 2;wrapCount:10" material.color="#ff8080" id="scenario2_plane">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-102 -0.2 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Leaderboard;wrapCount:10" material.color="#ff8080" id="leaderboard">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-97.81 2.126 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Car Setting;wrapCount:10" material.color="#ff8080" id="car_setting">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-97.81 -0.188 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Pedestrians setting;wrapCount:10" material.color="#ff8080" id="pedestrian_setting">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+        </a-entity>
+        <!--End of Scenario Menu-->
+
+        <!-- Settings Pedestrians -->
+        <a-entity id="PedestrianMenu" visible="false">
+            <a-entity position="-84.594 2 19.648" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="pedestrian_plane" rotation="0 270 0"></a-entity>
+            <a-entity position="-85.21 5.263 19.718" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" material.color="#ff0000" id="Pedestrian_header" text="align:center;value:Pedestrian;wrapCount:10" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-85.21 2.5 16.117" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="pedestrian_val1" text="align:center;value:1 Pedestrian;wrapCount:10" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-85.21 2.5 19.882" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="pedestrian_val2" text="align:center;value:2 Pedestrian;wrapCount:10" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-85.21 2.5 23.38" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="pedestrian_val3" text="align:center;value:3 Pedestrian;wrapCount:10" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-85.21 -0.24 16.108" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="pedestrian_val4" text="align:center;value:4 Pedestrian;wrapCount:10" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-85.21 -0.24 19.86" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="pedestrian_val5" text="align:center;value:5 Pedestrian;wrapCount:10" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+            
+            <a-entity position="-85.21 -0.24 23.411" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff8080" id="return_main3" text="align:center;value:Main Menu;wrapCount:10" rotation="0 270 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+        </a-entity>
+
+        <!--Settings Car-->
+        <a-entity id="CarMenu" visible="false">
+            <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0"></a-entity>
+            <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0"></a-entity>
+
+            <a-entity position="-100 5.263 26" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" material.color="#ff0000" id="car_header" text="align:center;value:Cars;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-24.209 6.657 40.64" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="car_val_0" text="align:center;value:0 cars;wrapCount:10" rotation="0 90 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-96.359 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="car_val_1" text="align:center;value:1 cars;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-100.215 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff8080" id="car_val_2" text="align:center;value:2 cars;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-103.937 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="car_val_3" text="align:center;value:3 cars;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-96.359 0 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="car_val_4" text="align:center;value:4 cars;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-100.215 0 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff8080" id="car_val_5" text="align:center;value:5 cars;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-103.937 0 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff8080" id="return_main" text="align:center;value:Main Menu;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+        </a-entity>
+        <!--End of Settingv Car-->
+
+        <a-entity id="scene1" visible="false">
+            <a-box bound-collider="" static-body="" position="14.567 1 -11.86" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="quesiton1_bound" class="box" opacity="0"></a-box>
+            <a-box bound-collider="" static-body="" position="0.732 1 -45.33" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="quesiton2_bound" class="box" opacity="0"></a-box>
+            <a-box bound-collider="" static-body="" position="0.285 1 -60.845" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="scenario1_end" class="box" opacity="0"></a-box>
+
+            <!--Question1-->
+            <a-entity position="-1.033 4.024 -18.871" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="Question_1" visible="false">
+            </a-entity>
+
+            <a-entity position="-0.826 6.476 -18" geometry="primitive:plane;height:2;width:10" material="color:#fff" text="align:center;color:#400040;value:Question 1.What is the most  important thing you need before riding on the road?" material.color="#fff" id="Question_1_description" visible="false"></a-entity>
+            <!--End of Question1-->
+
+            <!--Options for Question1-->
+            <a-entity select-option-listener="" position="-3.582 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.SmartPhone" material.color="#808080" id="q1_option1" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity select-option-listener="" position="1.674 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Helmet" material.color="#808080" id="q1_option2" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity select-option-listener="" position="1.666 1.45 -17.999" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Money" material.color="#808080" id="q1_option4" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity select-option-listener="" position="-3.595 1.45 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Snack" material.color="#808080" id="q1_option3" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+            <!--End for Options for Question1-->
+
+            <!--Question2-->
+            <a-entity position="-1.033 4.024 -52" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#fff" id="Question_2" visible="false"></a-entity>
+
+            <a-entity position="-0.826 6.476 -51" geometry="primitive:plane;height:2;width:10" material="color:#fff" text="align:center;color:#400040;value:Question 2.You are about to cross a road with passing vehicles, what should you do?" material.color="#fff" id="Question_2_description" visible="false"></a-entity>
+            <!--End of Question2-->
+
+            <!--Options for Question2-->
+            <a-entity select-option-listener="" position="-3.582 3.7 -51" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.Speed Through!" material.color="#808080" id="q2_option1" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity select-option-listener="" position="1.674 3.7 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Let it pass then move" material.color="#808080" id="q2_option2" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity select-option-listener="" position="1.666 1.45 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.ABANDON SHIP" material.color="#808080" id="q2_option4" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity select-option-listener="" position="-3.595 1.45 -51" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Turn Back" material.color="#808080" id="q2_option3" visible="false">
+                <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
+            </a-entity>
+            <!--End for Options for Question2-->
+
+            <!--Junaidi-->
+            <!--Main Lane 1-->
+            <a-plane position="-5.836 -1.342 23.832" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
+            <a-plane position="-5.836 -1.342 4.233" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1.2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
+            <a-plane position="-5.836 -1.342 -15.565" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="mainLane_1.2-2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
+            <a-plane position="-5.836 -1.342 -35.384" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="2-2" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
+            <a-plane position="-5.836 -1.342 -55.185" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="2-3" gltf-model="img/RoadBlock/model.gltf" scale="30 1 20"></a-plane>
+
+
+            <!--Main Lane 1 Right Buildings-->
+            <a-box position="-23.276999999999997 -42.06399999999999 34.53899999999999" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building1" gltf-model="img/Building1/model.gltf" scale="20 30 20"></a-box>
+
+            <a-box position="-31.319999999999997 -42.886 17.424" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building2" gltf-model="img/Building2/model.gltf" scale="30 30 30"></a-box>
+
+            <a-box position="-1.621 -11.47 -42.976" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building3" gltf-model="img/Building3/model.gltf" scale="20 20 20"></a-box>
+
+            <a-box position="10.582 0 -0.237" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree1" gltf-model="img/Tree1/tree01.gltf" scale="0.02 0.02 0.02"></a-box>
+
+            <a-box position="10.582 0 -31.161" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree1-2" gltf-model="img/Tree1/tree01.gltf" scale="0.02 0.02 0.02"></a-box>
+
+            <a-box position="9.598 -23.621 -12.336" rotation="0 180 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building4" gltf-model="img/Building4/model.gltf" scale="30 30 50"></a-box>
+
+            <a-box position="-17.738 -28.634 -38.325" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Building5" gltf-model="img/Building2/model.gltf" scale="20 20 20"></a-box>
+
+            <a-box position="13.861 -0.389 -29.602" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="GrassPatch1" gltf-model="img/GrassPatch/model.gltf" scale="4.05 1 3.17"></a-box>
+
+            <a-box position="13.708 -0.047 2.148" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="GrassPatch1-2" gltf-model="img/GrassPatch/model.gltf" scale="4.05 1 3.17"></a-box>
+
+            <!--Main Lane 1 Left Buildings-->
+            <a-box position="-10.414 -0.482 -3.142" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree2" gltf-model="img/TreeBunch/trees1.gltf" scale="0.03 0.03 0.03"></a-box>
+
+            <a-box position="-13.502 -0.482 -19.057" rotation="0 180 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Tree3" gltf-model="img/TreeBunch/trees1.gltf" scale="0.03 0.03 0.03"></a-box>
+
+            <a-box position="-6.736 2.62 -37.819" rotation="0 90 0" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="Hostel1" gltf-model="img/Hostel/Hostel_1275.gltf" scale="0.2 0.2 0.12000000000000001"></a-box>
+
+
+            <!--Side Lanes-->
+            <a-plane position="43.689 0.283 18.564" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#00ff00" geometry="height:35.220000000000006;width:20" id="side_right"></a-plane>
+
+
+            <!--Side Left-->
+            <a-plane position="-12.606 0.05 17.434" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#0f3909" geometry="height:30;width:15" id="sideLeft"></a-plane>
+            
+            <a-plane position="13.989 -0.098 -0.292" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#0f3909" geometry="height:10;width:10" id="sideLeft-2"></a-plane>
+            
+            <a-plane position="13.989 -0.098 -32.188" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" material="color:#0f3909" geometry="height:10;width:10" id="sideLeft-3"></a-plane>
+
+            <a-box position="-5.124 -3.049 -70.816" width="50" height="50" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="GasStation1" gltf-model="img/GasStation/GasStation.gltf" scale="4.539999999999999 5 5"></a-box>
+
+            <a-plane position="29.775 -0.368 -53.766" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:100;width:20" id="RightStretch" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="2.2 1 0.6"></a-plane>
+
+        </a-entity>
+
+
+        <!--Score Board-->
+        <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s1" visible="false"></a-entity>
+
+        <a-entity position="0.7 3.5 -70" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s1" visible="false">
+            <a-text value="1" geometry="primitive:plane" color="black" id="scoreval_s1" position="0 0 0.947"></a-text>
+        </a-entity>
+
+        <a-entity score-listener="" position="0.7 1.836 -69" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s1" visible="false">
+            <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
+            <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
+        </a-entity><!--score_s1 scoreText_s1 score_submit_s1 -->
+        <!--End of ScoreBoard-->
+
+    </a-scene>
+</body>
+</html>
