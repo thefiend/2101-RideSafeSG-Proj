@@ -87,7 +87,7 @@
 
         <!--Vehicle Selection Menu-->
         <a-entity id="VehicleMenu" visible="false">
-            <a-entity position="-114.553 2 16.283" geometry="primitive:plane;height:10;width:10" material="color:#808080" text="" material.color="#808080" id="Menu2" rotation="0 90 0"></a-entity>
+            <!-- <a-entity position="-114.553 2 16.283" geometry="primitive:plane;height:10;width:10" material="color:#808080" text="" material.color="#808080" id="Menu2" rotation="0 90 0"></a-entity> -->
 
             <a-entity select-vehicle-listener="" position="-114 3.944 16.283" geometry="primitive:plane;height:3;width:6" material="color:#ff8080" text="align:center;value:PMD;wrapCount:10" material.color="#ff8080" id="PMD_select" rotation="0 90 0">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
@@ -103,7 +103,7 @@
 
         <!-- Leaderboard Menu -->
             <a-entity id="LeaderboardMenu" visible="false">
-                <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0">
+              <!--  <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0"> -->
                     <a-text position="-2 4.826 0" id="leaderboardTitle" wrap-count="10" value="Leaders" color="black"></a-text>
                     <a-text position="-3.8 4.059 0" id="usernames_title" wrap-count="20" value="Username" color="black"></a-text>
                     <a-text position="-3.5 -1 0" id="usernames_leaderboard" wrap-count="30" value="" color="black" text=""></a-text>
@@ -122,7 +122,7 @@
 
         <!--Scenario Menu-->
         <a-entity id="MainMenu" visible="true">
-            <a-entity position="-100 2 6" geometry="primitive:plane;height:8;width:10" material="color:#808080" text="" material.color="#808080" scale="2.608 2.129 1"></a-entity>
+            <!-- <a-entity position="-100 2 6" geometry="primitive:plane;height:8;width:10" material="color:#808080" text="" material.color="#808080" scale="2.608 2.129 1"></a-entity> -->
 
             <a-entity position="-107 4.513 7.1" geometry="primitive:plane;height:2;width:4" material="color:#e5e5e5" material.color="#ff8080" id="scenario_no_scene" text="value:Scenario Selected: 1;color:#333333;wrapCount:20;align:center" scale="1.466 1 1"></a-entity>
             <a-entity position="-107 2.126 7.1" geometry="primitive:plane;height:2;width:4" material="color:#e5e5e5" material.color="#ff8080" id="scenario_no_cars" text="color:#333333;value:No. of Cars: 2;wrapCount:20;align:center" scale="1.466 1 1"></a-entity>
@@ -172,7 +172,7 @@
 
         <!-- Settings Pedestrians -->
         <a-entity id="PedestrianMenu" visible="false">
-            <a-entity position="-84.594 2 19.648" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="pedestrian_plane" rotation="0 270 0"></a-entity>
+           <!-- <a-entity position="-84.594 2 19.648" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="pedestrian_plane" rotation="0 270 0"></a-entity> -->
             <a-entity position="-85.21 5.263 19.718" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" material.color="#ff0000" id="Pedestrian_header" text="align:center;value:Pedestrian;wrapCount:10" rotation="0 270 0">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
@@ -211,7 +211,7 @@
 
         <!--Settings Car-->
         <a-entity id="CarMenu" visible="false">
-            <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0"></a-entity>
+           <!-- <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0"></a-entity> -->
 
             <a-entity position="-100 5.263 26" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" material.color="#ff0000" id="car_header" text="align:center;value:Cars;wrapCount:10" rotation="0 180 0">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
@@ -257,14 +257,9 @@
 
         <!-- Settings for Sky -->
         <a-entity id="SkyMenu" visible="false" position="23.769 -0.708 22.492" rotation="0 4.068000345428844 0">
-            <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0"></a-entity>
+           <!-- <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0"></a-entity> -->
 
             <a-entity position="-100 5.263 26" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" material.color="#ff0000" id="sky_header" text="value:Sky;align:center;wrapCount:10" rotation="0 180 0">
-                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
-                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
-            </a-entity>
-
-            <a-entity position="-24.209 6.657 40.64" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="sky_val_0" text="align:center;value:0 cars;wrapCount:10" rotation="0 90 0">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
             </a-entity>
