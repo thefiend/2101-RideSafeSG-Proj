@@ -720,6 +720,14 @@ AFRAME.registerComponent("select-vehicle-listener", {
         pmd.setAttribute("rotation", "0 180 0");
         document.querySelector("a-camera").appendChild(pmd);
 
+        var score = document.createElement("a-text");
+        score.setAttribute("id", "scoreUI");
+        score.setAttribute("position", "3.108 3.223 -4.227");
+        score.setAttribute("scale", "2 2 2");
+        score.setAttribute("value", "Score: 0");
+        score.setAttribute("color", "black");
+        document.querySelector("a-camera").appendChild(score);
+
         //write into temp file and shift camera pos
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: -1.11, y: 3.096, z: -11.86 }); //0.732 3.312 14.771
@@ -738,6 +746,15 @@ AFRAME.registerComponent("select-vehicle-listener", {
         pmd.setAttribute("scale", "0.002 0.002 0.002");
         pmd.setAttribute("rotation", "0 180 0");
         document.querySelector("a-camera").appendChild(pmd);
+
+        var score = document.createElement("a-text");
+        score.setAttribute("id", "scoreUI");
+        score.setAttribute("position", "3.108 3.223 -4.227");
+        score.setAttribute("scale", "2 2 2");
+        score.setAttribute("value", "Score: 0");
+        score.setAttribute("color", "black");
+        document.querySelector("a-camera").appendChild(score);
+
         //write into temp file and shift camera pos
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: -0.924, y: 3.096, z: -11.86 }); //0.732 3.312 14.771
@@ -896,7 +913,10 @@ AFRAME.registerComponent("select-option-listener", {
         o4.setAttribute("visible", false);
 
         console.log("Correct");
-        scoreCounter = scoreCounter + 1; // Increment the score
+        window.scoreCounter = window.scoreCounter + 1; // Increment the score
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
@@ -978,7 +998,10 @@ AFRAME.registerComponent("select-option-listener", {
         o4.setAttribute("visible", false);
         //answer Correct
         console.log("Correct"); //93.184
-        scoreCounter = scoreCounter + 1;
+        window.scoreCounter = window.scoreCounter + 1;
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         var camera = document.getElementById("player");
         // camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
