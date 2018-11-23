@@ -83,7 +83,7 @@
             </a-cursor>
         </a-camera>
 
-        <a-sky color="#aaf4f9"></a-sky>
+        <a-sky id="sky" color="#aaf4f9"></a-sky>
 
         <!--Vehicle Selection Menu-->
         <a-entity id="VehicleMenu" visible="false">
@@ -158,7 +158,12 @@
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity position="-97.81 -0.188 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Pedestrians setting;wrapCount:10" material.color="#ff8080" id="pedestrian_setting">
+            <a-entity position="-97.81 -0.188 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="align:center;value:Pedestrians Setting;wrapCount:10" material.color="#ff8080" id="pedestrian_setting">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-97.781 -2.324 7.1" scenario-listener="" geometry="primitive:plane;height:2;width:4" material="color:#ff8080" text="value:Sky Setting;align:center;wrapCount:10" material.color="#ff8080" id="sky_setting">
                 <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
             </a-entity>
@@ -249,6 +254,42 @@
             </a-entity>
         </a-entity>
         <!--End of Settingv Car-->
+
+        <!-- Settings for Sky -->
+        <a-entity id="SkyMenu" visible="false" position="23.769 -0.708 22.492" rotation="0 4.068000345428844 0">
+            <a-entity position="-100 2 27" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="Menu3" rotation="0 180 0"></a-entity>
+
+            <a-entity position="-100 5.263 26" geometry="primitive:plane;height:2;width:10" material="color:#ff8080" material.color="#ff0000" id="sky_header" text="value:Sky;align:center;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-24.209 6.657 40.64" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="sky_val_0" text="align:center;value:0 cars;wrapCount:10" rotation="0 90 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-96.359 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="sky_val_1" text="value:Sunrise;align:center;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-100.215 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff8080" id="sky_val_2" text="value:Night;align:center;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-103.937 2.5 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff0000" id="sky_val_3" text="value:Cloudy;align:center;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+
+            <a-entity position="-103.937 0 26" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" material.color="#ff8080" id="return_main" text="align:center;value:Main Menu;wrapCount:10" rotation="0 180 0">
+                <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
+            </a-entity>
+        </a-entity>
+        <!-- End of Settings for Sky -->
 
         <a-entity id="scene1" visible="false">
             <a-box bound-collider="" static-body="" position="14.567 3.06 -11.86" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="s1quesiton1_bound" class="box" opacity="0"></a-box>

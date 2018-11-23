@@ -323,6 +323,19 @@ AFRAME.registerComponent("scenario-listener", {
         var xrot = 0;
         var yrot = 270;
         var zrot = 0;
+      } else if (x == "sky_setting") {
+        console.log("Sky Settings"); //-12.700  1 36.403
+
+        document.getElementById("MainMenu").setAttribute("visible", "false");
+        document.getElementById("SkyMenu").setAttribute("visible", "true");
+
+        xpos = -73.33;
+        ypos = 0.947;
+        zpos = 47.062;
+
+        var xrot = 0;
+        var yrot = 180;
+        var zrot = 0;
       } else if (x == "car_val_0") {
         /**
          * Set number of cars in the map
@@ -603,6 +616,27 @@ AFRAME.registerComponent("scenario-listener", {
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
+      } else if (x == "sky_val_1") {
+        var sky = document
+          .getElementById("sky")
+          .setAttribute("color", "#F0A272");
+
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document.getElementById("SkyMenu").setAttribute("visible", "false");
+      } else if (x == "sky_val_2") {
+        var sky = document
+          .getElementById("sky")
+          .setAttribute("color", "#23334C");
+
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document.getElementById("SkyMenu").setAttribute("visible", "false");
+      } else if (x == "sky_val_3") {
+        var sky = document
+          .getElementById("sky")
+          .setAttribute("color", "#aaf4f9");
+
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document.getElementById("SkyMenu").setAttribute("visible", "false");
       } else if (x == "return_main") {
         console.log("return_main"); //-12.7 1 14.962
         xpos = -99.89;
