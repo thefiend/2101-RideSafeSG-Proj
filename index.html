@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Scenario 1</title>
+    <title>RideSafeSG - Safe Riding Starts Her</title>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
     <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
@@ -49,18 +49,18 @@
 
             <!--Scene3 models-->
             <a-asset-item id="RoadSidewalk2" src="img/RoadSidewalk2/Road_Straight_01.gltf"></a-asset-item>
-          <a-asset-item id="ParkingLot" src="img/ParkingLot/ParkingLot.gltf"></a-asset-item>
-          <a-asset-item id="Bus" src="img/Bus/model.gltf"></a-asset-item>
-          <a-asset-item id="BusStop" src="img/BusStop/bust stop 1.gltf"></a-asset-item>
-          <a-asset-item id="Doctor" src="img/Doctor/Doctor_01.gltf"></a-asset-item>
-          <a-asset-item id="Trump" src="img/Trump/model.gltf"></a-asset-item>
-          <a-asset-item id="Cinema" src="img/Cinema/Cinema.gltf"></a-asset-item>
-          <a-asset-item id="Bank" src="img/Bank/Bank_1245.gltf"></a-asset-item>
-          <a-asset-item id="Church" src="img/Church/CUPIC_CHURCH.gltf"></a-asset-item>
-          <a-asset-item id="Forest" src="img/Forest/PUSHILIN_forest.gltf"></a-asset-item>
-          <a-asset-item id="House" src="img/House/PUSHILIN_house.gltf"></a-asset-item>
-          <a-asset-item id="CurvedRoad" src="img/CurvedRoad/Road_Curved_01.gltf"></a-asset-item>
-          <a-asset-item id="TrafficLight" src="img/TrafficLight/Traffic light.gltf"></a-asset-item>
+            <a-asset-item id="ParkingLot" src="img/ParkingLot/ParkingLot.gltf"></a-asset-item>
+            <a-asset-item id="Bus" src="img/Bus/model.gltf"></a-asset-item>
+            <a-asset-item id="BusStop" src="img/BusStop/bust stop 1.gltf"></a-asset-item>
+            <a-asset-item id="Doctor" src="img/Doctor/Doctor_01.gltf"></a-asset-item>
+            <a-asset-item id="Trump" src="img/Trump/model.gltf"></a-asset-item>
+            <a-asset-item id="Cinema" src="img/Cinema/Cinema.gltf"></a-asset-item>
+            <a-asset-item id="Bank" src="img/Bank/Bank_1245.gltf"></a-asset-item>
+            <a-asset-item id="Church" src="img/Church/CUPIC_CHURCH.gltf"></a-asset-item>
+            <a-asset-item id="Forest" src="img/Forest/PUSHILIN_forest.gltf"></a-asset-item>
+            <a-asset-item id="House" src="img/House/PUSHILIN_house.gltf"></a-asset-item>
+            <a-asset-item id="CurvedRoad" src="img/CurvedRoad/Road_Curved_01.gltf"></a-asset-item>
+            <a-asset-item id="TrafficLight" src="img/TrafficLight/Traffic light.gltf"></a-asset-item>
         </a-assets>
         <!--End of load all assets-->
 
@@ -69,9 +69,9 @@
             <!--Start of Move animation after option choosen -->
             <a-animation begin="S1Q1" attribute="position" from="0.732 3.06 14.771" to="-1.110 3.06 -45.330" dur="5000"></a-animation>
             <a-animation begin="S1Q2" attribute="position" from="-1.110 3.06 -45.330" to="0.285 3.06 -60.845" dur="5000"></a-animation>
-             <a-animation begin="S2Q1" attribute="position" from="0.732 3.06 14.771" to="-1.110 3.06 -45.330" dur="5000"></a-animation>
+            <a-animation begin="S2Q1" attribute="position" from="0.732 3.06 14.771" to="-1.110 3.06 -45.330" dur="5000"></a-animation>
             <a-animation begin="S2Q2" attribute="position" from="-1.110 3.06 -45.330" to="0.285 3.06 -60.845" dur="5000"></a-animation>
-             <a-animation begin="S2Q1" attribute="position" from="0.732 3.06 14.771" to="-1.110 3.06 -45.330" dur="5000"></a-animation>
+            <a-animation begin="S2Q1" attribute="position" from="0.732 3.06 14.771" to="-1.110 3.06 -45.330" dur="5000"></a-animation>
             <a-animation begin="S2Q2" attribute="position" from="-1.110 3.06 -45.330" to="0.285 3.06 -60.845" dur="5000"></a-animation>
 
             <!--End of Move animation after option choosen -->
@@ -102,17 +102,16 @@
         <!-- Leaderboard Menu -->
             <a-entity id="LeaderboardMenu" visible="false">
                 <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0">
-				
-				<a-text position="-2.0 4 0" id="leaderboardTitle" wrap-count="10" value="Leaders" color="black"></a-text>
-				<a-text position="-3.8 2 0" id="usernames_title" wrap-count="20" value="Username" color="black"></a-text>
-				<a-text position="-3.5 -1 0" id="usernames_leaderboard" wrap-count="30" value=" " color="black"></a-text>
-				<a-text position="-0.9 2 0" id="scores_title" wrap-count="20" value="Score" color="black"></a-text>
-				<a-text position="-0.5 -1 0" id="scores_leaderboard" wrap-count="30" value=" " color="gold"></a-text>
-				<a-text position="1.2 2 0" id="scenarios_title" wrap-count="20" value="Scenario" color="black"></a-text>
-				<a-text position="1.5 -1 0" id="scenarios_leaderboard" wrap-count="30" value=" " color="black"></a-text>
+                    <a-text position="-2.0 4 0" id="leaderboardTitle" wrap-count="10" value="Leaders" color="black"></a-text>
+                    <a-text position="-3.8 2 0" id="usernames_title" wrap-count="20" value="Username" color="black"></a-text>
+                    <a-text position="-3.5 -1 0" id="usernames_leaderboard" wrap-count="30" value=" " color="black"></a-text>
+                    <a-text position="-0.9 2 0" id="scores_title" wrap-count="20" value="Score" color="black"></a-text>
+                    <a-text position="-0.5 -1 0" id="scores_leaderboard" wrap-count="30" value=" " color="gold"></a-text>
+                    <a-text position="1.2 2 0" id="scenarios_title" wrap-count="20" value="Scenario" color="black"></a-text>
+                    <a-text position="1.5 -1 0" id="scenarios_leaderboard" wrap-count="30" value=" " color="black"></a-text>
 				</a-entity>
                 
-                 <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
+                <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
                     <a-animation attribute="material.color" from="#ff8080" to="red" begin="mouseenter"></a-animation>
                     <a-animation attribute="material.color" from="red" to="#ff8080" begin="mouseleave"></a-animation>
                 </a-entity>
@@ -421,6 +420,7 @@
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
             <!--End for Options for Question2-->
+
             <!--Junaidi-->
             <a-box position="31.426 -7.406 -19.264" rotation="0 -92.7 0" width="50" height="50" color="#7BC8A4"
                 material="color:#c0c0c0" geometry="width:20;height:100" id="ParkRoad"
@@ -443,78 +443,78 @@
         <a-entity id="scene3" visible="false">
             <a-plane position="12.432 -0.842 -2.107" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane>
 
-    <a-plane position="12.432 -0.842 -59.076" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-2" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane>
+            <a-plane position="12.432 -0.842 -59.076" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-2" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane>
 
-    <a-plane position="12.432 -0.842 -116.029" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-3" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane><a-plane position="-25.977 -0.842 -154.012" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-4" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98"></a-plane><a-plane position="-99.371 -0.842 -154.012" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-7" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98"></a-plane><a-plane position="-64.492 -0.842 -119.161" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-5" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98" rotation="0 90 0"></a-plane><a-plane position="-64.492 -0.842 -188.874" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-6" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98" rotation="0 90 0"></a-plane>
+            <a-plane position="12.432 -0.842 -116.029" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-3" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3 1 1"></a-plane><a-plane position="-25.977 -0.842 -154.012" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-4" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98"></a-plane><a-plane position="-99.371 -0.842 -154.012" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-7" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98"></a-plane><a-plane position="-64.492 -0.842 -119.161" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-5" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98" rotation="0 90 0"></a-plane><a-plane position="-64.492 -0.842 -188.874" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="RoadSidewalk2-6" gltf-model="img/RoadSidewalk2/Road_Straight_01.gltf" scale="3.01 1 0.98" rotation="0 90 0"></a-plane>
 
-    <a-box position="-16.737 -0.65 -51.824" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="ParkingLot" gltf-model="img/ParkingLot/ParkingLot.gltf" scale="9.969999999999999 4.87 12.21"></a-box>
+            <a-box position="-16.737 -0.65 -51.824" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="ParkingLot" gltf-model="img/ParkingLot/ParkingLot.gltf" scale="9.969999999999999 4.87 12.21"></a-box>
 
-    <a-box position="2.338 -0.376 -17.963" width="10" height="10" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:1" id="BusStop1" gltf-model="img/BusStop/bust stop 1.gltf" scale="0.001 0.001 0.001" rotation="-90 180 0"></a-box>
+            <a-box position="2.338 -0.376 -17.963" width="10" height="10" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:1" id="BusStop1" gltf-model="img/BusStop/bust stop 1.gltf" scale="0.001 0.001 0.001" rotation="-90 180 0"></a-box>
 
-    <a-box position="8.976 -2.206 15.803" rotation="2.7300000000000004 47.540000000000006 -3.2299999999999995" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:100" id="Bus" gltf-model="img/Bus/model.gltf" scale="2.8 2.8 2.8"></a-box>
+            <a-box position="8.976 -2.206 15.803" rotation="2.7300000000000004 47.540000000000006 -3.2299999999999995" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:100" id="Bus" gltf-model="img/Bus/model.gltf" scale="2.8 2.8 2.8"></a-box>
 
-    <a-box position="4.065 -0.385 -14.508" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+            <a-box position="4.065 -0.385 -14.508" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
 
-    <a-box position="3.309 -0.385 -18.477" rotation="0 43.18000000000001 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-3" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+            <a-box position="3.309 -0.385 -18.477" rotation="0 43.18000000000001 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-3" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
 
-    <a-box position="3.209 -0.385 -21.2" rotation="0 67.84 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-2" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+            <a-box position="3.209 -0.385 -21.2" rotation="0 67.84 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-2" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
 
-    <a-box position="3.209 -0.385 -21.889" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-4" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
+            <a-box position="3.209 -0.385 -21.889" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man1-4" gltf-model="img/Doctor/Doctor_01.gltf" scale="0.15 0.15 0.15"></a-box>
 
-    <a-box position="4.865 -0.882 -11.366" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
+            <a-box position="4.865 -0.882 -11.366" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
 
-    <a-box position="6.206 -0.882 -18.806" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2-2" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
+            <a-box position="6.206 -0.882 -18.806" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2-2" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
 
-    <a-box position="5.982 -0.882 -22.867" rotation="0 120 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2-3" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
+            <a-box position="5.982 -0.882 -22.867" rotation="0 120 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Man2-3" gltf-model="img/Trump/model.gltf" scale="2 2 2"></a-box>
 
-    <a-plane position="-22.631 -0.407 -2.19" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" id="Grass1" material="color:#4e760a" geometry="width:50.06;height:57"></a-plane>
+            <a-plane position="-22.631 -0.407 -2.19" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" id="Grass1" material="color:#4e760a" geometry="width:50.06;height:57"></a-plane>
 
-    <a-plane position="47.613 -0.632 -58.375" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" id="Grass1-3" geometry="width:50.06;height:180" material="color:#4e760a"></a-plane>
+            <a-plane position="47.613 -0.632 -58.375" rotation="-90 0 0" width="50" height="50" color="#7BC8A4" id="Grass1-3" geometry="width:50.06;height:180" material="color:#4e760a"></a-plane>
 
-    <a-plane position="-26.335 -0.434 -108.08" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-2" geometry="width:57.31;height:74.17" material="shader:flat"></a-plane><a-plane position="-26.335 -0.434 -200.463" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-4" geometry="height:74.17;width:57.31" material="shader:flat"></a-plane><a-plane position="-102.711 -0.434 -200.463" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-5" geometry="height:74.17;width:57.31" material="shader:flat"></a-plane><a-plane position="-102.711 -0.43400000000000005 -109.097" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-6" geometry="height:74.17;width:57.31" material="shader:flat"></a-plane>
+            <a-plane position="-26.335 -0.434 -108.08" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-2" geometry="width:57.31;height:74.17" material="shader:flat"></a-plane><a-plane position="-26.335 -0.434 -200.463" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-4" geometry="height:74.17;width:57.31" material="shader:flat"></a-plane><a-plane position="-102.711 -0.434 -200.463" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-5" geometry="height:74.17;width:57.31" material="shader:flat"></a-plane><a-plane position="-102.711 -0.43400000000000005 -109.097" rotation="-90 0 0" width="50" height="50" color="#0f2507" id="Grass1-6" geometry="height:74.17;width:57.31" material="shader:flat"></a-plane>
 
-    <a-box position="-11.391 -1.826 -84.584" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Bank" gltf-model="img/Bank/Bank_1245.gltf" scale="0.2 0.2 0.2"></a-box>
+            <a-box position="-11.391 -1.826 -84.584" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Bank" gltf-model="img/Bank/Bank_1245.gltf" scale="0.2 0.2 0.2"></a-box>
 
-    <a-box position="30.676 -0.882 -114.675" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Church" gltf-model="img/Church/CUPIC_CHURCH.gltf" scale="0.04 0.04 0.04"></a-box>
+            <a-box position="30.676 -0.882 -114.675" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Church" gltf-model="img/Church/CUPIC_CHURCH.gltf" scale="0.04 0.04 0.04"></a-box>
 
-    <a-box position="-4.751 2.022 -20.375" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+            <a-box position="-4.751 2.022 -20.375" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
 
-    <a-box position="29.917 2.022 -77.101" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-3" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+            <a-box position="29.917 2.022 -77.101" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-3" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
 
-    <a-box position="29.917 2.022 -19.895" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-5" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+            <a-box position="29.917 2.022 -19.895" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-5" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
 
-    <a-box position="29.917 2.022 -1.255" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-6" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+            <a-box position="29.917 2.022 -1.255" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-6" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
 
-    <a-box position="29.917 2.022 -94.679" rotation="0 270 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-4" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+            <a-box position="29.917 2.022 -94.679" rotation="0 270 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-4" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
 
-    <a-box position="-5.317 2.022 -5.988" rotation="0 270 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-2" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
+            <a-box position="-5.317 2.022 -5.988" rotation="0 270 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="Forest-2" gltf-model="img/Forest/PUSHILIN_forest.gltf" scale="6 6 6"></a-box>
 
-    <a-box position="29.46 2.489 -62.982" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+            <a-box position="29.46 2.489 -62.982" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
 
-    <a-box position="29.46 2.489 -55.954" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-2" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+            <a-box position="29.46 2.489 -55.954" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-2" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
 
-    <a-box position="29.46 2.489 -48.943" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-3" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+            <a-box position="29.46 2.489 -48.943" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-3" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
 
-    <a-box position="29.46 2.489 -41.934" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-4" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+            <a-box position="29.46 2.489 -41.934" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-4" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
 
-    <a-box position="29.46 2.489 -34.914" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-5" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
+            <a-box position="29.46 2.489 -34.914" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="House1-5" gltf-model="img/House/PUSHILIN_house.gltf" scale="5 5 5"></a-box>
 
-    <a-plane position="10.816 -0.795 -152.912" width="50" height="50" color="#0f2507" id="CurvedRoad" geometry="width:50.06;height:74" material="color:#4e760a" gltf-model="img/CurvedRoad/Road_Curved_01.gltf" scale="1.03 1 1"></a-plane>
+            <a-plane position="10.816 -0.795 -152.912" width="50" height="50" color="#0f2507" id="CurvedRoad" geometry="width:50.06;height:74" material="color:#4e760a" gltf-model="img/CurvedRoad/Road_Curved_01.gltf" scale="1.03 1 1"></a-plane>
 
-    <a-plane position="-64.244 -0.445 -154.049" width="50" height="50" color="#0f2507" id="Junction" geometry="width:25;height:25" material="color:#202020;shader:flat" rotation="-90 0 0"></a-plane>
-    
-    <a-box position="-52.372 -0.421 -166.504" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-51.936 -0.421 -162.877" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-2" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-52.255 -0.421 -142.113" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-3" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.822 -0.421 -145.182" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-5" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.627 -0.421 -141.62" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-6" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-73.561 -0.421 -166.41" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-7" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.928 -0.421 -166.054" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-8" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-55.413 -0.421 -141.646" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-4" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box>
+            <a-plane position="-64.244 -0.445 -154.049" width="50" height="50" color="#0f2507" id="Junction" geometry="width:25;height:25" material="color:#202020;shader:flat" rotation="-90 0 0"></a-plane>
+            
+            <a-box position="-52.372 -0.421 -166.504" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-51.936 -0.421 -162.877" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-2" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-52.255 -0.421 -142.113" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-3" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.822 -0.421 -145.182" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-5" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.627 -0.421 -141.62" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-6" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-73.561 -0.421 -166.41" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-7" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.928 -0.421 -166.054" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-8" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-55.413 -0.421 -141.646" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="height:20;width:20" id="TrafficLight1-4" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box>
 
-    <a-box position="-52.372 -0.421 -166.504" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-51.936 -0.421 -162.877" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-2" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-52.255 -0.421 -142.113" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-3" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.822 -0.421 -145.182" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-5" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.627 -0.421 -141.62" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-6" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-73.561 -0.421 -166.41" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-7" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.928 -0.421 -166.054" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-8" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-55.413 -0.421 -141.646" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-4" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box>
+            <a-box position="-52.372 -0.421 -166.504" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-51.936 -0.421 -162.877" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-2" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-52.255 -0.421 -142.113" rotation="0 -90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-3" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.822 -0.421 -145.182" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-5" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.627 -0.421 -141.62" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-6" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-73.561 -0.421 -166.41" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-7" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-76.928 -0.421 -166.054" rotation="0 90 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-8" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box><a-box position="-55.413 -0.421 -141.646" rotation="0 180 0" width="5" height="5" color="#7BC8A4" material="color:#c0c0c0" geometry="width:20;height:20" id="TrafficLight1-4" gltf-model="img/TrafficLight/Traffic light.gltf" scale="0.003 0.003 0.003"></a-box>
 
-    <a-plane position="-75.47 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine" geometry="height:16.08;width:0.5" material="color:#ffffff;shader:flat" rotation="-90 0 0"></a-plane><a-plane position="-71.102 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine-2" geometry="width:0.5;height:16.08" material="shader:flat;color:#ffffff" rotation="-90 0 0"></a-plane><a-plane position="-57.893 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine-3" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 0 0"></a-plane><a-plane position="-53.492 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine-4" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 0 0"></a-plane><a-plane position="-63.434 -0.428 -147.227" width="10" height="50" color="#000000" id="JunctionLine-5" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane><a-plane position="-63.434 -0.428 -142.5" width="10" height="50" color="#000000" id="JunctionLine-6" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane><a-plane position="-63.434 -0.428 -160.795" width="10" height="50" color="#000000" id="JunctionLine-7" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane><a-plane position="-63.434 -0.428 -164.795" width="10" height="50" color="#000000" id="JunctionLine-8" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane>
+            <a-plane position="-75.47 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine" geometry="height:16.08;width:0.5" material="color:#ffffff;shader:flat" rotation="-90 0 0"></a-plane><a-plane position="-71.102 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine-2" geometry="width:0.5;height:16.08" material="shader:flat;color:#ffffff" rotation="-90 0 0"></a-plane><a-plane position="-57.893 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine-3" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 0 0"></a-plane><a-plane position="-53.492 -0.428 -154.049" width="10" height="50" color="#000000" id="JunctionLine-4" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 0 0"></a-plane><a-plane position="-63.434 -0.428 -147.227" width="10" height="50" color="#000000" id="JunctionLine-5" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane><a-plane position="-63.434 -0.428 -142.5" width="10" height="50" color="#000000" id="JunctionLine-6" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane><a-plane position="-63.434 -0.428 -160.795" width="10" height="50" color="#000000" id="JunctionLine-7" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane><a-plane position="-63.434 -0.428 -164.795" width="10" height="50" color="#000000" id="JunctionLine-8" geometry="height:16.08;width:0.5" material="shader:flat;color:#ffffff" rotation="-90 90 0"></a-plane>
         </a-entity>
 
         <!--Score Board-->
         <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s1" visible="false"></a-entity>
 
         <a-entity position="0.7 3.5 -70" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s1" visible="false">
-            <a-text value="1" geometry="primitive:plane" color="black" id="scoreval_s1" position="0 0 0.947"></a-text>
+            <a-text value="1" material="color:#fff"  material.color="#fff"  geometry="primitive:plane" color="black" id="scoreval_s1" position="0 0 0.947"></a-text>
         </a-entity>
 
         <a-entity score-listener="" position="0.7 1.836 -69" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s1" visible="false">
