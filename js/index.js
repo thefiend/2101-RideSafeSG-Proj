@@ -265,12 +265,36 @@ AFRAME.registerComponent("scenario-listener", {
 
       if (x == "scenario1_plane") {
         window.scenario = 1;
+        document
+          .getElementById("scenario_no_scene")
+          .setAttribute(
+            "text",
+            "color:#333333;value:Scenario Selected: " +
+              window.scenario +
+              ";wrapCount:20;align:center"
+          );
         console.log("Scenario 1 Selected");
       } else if (x == "scenario2_plane") {
         window.scenario = 2;
+        document
+          .getElementById("scenario_no_scene")
+          .setAttribute(
+            "text",
+            "color:#333333;value:Scenario Selected: " +
+              window.scenario +
+              ";wrapCount:20;align:center"
+          );
         console.log("Scenario 2");
       } else if (x == "scenario3_plane") {
         window.scenario = 3;
+        document
+          .getElementById("scenario_no_scene")
+          .setAttribute(
+            "text",
+            "color:#333333;value:Scenario Selected: " +
+              window.scenario +
+              ";wrapCount:20;align:center"
+          );
         console.log("Scenario 3");
       } else if (x == "car_setting") {
         console.log("Car Settings"); //-12.700  1 36.403
