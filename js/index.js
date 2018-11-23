@@ -301,7 +301,7 @@ AFRAME.registerComponent("scenario-listener", {
           );
         console.log("Scenario 3");
         document.getElementById("scene1").setAttribute("visible","false");
-        document.getElementById("scenario2_plane").setAttribute("visible","false");
+        document.getElementById("scene2").setAttribute("visible","false");
       } else if (x == "car_setting") {
         console.log("Car Settings"); //-12.700  1 36.403
 
@@ -710,12 +710,16 @@ AFRAME.registerComponent("select-vehicle-listener", {
   init: function() {
     var x = this.el.getAttribute("id");
     this.el.addEventListener("click", function(evt) {
+      console.log(document.getElementById("user_vehicle"));
       if (x == "PMD_select") {
         type_of_car = 0;
         console.log("PMD Selected " + type_of_car);
-
+        var v = document.getElementById("user_vehicle");
         var pmd = document.createElement("a-box");
         var camera = document.getElementById("player");
+        if(v != null){
+
+        }
         pmd.setAttribute("id", "user_vehicle");
         pmd.setAttribute("position", "-0.154 -2.728 -1.512");
         pmd.setAttribute("radius", "0.5");
