@@ -314,6 +314,15 @@ AFRAME.registerComponent("scenario-listener", {
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
 
+        document
+          .getElementById("scenario_no_cars")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Cars: " +
+              num_of_cars +
+              ";wrapCount:20;align:center"
+          );
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -328,6 +337,15 @@ AFRAME.registerComponent("scenario-listener", {
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
+
+        document
+          .getElementById("scenario_no_cars")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Cars: " +
+              num_of_cars +
+              ";wrapCount:20;align:center"
+          );
 
         var xrot = 0;
         var yrot = 0;
@@ -344,6 +362,15 @@ AFRAME.registerComponent("scenario-listener", {
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
 
+        document
+          .getElementById("scenario_no_cars")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Cars: " +
+              num_of_cars +
+              ";wrapCount:20;align:center"
+          );
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -358,6 +385,15 @@ AFRAME.registerComponent("scenario-listener", {
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
+
+        document
+          .getElementById("scenario_no_cars")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Cars: " +
+              num_of_cars +
+              ";wrapCount:20;align:center"
+          );
 
         var xrot = 0;
         var yrot = 0;
@@ -374,6 +410,15 @@ AFRAME.registerComponent("scenario-listener", {
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
 
+        document
+          .getElementById("scenario_no_cars")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Cars: " +
+              num_of_cars +
+              ";wrapCount:20;align:center"
+          );
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -388,6 +433,15 @@ AFRAME.registerComponent("scenario-listener", {
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
+
+        document
+          .getElementById("scenario_no_cars")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Cars: " +
+              num_of_cars +
+              ";wrapCount:20;align:center"
+          );
 
         var xrot = 0;
         var yrot = 0;
@@ -409,6 +463,15 @@ AFRAME.registerComponent("scenario-listener", {
           .getElementById("PedestrianMenu")
           .setAttribute("visible", "false");
 
+        document
+          .getElementById("scenario_no_pedestrians")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Pedestrians: " +
+              num_of_people +
+              ";wrapCount:20;align:center"
+          );
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -425,6 +488,15 @@ AFRAME.registerComponent("scenario-listener", {
         document
           .getElementById("PedestrianMenu")
           .setAttribute("visible", "false");
+
+        document
+          .getElementById("scenario_no_pedestrians")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Pedestrians: " +
+              num_of_people +
+              ";wrapCount:20;align:center"
+          );
 
         var xrot = 0;
         var yrot = 0;
@@ -443,6 +515,15 @@ AFRAME.registerComponent("scenario-listener", {
           .getElementById("PedestrianMenu")
           .setAttribute("visible", "false");
 
+        document
+          .getElementById("scenario_no_pedestrians")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Pedestrians: " +
+              num_of_people +
+              ";wrapCount:20;align:center"
+          );
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -460,6 +541,15 @@ AFRAME.registerComponent("scenario-listener", {
           .getElementById("PedestrianMenu")
           .setAttribute("visible", "false");
 
+        document
+          .getElementById("scenario_no_pedestrians")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Pedestrians: " +
+              num_of_people +
+              ";wrapCount:20;align:center"
+          );
+
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
@@ -476,6 +566,15 @@ AFRAME.registerComponent("scenario-listener", {
         document
           .getElementById("PedestrianMenu")
           .setAttribute("visible", "false");
+
+        document
+          .getElementById("scenario_no_pedestrians")
+          .setAttribute(
+            "text",
+            "color:#333333;value:No. of Pedestrians: " +
+              num_of_people +
+              ";wrapCount:20;align:center"
+          );
 
         var xrot = 0;
         var yrot = 0;
