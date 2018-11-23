@@ -879,11 +879,11 @@ AFRAME.registerComponent("select-option-listener", {
       console.log(x + " has been selected");
       if (x == "s1q1_option1") {
         var question = document.getElementById("s1Question_1");
-        var question_desc = document.getElementById("Question_1_description");
-        var o1 = document.getElementById("q1_option1");
-        var o2 = document.getElementById("q1_option2");
-        var o3 = document.getElementById("q1_option3");
-        var o4 = document.getElementById("q1_option4");
+        var question_desc = document.getElementById("s1Question_1_description");
+        var o1 = document.getElementById("s1q1_option1");
+        var o2 = document.getElementById("s1q1_option2");
+        var o3 = document.getElementById("s1q1_option3");
+        var o4 = document.getElementById("s1q1_option4");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
