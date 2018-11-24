@@ -104,9 +104,9 @@ function getLeaderboard(data) {
   }
 
   //append into leaderboard
-  usernames.setAttribute("value", display);
-  scores.setAttribute("value", display2);
-  scenarios.setAttribute("value", display3);
+  usernames.setAttribute("value", display + "baseline:top");
+  scores.setAttribute("value", display2 + "baseline:top");
+  scenarios.setAttribute("value", display3 + "baseline:top");
 }
 
 var car_mapping = [
