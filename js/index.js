@@ -764,7 +764,7 @@ AFRAME.registerComponent("select-vehicle-listener", {
         type_of_car = 0;
         console.log("PMD Selected " + type_of_car);
         var v = document.getElementById("user_vehicle");
-        var pmd = document.getElementById
+        var pmd = document.createElement("a-box");
         var camera = document.getElementById("player");
         if (v != null) {
         }
