@@ -4,10 +4,10 @@ var scoreCounter = 0; //tracks the score of the user for this scenario
 var scoreSubmitted = 0; //set to 1 if score has been submitted before
 
 var prev_num_of_cars = 0;
-var num_of_cars = 0;
+var num_of_cars = 2;
 
 var prev_num_of_people = 0;
-var num_of_people = 0;
+var num_of_people = 2;
 
 function setup() {
   var config = {
@@ -764,7 +764,7 @@ AFRAME.registerComponent("select-vehicle-listener", {
         type_of_car = 0;
         console.log("PMD Selected " + type_of_car);
         var v = document.getElementById("user_vehicle");
-        var pmd = document.createElement("a-box");
+        var pmd = document.getElementById
         var camera = document.getElementById("player");
         if (v != null) {
         }
@@ -1184,6 +1184,7 @@ AFRAME.registerComponent("bound-collider", {
         }
         document.getElementById("s3SummaryQ1").setAttribute("visible", true);
         document.getElementById("s3SummaryQ2").setAttribute("visible", true);
+        document.getElementById("score_submit_s3").setAttribute("visible", true);
         summaryQ1.setAttribute("value",summaryDesc1);
         summaryQ2.setAttribute("value",summaryDesc2);
 
@@ -1876,6 +1877,12 @@ AFRAME.registerComponent("score-listener", {
         removeVehicle();
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
         hideScoreBoard();
+        window.scoreCounter = 0; //reset score
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: 0");
+          document.getElementById("q1Selected").setAttribute("value", "Q1)");
+          document.getElementById("q2Selected").setAttribute("value", "Q2)");
       }
        else if (x == "score_submit_s2") {
         console.log("UPLOADING SCORE TO FIREBASE....");
@@ -1883,6 +1890,12 @@ AFRAME.registerComponent("score-listener", {
         removeVehicle();
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
         hideScoreBoard();
+        window.scoreCounter = 0; //reset score
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: 0");
+        document.getElementById("q1Selected").setAttribute("value", "Q1)");
+        document.getElementById("q2Selected").setAttribute("value", "Q2)");
       }
        else if (x == "score_submit_s3") {
         console.log("UPLOADING SCORE TO FIREBASE....");
@@ -1890,8 +1903,12 @@ AFRAME.registerComponent("score-listener", {
         removeVehicle();
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
         hideScoreBoard();
-      }
-       else if (x == "leaderboard_view") {
+        window.scoreCounter = 0; //reset score
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: 0");
+          document.getElementById("q1Selected").setAttribute("value", "Q1)");
+          document.getElementById("q2Selected").setAttribute("value", "Q2)");
       }
       document.getElementById("VehicleMenu").setAttribute("visible", "false");
       document.getElementById("MainMenu").setAttribute("visible", "true");
@@ -1901,18 +1918,13 @@ AFRAME.registerComponent("score-listener", {
       document
         .getElementById("score_s" + window.scenario)
         .setAttribute("visible", "false");
-      window.scoreCounter = 0; //reset score
-      document
-        .getElementById("scoreUI")
-        .setAttribute("value", "Score: " + window.scoreCounter);
-
-      var vehicle = document.getElementById("user_vehicle");
-      vehicle.parentNode.removeChild(vehicle);
 
       if (window.scenario < 3) {
         window.scenario = window.scenario + 1;
       }
       setScenario(window.scenario);
+      
+      document.getElementById("MainMenu").setAttribute("visible", "true");
       document.getElementById("scoreUI").setAttribute("visible", "false");
       document.getElementById("q1Selected").setAttribute("visible", "false");
       document.getElementById("q2Selected").setAttribute("visible", "false");
@@ -1937,7 +1949,7 @@ function hideScoreBoard(){
   s1ScoreSubmit.setAttribute("visible", "false");
   s1ScoreValue.setAttribute("visible", "false");
 
-  var s2board = document.getElementById("score_2");
+  var s2board = document.getElementById("score_s2");
   var s2ScoreVal = document.getElementById("scoreText_s2");
   var s2ScoreSubmit = document.getElementById("score_submit_s2");
   var s2ScoreValue = document.getElementById("scoreval_s2");
@@ -1946,7 +1958,7 @@ function hideScoreBoard(){
   s2ScoreSubmit.setAttribute("visible", "false");
   s2ScoreValue.setAttribute("visible", "false");
 
-  var s3board = document.getElementById("score_3");
+  var s3board = document.getElementById("score_s3");
   var s3ScoreVal = document.getElementById("scoreText_s3");
   var s3ScoreSubmit = document.getElementById("score_submit_s3");
   var s3ScoreValue = document.getElementById("scoreval_s3");
