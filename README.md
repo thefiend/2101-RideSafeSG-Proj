@@ -10,7 +10,12 @@ conditions may also be simulated including but not limited to night riding and l
 
 ## Steps to Setup the Spring Boot Back-end Application (server)
 
-1. **Clone the application**
+Live Demo:
+https://jasys.xyz/ICT2101-SprintPlanning/
+
+
+
+**Clone the application**
 
    ```bash
    git clone https://github.com/thefiend/2101-RideSafeSG-Proj.git
