@@ -1007,6 +1007,9 @@ AFRAME.registerComponent("bound-collider", {
         scoreVal.setAttribute("visible", "true");
         scoresubmit.setAttribute("visible", "true");
 
+        var scoreValue = document.getElementById("scoreval_s2");
+        scoreValue.setAttribute("value", scoreCounter);
+
         camera.setAttribute("rotation", { x: 0, y: -150, z: 0 });
         scoreVal.setAttribute("value", scoreCounter);
       } else if (x == "s3quesiton1_bound" && window.scenario == 3) {
@@ -1072,7 +1075,8 @@ AFRAME.registerComponent("bound-collider", {
         var scoreboard = document.getElementById("score_s3");
         scoreboard.setAttribute("visible", "true");
         //camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
-        scoreVal.setAttribute("value", scoreCounter);
+        var scoreValue = document.getElementById("scoreval_s3");
+        scoreValue.setAttribute("value", scoreCounter);
       } else if (x == "car0") {
         console.log("You got hit by car");
       } else if (x == "car1") {
@@ -1682,6 +1686,7 @@ AFRAME.registerComponent("score-listener", {
 
       var vehicle = document.getElementById("user_vehicle");
       vehicle.parentNode.removeChild(vehicle);
+
       if (window.scenario < 3) {
         window.scenario = window.scenario + 1;
       }
