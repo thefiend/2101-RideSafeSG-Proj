@@ -13,6 +13,7 @@ conditions may also be simulated including but not limited to night riding and d
 Live Demo:
 https://jasys.xyz/2101-RideSafeSG-Proj/
 
+Video: https://youtu.be/OhwpsiI2ZIw
 
 
 **Clone the application**
