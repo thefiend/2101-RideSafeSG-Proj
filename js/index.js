@@ -1669,8 +1669,12 @@ AFRAME.registerComponent("score-listener", {
       }
       document.getElementById("VehicleMenu").setAttribute("visible", "false");
       document.getElementById("MainMenu").setAttribute("visible", "true");
-      document.getElementById("scene" + window.scenario).setAttribute("visible", "false");
-      document.getElementById("score_s" + window.scenario).setAttribute("visible", "false");
+      document
+        .getElementById("scene" + window.scenario)
+        .setAttribute("visible", "false");
+      document
+        .getElementById("score_s" + window.scenario)
+        .setAttribute("visible", "false");
       window.scoreCounter = 0; //reset score
       document
         .getElementById("scoreUI")
@@ -1678,7 +1682,9 @@ AFRAME.registerComponent("score-listener", {
 
       var vehicle = document.getElementById("user_vehicle");
       vehicle.parentNode.removeChild(vehicle);
-      window.scenario = window.scenario+1;
+      if (window.scenario < 3) {
+        window.scenario = window.scenario + 1;
+      }
       setScenario(window.scenario);
       document.getElementById("scoreUI").setAttribute("visible", "false");
     });
