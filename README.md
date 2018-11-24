@@ -11,7 +11,7 @@ conditions may also be simulated including but not limited to night riding and l
 ## Steps to Setup the Spring Boot Back-end Application (server)
 
 Live Demo:
-https://jasys.xyz/ICT2101-SprintPlanning/
+https://jasys.xyz/2101-RideSafeSG-Proj/
 
 
 
