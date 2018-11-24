@@ -97,7 +97,7 @@ function getLeaderboard(data) {
   var display = "";
   var display2 = "";
   var display3 = "";
-  for (var i = 0; i < usernameArr.length; i++) {
+  for (var i = 0; i < 10; i++) {
     display = display + usernameArr[i] + "\n\n";
     display2 = display2 + scoreArr[i] + "\n\n";
     display3 = display3 + scenarioArr[i] + "\n\n";
