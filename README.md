@@ -6,7 +6,7 @@ project also aims to help non-cyclists to emphasize with cyclists on the road.
 
 The VR application will simulate various environments cyclists and PMDs will face on
 Singapore roads such as walkways, Park Connector Networks and roads. Environmental
-conditions may also be simulated including but not limited to night riding and light rain.
+conditions may also be simulated including but not limited to night riding and day riding.
 
 ## Steps to Setup the Spring Boot Back-end Application (server)
 
