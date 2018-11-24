@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>RideSafeSG - Safe Riding Starts Her</title>
+    <title>RideSafeSG - Safe Riding Starts Here</title>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
     <script src="https://unpkg.com/aframe-aabb-collider-component@^2.2.1/dist/aframe-aabb-collider-component.min.js"></script>
@@ -66,7 +66,7 @@
         <!--End of load all assets-->
 
         <!--Camera-->
-        <a-camera geometry="" wasd-controls-enabled="true" aabb-collider="objects:a-box" position="-99.89 1 13.554" camera="" look-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0" wasd-controls="">
+        <a-camera geometry="" wasd-controls-enabled="true" aabb-collider="objects:a-box" position="-99.60014797922804 1 16.280552465306243" camera="" look-controls="" data-aframe-inspector-original-camera="" id="player" rotation="0 0 0" wasd-controls="">
             <a-sound src="src: url(audio/background.mp3)" volume="0.6" loop="true" autoplay="true" position="0 2 5"></a-sound>
             <!--Start of Move animation after option choosen -->
             <a-animation begin="S1Q1" attribute="position" from="0.732 3.06 14.771" to="-1.110 3.06 -45.330" dur="7000"></a-animation>
@@ -90,6 +90,8 @@
                 <a-animation begin="click" easing="ease-in" attribute="scale" dur="1000" fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
                 <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1000" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
             </a-cursor>
+
+            <a-text id="scoreUI" position="3.108 3.223 -4.227" scale="2 2 2" value="Score: 0" color="black" visible="false"></a-text>
         </a-camera>
 
         <a-sky id="sky" color="#aaf4f9"></a-sky>
@@ -113,7 +115,6 @@
         <!-- Leaderboard Menu -->
             <a-entity id="LeaderboardMenu" visible="false">
                 <a-entity position="-64.014 2 47.012" geometry="primitive:plane;height:10;width:15" material="color:#ffffff" text="" material.color="#808080" id="leaderboard_menu" rotation="0 270 0">
-
                     <a-text position="-2.0 4 0" id="leaderboardTitle" wrap-count="10" value="Leaders" color="black"></a-text>
                     <a-text position="-3.8 2 0" id="usernames_title" wrap-count="20" value="Username" color="black"></a-text>
                     <a-text position="-3.5 -3.131 0" id="usernames_leaderboard" wrap-count="30" value=" " color="black"></a-text>
@@ -121,16 +122,6 @@
                     <a-text position="-0.5 -3.131 0" id="scores_leaderboard" wrap-count="30" value=" " color="gold"></a-text>
                     <a-text position="1.2 2 0" id="scenarios_title" wrap-count="20" value="Scenario" color="black"></a-text>
                     <a-text position="1.5 -3.131 0" id="scenarios_leaderboard" wrap-count="30" value=" " color="black"></a-text>
-                </a-entity>
-                
-
-                    <a-text position="-2 4.826 0" id="leaderboardTitle" wrap-count="10" value="Leaders" color="black"></a-text>
-                    <a-text position="-3.8 4.059 0" id="usernames_title" wrap-count="20" value="Username" color="black"></a-text>
-                    <a-text position="-3.5 -1 0" id="usernames_leaderboard" wrap-count="30" value="" color="black" text=""></a-text>
-                    <a-text position="-0.9 4.059 0" id="scores_title" wrap-count="20" value="Score" color="black"></a-text>
-                    <a-text position="-0.5 -1 0" id="scores_leaderboard" wrap-count="30" value="" color="gold" text=""></a-text>
-                    <a-text position="1.2 4.059 0" id="scenarios_title" wrap-count="20" value="Scenario" color="black"></a-text>
-                    <a-text position="1.5 -1 0" id="scenarios_leaderboard" wrap-count="30" value="" color="black" text=""></a-text>
                 </a-entity>
 
                 <a-entity position="-64.504 4 52.724" scenario-listener="" geometry="primitive:plane;height:2;width:2" material="color:#ff8080" text="align:center;value:Return Main Menu;wrapCount:10" material.color="#ff8080" id="return_main2" rotation="0 270 0">
@@ -312,9 +303,7 @@
             <a-box bound-collider="" static-body="" position="0.285 3.06 -60.845" radius="0.5" height="0.5" color="#FFC65D" material="color:#808080" text__test="align:right;anchor:right;baseline:top;color:#000000" geometry="width:40" id="s1scenario1_end" class="box" opacity="0"></a-box>
 
             <!--Question1-->
-            <a-entity position="-1.033 4.024 -18.871" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="s1Question_1" visible="false">
-            </a-entity>
-
+            <a-entity position="-1.033 4.024 -18.871" geometry="primitive:plane;height:8;width:11" material="color:#80ffff" text="align:center;color:#400040" material.color="#ff0000" id="s1Question_1" visible="false"></a-entity>
             <a-entity position="-0.826 6.476 -18" geometry="primitive:plane;height:2;width:10" material="color:#fff" text="align:center;color:#400040;value:Question 1.What is the most  important thing you need before riding on the road?" material.color="#fff" id="s1Question_1_description" visible="false"></a-entity>
             <!--End of Question1-->
 
@@ -440,22 +429,22 @@
             <!--End of Question1-->
 
             <!--Options for Question1-->
-            <a-entity select-option-listener="" position="2.789 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.Increase Speed" material.color="#808080" id="s2q1_option1" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on: click"  position="2.789 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:1.Increase Speed" material.color="#808080" id="s2q1_option1" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="8.014 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Go at a steady Speed" material.color="#808080" id="s2q1_option2" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/correct.mp3); on: click" position="8.014 3.7 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Go at a steady Speed" material.color="#808080" id="s2q1_option2" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="7.960 1.45 -17.999" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Rush" material.color="#808080" id="s2q1_option4" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on: click" position="7.960 1.45 -17.999" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Rush" material.color="#808080" id="s2q1_option4" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="2.815 1.45 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Eh Risk it" material.color="#808080" id="s2q1_option3" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on: click" position="2.815 1.45 -18" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Eh Risk it" material.color="#808080" id="s2q1_option3" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
@@ -468,22 +457,22 @@
             <!--End of Question2-->
 
             <!--Options for Question2-->
-            <a-entity select-option-listener="" position="46.825 3.908 -1.555" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.Speed Through!" material.color="#808080" id="s2q2_option1" position="47.223 2.966 0">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on: click" position="46.825 3.908 -1.555" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:1.Speed Through!" material.color="#808080" id="s2q2_option1" position="47.223 2.966 0" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="41.545 3.898 -1.285" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Decrease speed and ring bell to alert people" material.color="#808080" id="s2q2_option2" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/correct.mp3); on: click" position="41.545 3.898 -1.285" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Decrease speed and ring bell to alert people" material.color="#808080" id="s2q2_option2" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="41.613 1.575 -1.285" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Swerve through" material.color="#808080" id="s2q2_option4" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on: click" position="41.613 1.575 -1.285" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Swerve through" material.color="#808080" id="s2q2_option4" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="46.801 1.575 -1.839" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Ignore them" material.color="#808080" id="s2q2_option3" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on: click" position="46.801 1.575 -1.839" rotation="0 188.29 0" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Ignore them" material.color="#808080" id="s2q2_option3" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
@@ -505,26 +494,6 @@
             <a-box position="42.348 -3.321 25.063" rotation="0 300 0" width="50" height="50" color="#7BC8A4"
                 material="color:#c0c0c0" geometry="width:20;height:100" id="Trump" gltf-model="img/Trump/model.gltf"
                 scale="5.5 5.5 5.5"></a-box>
-				
-			<!--Pedestrian-->
-			<a-box id="Girl" gltf-model="img/Girl3/girl3.gltf" scale="5.000 5.000 5.000" rotation="0.140 -60.040 -0.100" position="35.000 -3.226 -20.000" >
-				<a-animation attribute="position" dur="10000" repeat="indefinite" from="347.000 -3.226 -25.341" to="28.000 -3.376 -25.341"></a-animation>
-				</a-box>
-			<a-box id="Girl2" gltf-model="img/Girl5/girl5.gltf" scale="5.000 5.000 5.000" rotation="-0.490 120.200 1.170" position="-2.730 -2.976 -36.690" >
-				<a-animation attribute="position" dur="10000" repeat="indefinite" from="-2.730 -2.976 -36.690" to="-2.730 -2.976 -43.910"></a-animation>
-				</a-box>
-			<a-box id="Boy" gltf-model="img/Boy/boy.gltf" scale="1.500 1.500 1.500" rotation="-0.010 145.000 0.000" position="2.340 -1.546 -31.010" >
-				<a-animation attribute="position" dur="10000" repeat="indefinite" from="2.340 -1.546 -31.010" to="-1.360 -1.546 -16.300"></a-animation>
-				</a-box>
-			<a-box id="OldMen" gltf-model="img/OldMen/oldmen.gltf" scale="3.500 3.500 3.500" rotation="0.000 190.000 0.000" position="56.910 -2.871 30.000" >
-				<a-animation attribute="position" dur="10000" repeat="indefinite" from="56.910 -2.871 30.000" to="44.820 -2.871 -10.000"></a-animation>
-				</a-box>
-			<a-box id="Girl3" gltf-model="img/Girl5/girl5.gltf" scale="5.000 5.000 5.000" rotation="0 180.000 0" position="17.050 -3.271 7.400" >
-				<a-animation attribute="position" dur="10000" repeat="indefinite" from="17.050 -3.271 7.400" to="15.600 -3.271 -5.500"></a-animation>
-				</a-box>
-			<a-box id="Boy2" gltf-model="img/Boy/boy.gltf" scale="1.500 1.500 1.500" rotation="0.000 0.000 0.000" position="41.434 -1.869 -1.430" >
-				<a-animation attribute="position" dur="10000" repeat="indefinite" from="41.434 -1.869 -1.430" to="39.864 -1.869 -15.000"></a-animation>
-				</a-box>
 				
         </a-entity>
 
@@ -616,22 +585,22 @@
             <!--End of Question1-->
 
             <!--Options for Question1-->
-            <a-entity select-option-listener="" position="2.042 4.105 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.Increase Speed" material.color="#808080" id="s3q1_option1" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on:click"  position="2.042 4.105 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:1.Increase Speed" material.color="#808080" id="s3q1_option1" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="7.234 4.105 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Slow down and move to right" material.color="#808080" id="s3q1_option2" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/correct.mp3); on:click"  position="7.234 4.105 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Slow down and move to right" material.color="#808080" id="s3q1_option2" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-           <a-entity select-option-listener="" position="7.242 1.695 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Attempt to swerve past the crowd" material.color="#808080" id="s3q1_option4" visible="false">
+           <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on:click" position="7.242 1.695 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Attempt to swerve past the crowd" material.color="#808080" id="s3q1_option4" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="2.077 1.682 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Ignore the crowded and attepmt to pass by" material.color="#808080" id="s3q1_option3" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on:click" position="2.077 1.682 -2.036" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.Ignore the crowded and attepmt to pass by" material.color="#808080" id="s3q1_option3" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
@@ -644,22 +613,22 @@
             <!--End of Question2-->
 
             <!--Options for Question2-->
-            <a-entity select-option="" position="2.06 3.7 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#ff0080" text="value:1.Speed Through!" material.color="#808080" id="s3q2_option1" visible="false">
+            <a-entity select-option="" sound="src: url(audio/wrong.mp3); on:click" position="2.06 3.7 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:1.Speed Through!" material.color="#808080" id="s3q2_option1" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="7.241 3.7 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Let them pass then move" material.color="#808080" id="s3q2_option2" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/correct.mp3); on:click" position="7.241 3.7 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:2.Let them pass then move" material.color="#808080" id="s3q2_option2" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="7.251 1.45 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Pray that nothing happens(Continue)" material.color="#808080" id="s3q2_option4" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on:click" position="7.251 1.45 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:4.Pray that nothing happens(Continue)" material.color="#808080" id="s3q2_option4" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
 
-            <a-entity select-option-listener="" position="2.07 1.45 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.The car should make way for me..(Continue Crossing)" material.color="#808080" id="s3q2_option3" visible="false">
+            <a-entity select-option-listener="" sound="src: url(audio/wrong.mp3); on:click" position="2.07 1.45 -36.611" geometry="primitive:plane;height:2;width:5" material="color:#808080" text="value:3.The car should make way for me..(Continue Crossing)" material.color="#808080" id="s3q2_option3" visible="false">
                 <a-animation attribute="material.color" from="#ff8080" to="green" begin="mouseenter"></a-animation>
                 <a-animation attribute="material.color" from="green" to="grey" begin="mouseleave"></a-animation>
             </a-entity>
@@ -667,42 +636,48 @@
         </a-entity>
 
        <!--Score Board-->
-        <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s1" visible="false"></a-entity>
+        <a-entity id="score_s1"  visible="false">
+            <a-entity position="0.7 2 -72" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" visible="false"></a-entity>
 
-        <a-entity position="0.7 3.5 -70" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s1" visible="false">
-            <a-text value="1" material="color:#fff"  material.color="#fff"  geometry="primitive:plane" color="black" id="scoreval_s1" position="0 0 0.947"></a-text>
+            <a-entity position="0.7 3.5 -70" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s1" visible="false">
+                <a-text value="1" material="color:#fff"  material.color="#fff"  geometry="primitive:plane" color="black" id="scoreval_s1" position="0 0 0.947"></a-text>
+            </a-entity>
+
+            <a-entity score-listener="" position="0.7 1.836 -69" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="align:center;color:#000000;value:Submit Score"  material.color="#808080" id="score_submit_s1" visible="false">
+                <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
+            </a-entity><!--score_s1 scoreText_s1 score_submit_s1 -->
         </a-entity>
-
-        <a-entity score-listener="" position="0.7 1.836 -69" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s1" visible="false">
-            <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
-            <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
-        </a-entity><!--score_s1 scoreText_s1 score_submit_s1 -->
         <!--End of ScoreBoard-->
 
         <!--Score Board for Scenario 2-->
-       <a-entity position="69.475 4.464 61.834" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s2" rotation="0 210 0" visible="false"></a-entity>
+        <a-entity id="score_s2" visible="false">
+            <a-entity position="69.475 4.464 61.834" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080"  rotation="0 210 0" visible="false"></a-entity>
 
-        <a-entity position="67.642 6.937 60.923" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s2" rotation="0 210 0" visible="false">
-            <a-text value="1" geometry="primitive:plane" color="black" id="scoreval_s2" position="0 0 0.947"></a-text>
-        </a-entity>
+            <a-entity position="67.642 6.937 60.923" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s2" rotation="0 210 0" visible="false">
+                <a-text value="1" geometry="primitive:plane" color="black" id="scoreval_s2" position="0 0 0.947"></a-text>
+            </a-entity>
 
-        <a-entity score-listener="" position="69.291 1.987 61.071" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s2" rotation="0 210 0" visible="false">
-            <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
-            <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
-        </a-entity><!--score_s2 scoreText_s1 score_submit_s1 -->
+            <a-entity score-listener="" position="69.291 1.987 61.071" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="align:center;color:#000000;value:Submit Score"  material.color="#808080" id="score_submit_s2" rotation="0 210 0" visible="false">
+                <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
+            </a-entity><!--score_s2 scoreText_s1 score_submit_s1 -->
+       </a-entity>
         <!--End of ScoreBoard Scenario 2-->
 
         <!--Score Board for Scenario 3-->
-       <a-entity position="-2.321 3.06 -91.687" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s3" visible="false"></a-entity>
+       <a-entity id="score_s3" visible="false">
+            <a-entity position="-2.321 3.06 -91.829" geometry="primitive:plane;height:10;width:10" material="color:#ffff80" text="" material.color="#808080" id="score_s3"></a-entity>
 
-        <a-entity position="-1.649 6.443 -90.475" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s3" visible="false">
-            <a-text value="1" geometry="primitive:plane" color="black" id="scoreval_s3" position="0 0 0.947"></a-text>
-        </a-entity>
+            <a-entity position="-1.649 4.853 -91.438" geometry="primitive:plane;height:2;width:8" material="color:#ffff80" text="color:#000000;value:You have scored.." material.color="#808080" id="scoreText_s3">
+                <a-text value="2" geometry="primitive:plane" color="black" id="scoreval_s3" position="-0.17 0 0.048" text="align:center;zOffset:0;width:10;wrapCount:40.02;color:#ffffff"></a-text>
+            </a-entity>
 
-        <a-entity score-listener="" position="-2.083 1.43 -90.045" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s3" visible="false">
-            <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
-            <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
-        </a-entity<!--score_s1 scoreText_s1 score_submit_s1 -->
+            <a-entity score-listener="" position="-2.321 1.43 -89.594" geometry="primitive:plane;height:2;width:8" material="color:#80ff80" text="align:center;color:#000000;value:Submit Score" material.color="#808080" id="score_submit_s3">
+                <a-animation attribute="material.color" from="80ff80" to="red" begin="mouseenter"></a-animation>
+                <a-animation attribute="material.color" from="red" to="#80ff80" begin="mouseleave"></a-animation>
+            </a-entity>
+       </a-entity>
         <!--End of ScoreBoard-->
 
     </a-scene>

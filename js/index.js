@@ -2,6 +2,13 @@ var playerName = "Player"; //name of player to be submitted to firebase
 var scenario = 1;
 var scoreCounter = 0; //tracks the score of the user for this scenario
 var scoreSubmitted = 0; //set to 1 if score has been submitted before
+
+var prev_num_of_cars = 0;
+var num_of_cars = 2;
+
+var prev_num_of_people = 0;
+var num_of_people = 2;
+
 function setup() {
   var config = {
     apiKey: "AIzaSyA71-oc_-WGW8JYRPKRdJLuSxp2MSp5NxM",
@@ -40,6 +47,18 @@ function loadFirebase() {
 function errData(error) {
   console.log("Something went wrong.");
   console.log(error);
+}
+
+function setScenario(sceneNo) {
+  window.scenario = sceneNo;
+  document
+    .getElementById("scenario_no_scene")
+    .setAttribute(
+      "text",
+      "color:#333333;value:Scenario Selected: " +
+        window.scenario +
+        ";wrapCount:20;align:center"
+    );
 }
 
 function getLeaderboard(data) {
@@ -177,6 +196,48 @@ var people_mapping = [
       speed: "15000",
       scale: "1 1 1"
     }
+  ],
+  [
+    {
+      type: "#Girl3",
+      speed: "10000",
+      scale: "3 3 3",
+      rotation: "0.140 -60.040 -0.100",
+      pos: "347.000 -3.226 -25.34, 1",
+      end_pos: "28.000 -3.376 -25.341"
+    },
+    {
+      type: "#Girl5",
+      speed: "10000",
+      scale: "3 3 3",
+      rotation: "-0.490 120.200 1.170",
+      pos: "-2.730 -2.976 -36.690",
+      end_pos: "-2.730 -2.976 -43.910"
+    },
+    {
+      type: "#Boy",
+      scale: "1.500 1.500 1.500",
+      rotation: "-0.010 145.000 0.000",
+      pos: "2.340 -1.546 -31.010",
+      end_pos: "-1.360 -1.546 -16.300",
+      speed: "10000"
+    },
+    {
+      type: "#OldMen",
+      scale: "3.500 3.500 3.500",
+      rotation: "0.000 190.000 0.000",
+      pos: "56.910 -2.871 30.000",
+      end_pos: "44.820 -2.871 -10.000",
+      speed: "10000"
+    },
+    {
+      type: "#Boy",
+      scale: "1.500 1.500 1.500",
+      rotation: "0.000 0.000 0.000",
+      pos: "41.434 -1.869 -1.430",
+      end_pos: "39.864 -1.869 -15.000",
+      speed: "10000"
+    }
   ]
 ];
 
@@ -191,7 +252,7 @@ function loadCars(prev_num_of_cars, num_of_cars) {
     car.setAttribute("scale", car_mapping[scenario - 1][count].scale);
     car.setAttribute("rotation", car_mapping[scenario - 1][count].rotation);
     car.setAttribute("position", car_mapping[scenario - 1][count].pos);
-    document.getElementById("scene" + scenario).appendChild(car);
+    document.getElementById("scene" + window.scenario).appendChild(car);
 
     // add animation to new car object
     var new_car = document.getElementById("car" + count);
@@ -219,7 +280,7 @@ function loadPedestrians(prev_num_of_people, num_of_people) {
       people_mapping[scenario - 1][count].rotation
     );
     people.setAttribute("position", people_mapping[scenario - 1][count].pos);
-    document.getElementById("scene" + scenario).appendChild(people);
+    document.getElementById("scene" + window.scenario).appendChild(people);
 
     // add animation to new people object
     var new_people = document.getElementById("people" + count);
@@ -246,11 +307,6 @@ AFRAME.registerComponent("scenario-listener", {
   init: function() {
     var x = this.el.getAttribute("id");
     this.el.addEventListener("click", function(evt) {
-      var prev_num_of_cars = 0;
-      var num_of_cars = 2;
-
-      var prev_num_of_people = 0;
-      var num_of_people = 2;
       var type_of_car = 0;
 
       var title = document.title;
@@ -264,44 +320,20 @@ AFRAME.registerComponent("scenario-listener", {
       var zrot = 0;
 
       if (x == "scenario1_plane") {
-        window.scenario = 1;
-        document
-          .getElementById("scenario_no_scene")
-          .setAttribute(
-            "text",
-            "color:#333333;value:Scenario Selected: " +
-              window.scenario +
-              ";wrapCount:20;align:center"
-          );
+        setScenario(1);
         console.log("Scenario 1 Selected");
-        document.getElementById("scene2").setAttribute("visible","false");
-        document.getElementById("scene3").setAttribute("visible","false");
+        document.getElementById("scene2").setAttribute("visible", "false");
+        document.getElementById("scene3").setAttribute("visible", "false");
       } else if (x == "scenario2_plane") {
-        window.scenario = 2;
-        document
-          .getElementById("scenario_no_scene")
-          .setAttribute(
-            "text",
-            "color:#333333;value:Scenario Selected: " +
-              window.scenario +
-              ";wrapCount:20;align:center"
-          );
+        setScenario(2);
         console.log("Scenario 2");
-        document.getElementById("scene1").setAttribute("visible","false");
-        document.getElementById("scene3").setAttribute("visible","false");
+        document.getElementById("scene1").setAttribute("visible", "false");
+        document.getElementById("scene3").setAttribute("visible", "false");
       } else if (x == "scenario3_plane") {
-        window.scenario = 3;
-        document
-          .getElementById("scenario_no_scene")
-          .setAttribute(
-            "text",
-            "color:#333333;value:Scenario Selected: " +
-              window.scenario +
-              ";wrapCount:20;align:center"
-          );
+        setScenario(3);
         console.log("Scenario 3");
-        document.getElementById("scene1").setAttribute("visible","false");
-        document.getElementById("scene2").setAttribute("visible","false");
+        document.getElementById("scene1").setAttribute("visible", "false");
+        document.getElementById("scene2").setAttribute("visible", "false");
       } else if (x == "car_setting") {
         console.log("Car Settings"); //-12.700  1 36.403
 
@@ -329,6 +361,19 @@ AFRAME.registerComponent("scenario-listener", {
         var xrot = 0;
         var yrot = 270;
         var zrot = 0;
+      } else if (x == "sky_setting") {
+        console.log("Sky Settings"); //-12.700  1 36.403
+
+        document.getElementById("MainMenu").setAttribute("visible", "false");
+        document.getElementById("SkyMenu").setAttribute("visible", "true");
+
+        xpos = -73.33;
+        ypos = 0.947;
+        zpos = 47.062;
+
+        var xrot = 0;
+        var yrot = 180;
+        var zrot = 0;
       } else if (x == "car_val_0") {
         /**
          * Set number of cars in the map
@@ -338,8 +383,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_cars = num_of_cars;
-        num_of_cars = 0;
+        window.prev_num_of_cars = window.num_of_cars;
+        window.num_of_cars = 0;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
@@ -349,7 +394,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Cars: " +
-              num_of_cars +
+              window.num_of_cars +
               ";wrapCount:20;align:center"
           );
 
@@ -362,8 +407,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_cars = num_of_cars;
-        num_of_cars = 1;
+        window.prev_num_of_cars = window.num_of_cars;
+        window.num_of_cars = 1;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
@@ -373,7 +418,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Cars: " +
-              num_of_cars +
+              window.num_of_cars +
               ";wrapCount:20;align:center"
           );
 
@@ -386,8 +431,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_cars = num_of_cars;
-        num_of_cars = 2;
+        window.prev_num_of_cars = window.num_of_cars;
+        window.num_of_cars = 2;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
@@ -397,7 +442,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Cars: " +
-              num_of_cars +
+              window.num_of_cars +
               ";wrapCount:20;align:center"
           );
 
@@ -410,8 +455,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_cars = num_of_cars;
-        num_of_cars = 3;
+        window.prev_num_of_cars = window.num_of_cars;
+        window.num_of_cars = 3;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
@@ -421,7 +466,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Cars: " +
-              num_of_cars +
+              window.num_of_cars +
               ";wrapCount:20;align:center"
           );
 
@@ -434,8 +479,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_cars = num_of_cars;
-        num_of_cars = 4;
+        window.prev_num_of_cars = window.num_of_cars;
+        window.num_of_cars = 4;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
@@ -445,7 +490,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Cars: " +
-              num_of_cars +
+              window.num_of_cars +
               ";wrapCount:20;align:center"
           );
 
@@ -458,8 +503,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_cars = num_of_cars;
-        num_of_cars = 5;
+        window.prev_num_of_cars = window.num_of_cars;
+        window.num_of_cars = 5;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
@@ -469,7 +514,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Cars: " +
-              num_of_cars +
+              window.num_of_cars +
               ";wrapCount:20;align:center"
           );
 
@@ -477,16 +522,13 @@ AFRAME.registerComponent("scenario-listener", {
         var yrot = 0;
         var zrot = 0;
       } else if (x == "pedestrian_val1") {
-        /**
-         * Set number of pedestrians in the map
-         */
         console.log("pedestrian_val1"); //-12.700  1 36.403
         xpos = -99.60014797922804;
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_people = num_of_people;
-        num_of_people = 1;
+        window.prev_num_of_people = window.num_of_people;
+        window.num_of_people = 1;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document
@@ -498,7 +540,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Pedestrians: " +
-              num_of_people +
+              window.num_of_people +
               ";wrapCount:20;align:center"
           );
 
@@ -524,7 +566,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Pedestrians: " +
-              num_of_people +
+              window.num_of_people +
               ";wrapCount:20;align:center"
           );
 
@@ -550,7 +592,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Pedestrians: " +
-              num_of_people +
+              window.num_of_people +
               ";wrapCount:20;align:center"
           );
 
@@ -563,8 +605,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_people = num_of_people;
-        num_of_people = 4;
+        window.prev_num_of_people = window.num_of_people;
+        window.num_of_people = 4;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document
@@ -576,7 +618,7 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Pedestrians: " +
-              num_of_people +
+              window.num_of_people +
               ";wrapCount:20;align:center"
           );
 
@@ -589,8 +631,8 @@ AFRAME.registerComponent("scenario-listener", {
         ypos = 1;
         zpos = 16.280552465306243;
 
-        prev_num_of_people = num_of_people;
-        num_of_people = 5;
+        window.prev_num_of_people = window.num_of_people;
+        window.num_of_people = 5;
 
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document
@@ -602,13 +644,35 @@ AFRAME.registerComponent("scenario-listener", {
           .setAttribute(
             "text",
             "color:#333333;value:No. of Pedestrians: " +
-              num_of_people +
+              window.num_of_people +
               ";wrapCount:20;align:center"
           );
 
         var xrot = 0;
         var yrot = 0;
         var zrot = 0;
+        console.log("car_val_5");
+      } else if (x == "sky_val_1") {
+        var sky = document
+          .getElementById("sky")
+          .setAttribute("color", "#F0A272");
+
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document.getElementById("SkyMenu").setAttribute("visible", "false");
+      } else if (x == "sky_val_2") {
+        var sky = document
+          .getElementById("sky")
+          .setAttribute("color", "#23334C");
+
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document.getElementById("SkyMenu").setAttribute("visible", "false");
+      } else if (x == "sky_val_3") {
+        var sky = document
+          .getElementById("sky")
+          .setAttribute("color", "#aaf4f9");
+
+        document.getElementById("MainMenu").setAttribute("visible", "true");
+        document.getElementById("SkyMenu").setAttribute("visible", "false");
       } else if (x == "return_main") {
         console.log("return_main"); //-12.7 1 14.962
         xpos = -99.89;
@@ -618,9 +682,9 @@ AFRAME.registerComponent("scenario-listener", {
         document.getElementById("MainMenu").setAttribute("visible", "true");
         document.getElementById("CarMenu").setAttribute("visible", "false");
 
-        var xrot = 0;
-        var yrot = 0;
-        var zrot = 0;
+        xrot = 0;
+        yrot = 0;
+        zrot = 0;
       } else if (x == "return_main2") {
         console.log("return_main"); //-12.7 1 14.962
         xpos = -99.89;
@@ -632,9 +696,9 @@ AFRAME.registerComponent("scenario-listener", {
           .getElementById("LeaderboardMenu")
           .setAttribute("visible", "false");
 
-        var xrot = 0;
-        var yrot = 0;
-        var zrot = 0;
+        xrot = 0;
+        yrot = 0;
+        zrot = 0;
       } else if (x == "return_main3") {
         console.log("return_main"); //-12.7 1 14.962
         xpos = -99.89;
@@ -646,9 +710,9 @@ AFRAME.registerComponent("scenario-listener", {
           .getElementById("PedestrianMenu")
           .setAttribute("visible", "false");
 
-        var xrot = 0;
-        var yrot = 0;
-        var zrot = 0;
+        xrot = 0;
+        yrot = 0;
+        zrot = 0;
       } else if (x == "leaderboard") {
         console.log("return_main"); //-12.7 1 14.962
         xpos = -71.322;
@@ -660,17 +724,13 @@ AFRAME.registerComponent("scenario-listener", {
           .getElementById("LeaderboardMenu")
           .setAttribute("visible", "true");
 
-        var xrot = 0;
-        var yrot = 270;
-        var zrot = 0;
+        xrot = 0;
+        yrot = 270;
+        zrot = 0;
       } //window.location.href
       else if (x == "scenario_start") {
         //teleport user to choose vehicle
-        if (scenario == 1) {
-          xpos = -99.60014797922804;
-          ypos = 1;
-          zpos = 16.280552465306243;
-        } else if (scenario == 2) {
+        if (scenario == 1 || 2) {
           xpos = -99.60014797922804;
           ypos = 1;
           zpos = 16.280552465306243;
@@ -680,14 +740,12 @@ AFRAME.registerComponent("scenario-listener", {
           zpos = 47.06;
         }
 
-        var xrot = 0;
-        var yrot = 90;
-        var zrot = 0;
+        xrot = 0;
+        yrot = 90;
+        zrot = 0;
 
         document.getElementById("VehicleMenu").setAttribute("visible", "true");
         document.getElementById("MainMenu").setAttribute("visible", "false");
-
-        console.log("Real scenario value: " + window.scenario);
 
         //show selected scene and generate vehicles and pedestrians
         document
@@ -710,15 +768,13 @@ AFRAME.registerComponent("select-vehicle-listener", {
   init: function() {
     var x = this.el.getAttribute("id");
     this.el.addEventListener("click", function(evt) {
-      console.log(document.getElementById("user_vehicle"));
       if (x == "PMD_select") {
         type_of_car = 0;
         console.log("PMD Selected " + type_of_car);
         var v = document.getElementById("user_vehicle");
         var pmd = document.createElement("a-box");
         var camera = document.getElementById("player");
-        if(v != null){
-
+        if (v != null) {
         }
         pmd.setAttribute("id", "user_vehicle");
         pmd.setAttribute("position", "-0.154 -2.728 -1.512");
@@ -730,24 +786,22 @@ AFRAME.registerComponent("select-vehicle-listener", {
         pmd.setAttribute("rotation", "0 180 0");
         document.querySelector("a-camera").appendChild(pmd);
 
+        document.getElementById("scoreUI").setAttribute("visible", "true");
+
         //write into temp file and shift camera pos
         var camera = document.getElementById("player");
-        if(window.scenario == 1){
+        if (window.scenario == 1) {
           camera.setAttribute("position", { x: -0.924, y: 3.096, z: -11.86 }); //-0.924, y: 3.096, z: -11.86
           camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-        }
-        else if(window.scenario == 2){
+        } else if (window.scenario == 2) {
           //5.271
-        camera.setAttribute("position", { x: 1.661, y: 3.096, z: -8.442 }); //0.732 3.312 14.771
-        camera.setAttribute("rotation", { x: -9.626, y: -19.481, z: 0.000 });
+          camera.setAttribute("position", { x: 1.661, y: 3.096, z: -8.442 }); //0.732 3.312 14.771
+          camera.setAttribute("rotation", { x: -9.626, y: -19.481, z: 0.0 });
+        } else if (window.scenario == 3) {
+          camera.setAttribute("position", { x: 4.058, y: 3.096, z: 25.09 }); //3.29 3.06 25.09
+          camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+          document.querySelector("#player").emit("S3Start"); //S3Start
         }
-        else if(window.scenario == 3){
-        camera.setAttribute("position",{ x: 4.058, y: 3.096, z: 25.09 })//3.29 3.06 25.09
-        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-        document.querySelector("#player").emit("S3Start");//S3Start
-        }
-        // camera.setAttribute("position", { x: -1.11, y: 3.096, z: -11.86 }); //0.732 3.312 14.771
-        // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
       } else {
         type_of_car = 1;
         console.log("Bike Selected: " + type_of_car);
@@ -762,21 +816,22 @@ AFRAME.registerComponent("select-vehicle-listener", {
         pmd.setAttribute("scale", "0.002 0.002 0.002");
         pmd.setAttribute("rotation", "0 180 0");
         document.querySelector("a-camera").appendChild(pmd);
+
+        document.getElementById("scoreUI").setAttribute("visible", "true");
+
         //write into temp file and shift camera pos
         var camera = document.getElementById("player");
-        if(window.scenario == 1){
+        if (window.scenario == 1) {
           camera.setAttribute("position", { x: -0.924, y: 3.096, z: -11.86 }); //-0.924, y: 3.096, z: -11.86
           camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-        }
-        else if(window.scenario == 2){
+        } else if (window.scenario == 2) {
           //5.271
-        camera.setAttribute("position", { x: 1.661, y: 3.096, z: -8.442 }); //0.732 3.312 14.771
-        camera.setAttribute("rotation", { x: -9.626, y: -19.481, z: 0.000 });
-        }
-        else if(window.scenario == 3){
-        camera.setAttribute("position",{ x: 4.058, y: 3.096, z: 25.09 })//3.29 3.06 25.09
-        camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-        document.querySelector("#player").emit("S3Start");//S3Start
+          camera.setAttribute("position", { x: 1.661, y: 3.096, z: -8.442 }); //0.732 3.312 14.771
+          camera.setAttribute("rotation", { x: -9.626, y: -19.481, z: 0.0 });
+        } else if (window.scenario == 3) {
+          camera.setAttribute("position", { x: 4.058, y: 3.096, z: 25.09 }); //3.29 3.06 25.09
+          camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+          document.querySelector("#player").emit("S3Start"); //S3Start
         }
         // camera.setAttribute("position", { x: -0.924, y: 3.096, z: -11.86 }); //0.732 3.312 14.771
         // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
@@ -821,7 +876,7 @@ AFRAME.registerComponent("bound-collider", {
 
         camera.setAttribute("position", { x: -1.11, y: 3.096, z: -11.86 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-      } else if (x == "s1quesiton2_bound"&& window.scenario == 1) {
+      } else if (x == "s1quesiton2_bound" && window.scenario == 1) {
         //show question 2
         var question = document.getElementById("s1Question_2");
         var question_desc = document.getElementById("s1Question_2_description");
@@ -845,7 +900,7 @@ AFRAME.registerComponent("bound-collider", {
 
         camera.setAttribute("position", { x: -1.11, y: 3.096, z: -45.33 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-      } else if (x == "s1scenario1_end"&& window.scenario == 1) {
+      } else if (x == "s1scenario1_end" && window.scenario == 1) {
         //score_s1 scoreText_s1 score_submit_s1
         var scoreboard = document.getElementById("score_s1");
         var scoreVal = document.getElementById("scoreText_s1");
@@ -884,9 +939,7 @@ AFRAME.registerComponent("bound-collider", {
         scoreValue.setAttribute("value", scoreCounter);
         scoresubmit.setAttribute("visible", "true");
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-      }
-
-      else if (x == "s2quesiton1_bound" && window.scenario == 2) {
+      } else if (x == "s2quesiton1_bound" && window.scenario == 2) {
         // enable user to move
         document
           .querySelector("a-camera")
@@ -906,10 +959,9 @@ AFRAME.registerComponent("bound-collider", {
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true);
-         camera.setAttribute("position", { x: 5.109, y: 3.096, z: -8.416 }); //0.732 3.312 14.771
-         camera.setAttribute("rotation", { x: -3.094, y: -2.063, z: 0 });
-      } 
-      else if (x == "s2quesiton2_bound" && window.scenario == 2) {
+        camera.setAttribute("position", { x: 5.109, y: 3.096, z: -8.416 }); //0.732 3.312 14.771
+        camera.setAttribute("rotation", { x: -3.094, y: -2.063, z: 0 });
+      } else if (x == "s2quesiton2_bound" && window.scenario == 2) {
         //show question 2
         var question = document.getElementById("s2Question_2");
         var question_desc = document.getElementById("s2Question_2_description");
@@ -917,53 +969,47 @@ AFRAME.registerComponent("bound-collider", {
         var o2 = document.getElementById("s2q2_option2");
         var o3 = document.getElementById("s2q2_option3");
         var o4 = document.getElementById("s2q2_option4");
-        var camera = document.getElementById("player");//-158.770
+        var camera = document.getElementById("player"); //-158.770
         question.setAttribute("visible", true);
-        camera.setAttribute("rotation", { x: 0, y:-158.770, z: 0 });
+        camera.setAttribute("rotation", { x: 0, y: -158.77, z: 0 });
 
         question_desc.setAttribute("visible", true); //14.567 1 -10
         o1.setAttribute("visible", true);
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true); //-1.110
-        camera.setAttribute("position",{ x: 40.922,y:3.050,z:-9.739});
-        camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
-      }
-      else if(x == "s2quesiton1_bound-2"&& window.scenario == 2){
-         var camera = document.getElementById("player");
-         camera.setAttribute("rotation", { x: 0, y:-65.000, z: 0 });
-         if(scoreCounter == 1){
+        camera.setAttribute("position", { x: 40.922, y: 3.05, z: -9.739 });
+        camera.setAttribute("rotation", { x: 0, y: -150, z: 0 });
+      } else if (x == "s2quesiton1_bound-2" && window.scenario == 2) {
+        var camera = document.getElementById("player");
+        camera.setAttribute("rotation", { x: 0, y: -65.0, z: 0 });
+        if (scoreCounter == 1) {
           document.querySelector("#player").emit("S2Q1_1");
-         }
-         else{
+        } else {
           document.querySelector("#player").emit("S2Q1_1_w");
-         }
-      }
-      else if(x == "s2quesiton1_bound-3"&& window.scenario == 2){
-         var camera = document.getElementById("player");
-         camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
-          if(scoreCounter == 1){
-            document.querySelector("#player").emit("S2Q1_2");
-          }
-          else{
-            document.querySelector("#player").emit("S2Q1_2_w");
-          }
-      }
-
-       else if (x == "s2scenario1_end" && window.scenario == 2) {
+        }
+      } else if (x == "s2quesiton1_bound-3" && window.scenario == 2) {
+        var camera = document.getElementById("player");
+        camera.setAttribute("rotation", { x: 0, y: -150, z: 0 });
+        if (scoreCounter == 1) {
+          document.querySelector("#player").emit("S2Q1_2");
+        } else {
+          document.querySelector("#player").emit("S2Q1_2_w");
+        }
+      } else if (x == "s2scenario1_end" && window.scenario == 2) {
         var scoreboard = document.getElementById("score_s2");
         var scoreVal = document.getElementById("scoreval_s2");
         var scoresubmit = document.getElementById("score_submit_s2");
         var scoreText = document.getElementById("scoreText_s2");
 
-        scoreText.setAttribute("visible","true");
+        scoreText.setAttribute("visible", "true");
         scoreboard.setAttribute("visible", "true");
         scoreVal.setAttribute("visible", "true");
         scoresubmit.setAttribute("visible", "true");
-        camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
+
+        camera.setAttribute("rotation", { x: 0, y: -150, z: 0 });
         scoreVal.setAttribute("value", scoreCounter);
-      }
-      else if(x == "s3quesiton1_bound"&& window.scenario == 3){
+      } else if (x == "s3quesiton1_bound" && window.scenario == 3) {
         //show question 2
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -971,7 +1017,7 @@ AFRAME.registerComponent("bound-collider", {
         var o2 = document.getElementById("s3q1_option2");
         var o3 = document.getElementById("s3q1_option3");
         var o4 = document.getElementById("s3q1_option4");
-        var camera = document.getElementById("player");//-158.770
+        var camera = document.getElementById("player"); //-158.770
         question.setAttribute("visible", true);
         //camera.setAttribute("rotation", { x: 0, y:-158.770, z: 0 });
 
@@ -982,8 +1028,7 @@ AFRAME.registerComponent("bound-collider", {
         o4.setAttribute("visible", true); //-1.110
         //camera.setAttribute("position",{ x: 3.239,y:3.060,z:4.000});
         //camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
-      }
-      else if(x == "s3quesiton2_bound"&& window.scenario == 3){
+      } else if (x == "s3quesiton2_bound" && window.scenario == 3) {
         //show question 2
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -991,7 +1036,7 @@ AFRAME.registerComponent("bound-collider", {
         var o2 = document.getElementById("s3q2_option2");
         var o3 = document.getElementById("s3q2_option3");
         var o4 = document.getElementById("s3q2_option4");
-        var camera = document.getElementById("  player");//-158.770
+        var camera = document.getElementById("  player"); //-158.770
         question.setAttribute("visible", true);
         //camera.setAttribute("rotation", { x: 0, y:-158.770, z: 0 });
 
@@ -1002,9 +1047,7 @@ AFRAME.registerComponent("bound-collider", {
         o4.setAttribute("visible", true); //-1.110
         //amera.setAttribute("position",{ x: 3.239,y:3.060,z:4.000});
         //camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
-      }
-
-      else if(x == "s3quesiton2_bound"&& window.scenario == 3){
+      } else if (x == "s3quesiton2_bound" && window.scenario == 3) {
         //show question 2
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1012,7 +1055,7 @@ AFRAME.registerComponent("bound-collider", {
         var o2 = document.getElementById("s3q2_option2");
         var o3 = document.getElementById("s3q2_option3");
         var o4 = document.getElementById("s3q2_option4");
-        var camera = document.getElementById("  player");//-158.770
+        var camera = document.getElementById("  player"); //-158.770
         question.setAttribute("visible", true);
         //camera.setAttribute("rotation", { x: 0, y:-158.770, z: 0 });
 
@@ -1023,26 +1066,14 @@ AFRAME.registerComponent("bound-collider", {
         o4.setAttribute("visible", true); //-1.110
         //camera.setAttribute("position",{ x: 3.239,y:3.060,z:4.000});
         //camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
-      }
-      else if(x == "s3scenario1_end" && window.scenario == 3){
+      } else if (x == "s3scenario1_end" && window.scenario == 3) {
         document.querySelector("#player").emit("S3end");
-      }
-      else if(x == "s3scenario1_end-3" && window.scenario == 3){
+      } else if (x == "s3scenario1_end-3" && window.scenario == 3) {
         var scoreboard = document.getElementById("score_s3");
-        var scoreVal = document.getElementById("scoreval_s3");
-        var scoresubmit = document.getElementById("score_submit_s3");
-        var scoreText = document.getElementById("scoreText_s3");
-
-        scoreText.setAttribute("visible","true");
         scoreboard.setAttribute("visible", "true");
-        scoreVal.setAttribute("visible", "true");
-        scoresubmit.setAttribute("visible", "true");
         //camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
         scoreVal.setAttribute("value", scoreCounter);
-      }
-      
-
-       else if (x == "car0") {
+      } else if (x == "car0") {
         console.log("You got hit by car");
       } else if (x == "car1") {
         console.log("You got hit by car");
@@ -1094,7 +1125,10 @@ AFRAME.registerComponent("select-option-listener", {
         o4.setAttribute("visible", false);
 
         console.log("Correct");
-        scoreCounter = scoreCounter + 1; // Increment the score
+        window.scoreCounter = window.scoreCounter + 1; // Increment the score
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
@@ -1139,7 +1173,7 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } 
+      }
       //Scenario 1 Question 2 Options
       else if (x == "s1q2_option1") {
         var question = document.getElementById("s1Question_2");
@@ -1179,6 +1213,9 @@ AFRAME.registerComponent("select-option-listener", {
         //answer Correct
         console.log("Correct"); //93.184
         scoreCounter = scoreCounter + 1;
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         var camera = document.getElementById("player");
         // camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
@@ -1247,8 +1284,7 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1_w");
-      } 
-      else if (x == "s2q1_option2" && window.scenario == 2) {
+      } else if (x == "s2q1_option2" && window.scenario == 2) {
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_1");
         var question_desc = document.getElementById("s2Question_1_description");
@@ -1263,14 +1299,16 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
-        scoreCounter = scoreCounter + 1;
+        window.scoreCounter = window.scoreCounter + 1;
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         console.log("Correct");
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1");
-      } 
-      else if (x == "s2q1_option3" && window.scenario == 2) {
+      } else if (x == "s2q1_option3" && window.scenario == 2) {
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_1");
         var question_desc = document.getElementById("s2Question_1_description");
@@ -1291,8 +1329,7 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1_w");
-      } 
-      else if (x == "s2q1_option4" && window.scenario == 2) {
+      } else if (x == "s2q1_option4" && window.scenario == 2) {
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_1");
         var question_desc = document.getElementById("s2Question_1_description");
@@ -1313,7 +1350,7 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1_w");
-      } 
+      }
 
       //Scenario 2 Question 2 Options
       else if (x == "s2q2_option1" && window.scenario == 2) {
@@ -1336,10 +1373,9 @@ AFRAME.registerComponent("select-option-listener", {
         console.log("Wrong");
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
-       // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q2");
-      } 
-      else if (x == "s2q2_option2" && window.scenario == 2) {
+      } else if (x == "s2q2_option2" && window.scenario == 2) {
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_2");
         var question_desc = document.getElementById("s2Question_2_description");
@@ -1356,12 +1392,15 @@ AFRAME.registerComponent("select-option-listener", {
         o4.setAttribute("visible", false);
         //answer Correct
         scoreCounter = scoreCounter + 1;
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         console.log("Correct"); //93.184
 
         var camera = document.getElementById("player");
         // camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-       document.querySelector("#player").emit("S2Q2");
+        document.querySelector("#player").emit("S2Q2");
       } else if (x == "s2q2_option3" && window.scenario == 2) {
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_2");
@@ -1405,7 +1444,7 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q2");
       }
-       //Scenario 3 Question 1 Options
+      //Scenario 3 Question 1 Options
       if (x == "s3q1_option1" && window.scenario == 3) {
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
@@ -1427,8 +1466,7 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q1");
-      } 
-      else if (x == "s3q1_option2" && window.scenario == 3) {
+      } else if (x == "s3q1_option2" && window.scenario == 3) {
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -1444,13 +1482,15 @@ AFRAME.registerComponent("select-option-listener", {
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
         scoreCounter = scoreCounter + 1;
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         console.log("Correct");
         var camera = document.getElementById("player");
         //camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q1");
-      } 
-      else if (x == "s3q1_option3" && window.scenario == 3) {
+      } else if (x == "s3q1_option3" && window.scenario == 3) {
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -1471,8 +1511,7 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q1");
-      } 
-      else if (x == "s3q1_option4" && window.scenario == 3) {
+      } else if (x == "s3q1_option4" && window.scenario == 3) {
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -1493,7 +1532,7 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q1");
-      } 
+      }
 
       //Scenario 3 Question 2 Options
       else if (x == "s3q2_option1" && window.scenario == 3) {
@@ -1516,10 +1555,9 @@ AFRAME.registerComponent("select-option-listener", {
         console.log("Wrong");
         var camera = document.getElementById("player");
         //camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
-       // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q2");
-      } 
-      else if (x == "s3q2_option2" && window.scenario == 3) {
+      } else if (x == "s3q2_option2" && window.scenario == 3) {
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1536,14 +1574,16 @@ AFRAME.registerComponent("select-option-listener", {
         o4.setAttribute("visible", false);
         //answer Correct
         scoreCounter = scoreCounter + 1;
+        document
+          .getElementById("scoreUI")
+          .setAttribute("value", "Score: " + window.scoreCounter);
         console.log("Correct"); //93.184
 
         var camera = document.getElementById("player");
         // camera.setAttribute("position", { x: 97, y: 3.096, z: -63.474 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
-       document.querySelector("#player").emit("S3Q2");
-      } 
-      else if (x == "s3q2_option3" && window.scenario == 3) {
+        document.querySelector("#player").emit("S3Q2");
+      } else if (x == "s3q2_option3" && window.scenario == 3) {
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1564,8 +1604,7 @@ AFRAME.registerComponent("select-option-listener", {
         // camera.setAttribute("position", { x: 97, y: 1, z: -63.474 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q2");
-      } 
-      else if (x == "s3q2_option4" && window.scenario == 3) {
+      } else if (x == "s3q2_option4" && window.scenario == 3) {
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1616,26 +1655,32 @@ AFRAME.registerComponent("score-listener", {
     this.el.addEventListener("click", function(evt) {
       if (x == "score_submit_s1") {
         console.log("UPLOADING SCORE TO FIREBASE....");
-        uploadScore();//-99.89 1 13.554
+        uploadScore(); //-99.89 1 13.554
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
-
-      }
-      else if(x == "score_submit_s2"){
+      } else if (x == "score_submit_s2") {
         console.log("UPLOADING SCORE TO FIREBASE....");
-        uploadScore();//-99.89 1 13.554
+        uploadScore(); //-99.89 1 13.554
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
-      }
-      else if(x == "score_submit_s3"){
+      } else if (x == "score_submit_s3") {
         console.log("UPLOADING SCORE TO FIREBASE....");
-        uploadScore();//-99.89 1 13.554
+        uploadScore(); //-99.89 1 13.554
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
-      }
-
-       else if (x == "leaderboard_view") {
+      } else if (x == "leaderboard_view") {
       }
       document.getElementById("VehicleMenu").setAttribute("visible", "false");
       document.getElementById("MainMenu").setAttribute("visible", "true");
+      document.getElementById("scene" + window.scenario).setAttribute("visible", "false");
+      document.getElementById("score_s" + window.scenario).setAttribute("visible", "false");
+      window.scoreCounter = 0; //reset score
+      document
+        .getElementById("scoreUI")
+        .setAttribute("value", "Score: " + window.scoreCounter);
 
+      var vehicle = document.getElementById("user_vehicle");
+      vehicle.parentNode.removeChild(vehicle);
+      window.scenario = window.scenario+1;
+      setScenario(window.scenario);
+      document.getElementById("scoreUI").setAttribute("visible", "false");
     });
   }
 });
