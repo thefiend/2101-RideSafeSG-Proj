@@ -4,10 +4,10 @@ var scoreCounter = 0; //tracks the score of the user for this scenario
 var scoreSubmitted = 0; //set to 1 if score has been submitted before
 
 var prev_num_of_cars = 0;
-var num_of_cars = 2;
+var num_of_cars = 0;
 
 var prev_num_of_people = 0;
-var num_of_people = 2;
+var num_of_people = 0;
 
 function setup() {
   var config = {
@@ -33,15 +33,6 @@ function loadFirebase() {
   //call method to retrieve leaderboard
 
   ref.on("value", getLeaderboard, errData);
-
-  //insert dummy data
-  // var postsRef = ref;
-  // var newPostRef = postsRef.push();
-  // newPostRef.set({
-  //   player: "Player",
-  //   score: 2,
-  //   scenario : "scenario2"
-  // });
 }
 
 function errData(error) {
@@ -113,10 +104,10 @@ var car_mapping = [
   [
     {
       type: "#Taxi",
-      pos: "23.060 1.276 -52.217",
+      pos: "56.020 1.276 -52.217",
       end_pos: "-34.299 1.276 -52.217",
       rotation: "0 180 0",
-      speed: "6000",
+      speed: "10000",
       scale: "2 2 2"
     },
     {
@@ -124,12 +115,12 @@ var car_mapping = [
       pos: "-36.223 -3.862 -58.644",
       end_pos: "168 -3.862 -58.644",
       rotation: "0 270 0",
-      speed: "6500",
+      speed: "7000",
       scale: "3 3 3"
     },
     {
       type: "#Taxi",
-      pos: "4.074 1.200 -45.505",
+      pos: "4.074 1.200 -43.096",
       end_pos: "4.074 1.200 44.187",
       rotation: "0 270 0",
       speed: "6000",
@@ -137,7 +128,7 @@ var car_mapping = [
     },
     {
       type: "#Truck",
-      pos: "3.665 -0.013 -49.412",
+      pos: "3.665 -0.013 -43.096",
       end_pos: "3.665 -0.013 44.187",
       rotation: "0 90 0",
       speed: "9000",
@@ -145,7 +136,7 @@ var car_mapping = [
     },
     {
       type: "#RedCar",
-      pos: "6.678 -3.697 -46.533",
+      pos: "6.678 -3.697 -43.096",
       end_pos: "6.678 -3.697 44.187",
       rotation: "0 180 0",
       speed: "8000",
@@ -161,15 +152,15 @@ var people_mapping = [
       pos: "51.221 -0.213 -44.911",
       end_pos: "-26.149 -0.213 -44.911",
       rotation: "0 280.000 0",
-      speed: "15000",
+      speed: "10000",
       scale: "1 1 1"
     },
     {
       type: "#Girl2",
-      pos: "0.245 -0.018 -61.675",
+      pos: "0.245 -0.018 -65",
       end_pos: "0.245 -0.018 -52.540",
       rotation: "0 0 0",
-      speed: "15000",
+      speed: "20000",
       scale: "1 1 1"
     },
     {
@@ -243,6 +234,7 @@ var people_mapping = [
 
 function loadCars(prev_num_of_cars, num_of_cars) {
   console.log("Number of cars: " + num_of_cars);
+  console.log("Number of prevcars: " + prev_num_of_cars);
   var count;
   for (count = prev_num_of_cars; count < num_of_cars; count++) {
     // create new car object
@@ -787,6 +779,8 @@ AFRAME.registerComponent("select-vehicle-listener", {
         document.querySelector("a-camera").appendChild(pmd);
 
         document.getElementById("scoreUI").setAttribute("visible", "true");
+        document.getElementById("q1Selected").setAttribute("visible", "true");
+        document.getElementById("q2Selected").setAttribute("visible", "true");
 
         //write into temp file and shift camera pos
         var camera = document.getElementById("player");
@@ -795,7 +789,7 @@ AFRAME.registerComponent("select-vehicle-listener", {
           camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         } else if (window.scenario == 2) {
           //5.271
-          camera.setAttribute("position", { x: 1.661, y: 3.096, z: -8.442 }); //0.732 3.312 14.771
+          camera.setAttribute("position", { x: 1.661, y: 3.096, z: -12.982}); //0.732 3.312 14.771
           camera.setAttribute("rotation", { x: -9.626, y: -19.481, z: 0.0 });
         } else if (window.scenario == 3) {
           camera.setAttribute("position", { x: 4.058, y: 3.096, z: 25.09 }); //3.29 3.06 25.09
@@ -818,6 +812,8 @@ AFRAME.registerComponent("select-vehicle-listener", {
         document.querySelector("a-camera").appendChild(pmd);
 
         document.getElementById("scoreUI").setAttribute("visible", "true");
+        document.getElementById("q1Selected").setAttribute("visible", "true");
+      document.getElementById("q2Selected").setAttribute("visible", "true");
 
         //write into temp file and shift camera pos
         var camera = document.getElementById("player");
@@ -826,7 +822,7 @@ AFRAME.registerComponent("select-vehicle-listener", {
           camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         } else if (window.scenario == 2) {
           //5.271
-          camera.setAttribute("position", { x: 1.661, y: 3.096, z: -8.442 }); //0.732 3.312 14.771
+          camera.setAttribute("position", { x: 1.661, y: 3.096, z: -12.982 }); //0.732 3.312 14.771
           camera.setAttribute("rotation", { x: -9.626, y: -19.481, z: 0.0 });
         } else if (window.scenario == 3) {
           camera.setAttribute("position", { x: 4.058, y: 3.096, z: 25.09 }); //3.29 3.06 25.09
@@ -906,6 +902,43 @@ AFRAME.registerComponent("bound-collider", {
         var scoreVal = document.getElementById("scoreText_s1");
         var scoresubmit = document.getElementById("score_submit_s1");
         var scoreValue = document.getElementById("scoreval_s1");
+        var summaryQ1 = document.getElementById("s1SummaryQ1_text");
+        var summaryQ2 = document.getElementById("s1SummaryQ2_text");
+
+        var getOptionQ1 = document.getElementById("q1Selected").getAttribute("value");
+        var getOptionQ2 = document.getElementById("q2Selected").getAttribute("value");
+
+        var summaryDesc1;
+        var summaryDesc2;
+        if(getOptionQ1 == "SmartPhone"){
+          summaryDesc1 = "Option 1: You selected smartphone. While a smartphone is great, wearing a helmet is the most important item to have before riding on the road.";
+        }
+        else if(getOptionQ1 == "Helmet"){
+          summaryDesc1 = "Option 2: That's right! Wearing a helmet is the most important item to have before riding on the road.";
+        }
+        else if(getOptionQ1 == "Snack"){
+          summaryDesc1 = "Option 3: You selected snack. While a snacks are great, wearing a helmet is the most important item to have before riding on the road.";
+        }
+        else if(getOptionQ1 == "Money"){
+          summaryDesc1 = "Option 4: You selected money. While a having money is great, wearing a helmet is the most important item to have before riding on the road.";
+        }
+
+        if(getOptionQ2 == "Speed Through!"){
+          summaryDesc2 = "Option 1: No, speeding through is dangerous! Wait for all vehicles to pass or stop before crossing.";
+        }
+        else if(getOptionQ2 == "Let it pass then move"){
+          summaryDesc2 = "Option 2: Correct! Wait for all vehicles to pass or stop before crossing.";
+        }
+        else if(getOptionQ2 == "Turn Back"){
+          summaryDesc2 = "Option 3: You don't have to turn back. Wait for all vehicles to pass or stop before crossing.";
+        }
+        else if(getOptionQ2 == "ABANDON SHIP"){
+          summaryDesc2 = "Option 4: You don't have to abandon ship. Wait for all vehicles to pass or stop before crossing.";
+        }
+        document.getElementById("s1SummaryQ1").setAttribute("visible", true);
+        document.getElementById("s1SummaryQ2").setAttribute("visible", true);
+        summaryQ1.setAttribute("value",summaryDesc1);
+        summaryQ2.setAttribute("value",summaryDesc2);
 
         // remove clickable for options when scenario ends
         document
@@ -959,7 +992,7 @@ AFRAME.registerComponent("bound-collider", {
         o2.setAttribute("visible", true);
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true);
-        camera.setAttribute("position", { x: 5.109, y: 3.096, z: -8.416 }); //0.732 3.312 14.771
+        camera.setAttribute("position", { x: 5.109, y: 3.096, z: -12.982}); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: -3.094, y: -2.063, z: 0 });
       } else if (x == "s2quesiton2_bound" && window.scenario == 2) {
         //show question 2
@@ -971,7 +1004,7 @@ AFRAME.registerComponent("bound-collider", {
         var o4 = document.getElementById("s2q2_option4");
         var camera = document.getElementById("player"); //-158.770
         question.setAttribute("visible", true);
-        camera.setAttribute("rotation", { x: 0, y: -158.77, z: 0 });
+        camera.setAttribute("rotation", { x:-2.521, y: -166.960, z: 0 });
 
         question_desc.setAttribute("visible", true); //14.567 1 -10
         o1.setAttribute("visible", true);
@@ -979,7 +1012,7 @@ AFRAME.registerComponent("bound-collider", {
         o3.setAttribute("visible", true);
         o4.setAttribute("visible", true); //-1.110
         camera.setAttribute("position", { x: 40.922, y: 3.05, z: -9.739 });
-        camera.setAttribute("rotation", { x: 0, y: -150, z: 0 });
+        //camera.setAttribute("rotation", { x: 0, y: -150, z: 0 });
       } else if (x == "s2quesiton1_bound-2" && window.scenario == 2) {
         var camera = document.getElementById("player");
         camera.setAttribute("rotation", { x: 0, y: -65.0, z: 0 });
@@ -1009,6 +1042,44 @@ AFRAME.registerComponent("bound-collider", {
 
         var scoreValue = document.getElementById("scoreval_s2");
         scoreValue.setAttribute("value", scoreCounter);
+        var summaryQ1 = document.getElementById("s2SummaryQ1_text");
+        var summaryQ2 = document.getElementById("s2SummaryQ2_text");
+
+        var getOptionQ1 = document.getElementById("q1Selected").getAttribute("value");
+        var getOptionQ2 = document.getElementById("q2Selected").getAttribute("value");
+
+        var summaryDesc1;
+        var summaryDesc2;
+        if(getOptionQ1 == "Increase Speed"){
+          summaryDesc1 = "Option 1: Do not increase speed. There may be people around the corner.";
+        }
+        else if(getOptionQ1 == "Go at a steady Speed"){
+          summaryDesc1 = "Option 2: That's right! You have to be careful as there may be people around the corner.";
+        }
+        else if(getOptionQ1 == "Swerve around. You have the whole path to yourself"){
+          summaryDesc1 = "Option 3: Do not increase swerve around. There may be people around the corner.";
+        }
+        else if(getOptionQ1 == "Stop in the middle of the path"){
+          summaryDesc1 = "Option 4: Do not increase stop in the middle of the path. You will be an obstacle to somebody turning the corner.";
+        }
+
+        if(getOptionQ2 == "Speed Through!"){
+          summaryDesc2 = "Option 1: Speeding through is dangerous. You should decrease your speed and ring the bell to alert people.";
+        }
+        else if(getOptionQ2 == "Decrease speed and ring bell to alert people"){
+          summaryDesc2 = "Option 2: Good! You should decrease your speed and ring the bell to alert people.";
+        }
+        else if(getOptionQ2 == "Ignore them"){
+          summaryDesc2 = "Option 3: Do not ignore them! You should decrease your speed and ring the bell to alert people.";
+        }
+        else if(getOptionQ2 == "Swerve around them"){
+          summaryDesc2 = "Option 4: Swerving around them could be dangerous. You should decrease your speed and ring the bell to alert people.";
+        }
+        document.getElementById("s2SummaryQ1").setAttribute("visible", true);
+        document.getElementById("s2SummaryQ2").setAttribute("visible", true);
+        summaryQ1.setAttribute("value",summaryDesc1);
+        summaryQ2.setAttribute("value",summaryDesc2);
+
 
         camera.setAttribute("rotation", { x: 0, y: -150, z: 0 });
         scoreVal.setAttribute("value", scoreCounter);
@@ -1077,6 +1148,48 @@ AFRAME.registerComponent("bound-collider", {
         //camera.setAttribute("rotation", { x: 0, y:-150, z: 0 });
         var scoreValue = document.getElementById("scoreval_s3");
         scoreValue.setAttribute("value", scoreCounter);
+
+        var summaryQ1 = document.getElementById("s3SummaryQ1_text");
+        var summaryQ2 = document.getElementById("s3SummaryQ2_text");
+
+        var getOptionQ1 = document.getElementById("q1Selected").getAttribute("value");
+        var getOptionQ2 = document.getElementById("q2Selected").getAttribute("value");
+
+        var summaryDesc1;
+        var summaryDesc2;
+        if(getOptionQ1 == "Speed up and ring your bell"){
+          summaryDesc1 = "Option 1: Speeding through a crowd is dangerous! Dismount and walk past the bus stop.";
+        }
+        else if(getOptionQ1 == "Dismount and walk past the bus stop"){
+          summaryDesc1 = "Option 2: Right on! You should dismount and walk past the bus stop.";
+        }
+        else if(getOptionQ1 == "Carefully swerve past the pedestrians"){ 
+      summaryDesc1 = "Option 3: Swerving through a crowd is dangerous! Dismount and walk past the bus stop.";
+        }
+        else if(getOptionQ1 == "Ride on the grass behind the bus stop"){
+      summaryDesc1 = "Option 4: Riding on the grass can be hazardous. Dismount and walk past the bus stop.";
+        }
+
+        if(getOptionQ2 == "I have the right of way. Continue to cross"){
+          summaryDesc2 = "Option 1: Although you have the right of way, you still have to look both ways before crossing.";
+        }
+        else if(getOptionQ2 == "Look both ways before crossing"){
+          summaryDesc2 = "Option 2: That's right! Always look both ways before crossing.";
+        }
+        else if(getOptionQ2 == "Maintain speed while crossing"){
+          summaryDesc2 = "Option 3: That's risky! Always look both ways before crossing.";
+        }
+        else if(getOptionQ2 == "Speed up to cross quicker"){
+          summaryDesc2 = "Option 4: That's risky! Always look both ways before crossing.";
+        }
+        document.getElementById("s3SummaryQ1").setAttribute("visible", true);
+        document.getElementById("s3SummaryQ2").setAttribute("visible", true);
+        summaryQ1.setAttribute("value",summaryDesc1);
+        summaryQ2.setAttribute("value",summaryDesc2);
+
+
+
+
       } else if (x == "car0") {
         console.log("You got hit by car");
       } else if (x == "car1") {
@@ -1108,12 +1221,18 @@ AFRAME.registerComponent("select-option-listener", {
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
 
+        var o = "SmartPhone"
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value", o);
+
         console.log("Wrong");
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } else if (x == "s1q1_option2") {
+      } 
+      else if (x == "s1q1_option2") {        
         var question = document.getElementById("s1Question_1");
         var question_desc = document.getElementById("s1Question_1_description");
         var o1 = document.getElementById("s1q1_option1");
@@ -1133,11 +1252,16 @@ AFRAME.registerComponent("select-option-listener", {
         document
           .getElementById("scoreUI")
           .setAttribute("value", "Score: " + window.scoreCounter);
+        var o = "Helmet";
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value",o);
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } else if (x == "s1q1_option3") {
+      } 
+      else if (x == "s1q1_option3") {
         var question = document.getElementById("s1Question_1");
         var question_desc = document.getElementById("s1Question_1_description");
         var o1 = document.getElementById("s1q1_option1");
@@ -1151,13 +1275,19 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
+
+        var o = "Snacks";
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value",o);
 
         console.log("Wrong");
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S1Q1");
-      } else if (x == "s1q1_option4") {
+      } 
+      else if (x == "s1q1_option4") {
         var question = document.getElementById("s1Question_1");
         var question_desc = document.getElementById("s1Question_1_description");
         var o1 = document.getElementById("s1q1_option1");
@@ -1171,6 +1301,11 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
+
+        var o = "Money";
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value", o);
 
         console.log("Wrong");
         var camera = document.getElementById("player");
@@ -1194,6 +1329,11 @@ AFRAME.registerComponent("select-option-listener", {
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
 
+        var o = "Speed Through!";
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value", o);
+
         //answer Wrong
         console.log("Wrong");
         var camera = document.getElementById("player");
@@ -1214,6 +1354,12 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
+
+       var o = "Let it pass then move";
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value", o);
+
         //answer Correct
         console.log("Correct"); //93.184
         scoreCounter = scoreCounter + 1;
@@ -1231,6 +1377,11 @@ AFRAME.registerComponent("select-option-listener", {
         var o2 = document.getElementById("s1q2_option2");
         var o3 = document.getElementById("s1q2_option3");
         var o4 = document.getElementById("s1q2_option4");
+
+        var o = "Turn Back";
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value", o);
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -1251,6 +1402,11 @@ AFRAME.registerComponent("select-option-listener", {
         var o2 = document.getElementById("s1q2_option2");
         var o3 = document.getElementById("s1q2_option3");
         var o4 = document.getElementById("s1q2_option4");
+
+        var o = "Abandon Ship";
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value", o);
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -1282,12 +1438,18 @@ AFRAME.registerComponent("select-option-listener", {
         o2.setAttribute("visible", false);
         o3.setAttribute("visible", false);
         o4.setAttribute("visible", false);
+        
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value","Increase Speed");
+
 
         console.log("Wrong");
         var camera = document.getElementById("player");
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1_w");
+        console.log("s2q1_w");
       } else if (x == "s2q1_option2" && window.scenario == 2) {
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_1");
@@ -1296,6 +1458,10 @@ AFRAME.registerComponent("select-option-listener", {
         var o2 = document.getElementById("s2q1_option2");
         var o3 = document.getElementById("s2q1_option3");
         var o4 = document.getElementById("s2q1_option4");
+
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value","Go at a steady Speed");
 
         question.setAttribute("visible", false);
         question_desc.setAttribute("visible", false);
@@ -1312,7 +1478,11 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1");
+        console.log("s2q1");
       } else if (x == "s2q1_option3" && window.scenario == 2) {
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value","Swerve around. You have the whole path to yourself");
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_1");
         var question_desc = document.getElementById("s2Question_1_description");
@@ -1333,7 +1503,11 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1_w");
+        console.log("s2q1_w");
       } else if (x == "s2q1_option4" && window.scenario == 2) {
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value","Stop in the middle of the path");
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_1");
         var question_desc = document.getElementById("s2Question_1_description");
@@ -1354,11 +1528,15 @@ AFRAME.registerComponent("select-option-listener", {
         camera.setAttribute("position", { x: 0.732, y: 3.096, z: -26 }); //0.732 3.312 14.771
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q1_w");
+        console.log("s2q1_w");
       }
 
       //Scenario 2 Question 2 Options
       else if (x == "s2q2_option1" && window.scenario == 2) {
         console.log(x + " submitted");
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","Speed Through!");
         var question = document.getElementById("s2Question_2");
         var question_desc = document.getElementById("s2Question_2_description");
         var o1 = document.getElementById("s2q2_option1");
@@ -1380,6 +1558,9 @@ AFRAME.registerComponent("select-option-listener", {
         // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q2");
       } else if (x == "s2q2_option2" && window.scenario == 2) {
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","Decrease speed and ring bell to alert people");
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_2");
         var question_desc = document.getElementById("s2Question_2_description");
@@ -1406,6 +1587,9 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q2");
       } else if (x == "s2q2_option3" && window.scenario == 2) {
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","Ignore them");
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_2");
         var question_desc = document.getElementById("s2Question_2_description");
@@ -1427,6 +1611,9 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S2Q2");
       } else if (x == "s2q2_option4" && window.scenario == 2) {
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","Swerve around them");
         console.log(x + " submitted");
         var question = document.getElementById("s2Question_2");
         var question_desc = document.getElementById("s2Question_2_description");
@@ -1450,6 +1637,10 @@ AFRAME.registerComponent("select-option-listener", {
       }
       //Scenario 3 Question 1 Options
       if (x == "s3q1_option1" && window.scenario == 3) {
+
+         document
+          .getElementById("q1Selected")
+          .setAttribute("value","Speed up and ring your bell");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -1471,6 +1662,9 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q1");
       } else if (x == "s3q1_option2" && window.scenario == 3) {
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value","Dismount and walk past the bus stop");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -1495,6 +1689,10 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q1");
       } else if (x == "s3q1_option3" && window.scenario == 3) {
+
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value","Carefully swerve past the pedestrians");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -1516,6 +1714,9 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q1");
       } else if (x == "s3q1_option4" && window.scenario == 3) {
+        document
+          .getElementById("q1Selected")
+          .setAttribute("value","Ride on the grass behind the bus stop");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_1");
         var question_desc = document.getElementById("s3Question_1_description");
@@ -1540,6 +1741,9 @@ AFRAME.registerComponent("select-option-listener", {
 
       //Scenario 3 Question 2 Options
       else if (x == "s3q2_option1" && window.scenario == 3) {
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","I have the right of way. Continue to cross");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1562,6 +1766,9 @@ AFRAME.registerComponent("select-option-listener", {
         // camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q2");
       } else if (x == "s3q2_option2" && window.scenario == 3) {
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","Look both ways before crossing");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1588,6 +1795,9 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q2");
       } else if (x == "s3q2_option3" && window.scenario == 3) {
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","Maintain speed while crossing");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1609,6 +1819,9 @@ AFRAME.registerComponent("select-option-listener", {
         //camera.setAttribute("rotation", { x: 0, y: 0, z: 0 });
         document.querySelector("#player").emit("S3Q2");
       } else if (x == "s3q2_option4" && window.scenario == 3) {
+        document
+          .getElementById("q2Selected")
+          .setAttribute("value","Speed up to cross quicker");
         console.log(x + " submitted");
         var question = document.getElementById("s3Question_2");
         var question_desc = document.getElementById("s3Question_2_description");
@@ -1660,16 +1873,25 @@ AFRAME.registerComponent("score-listener", {
       if (x == "score_submit_s1") {
         console.log("UPLOADING SCORE TO FIREBASE....");
         uploadScore(); //-99.89 1 13.554
+        removeVehicle();
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
-      } else if (x == "score_submit_s2") {
+        hideScoreBoard();
+      }
+       else if (x == "score_submit_s2") {
         console.log("UPLOADING SCORE TO FIREBASE....");
         uploadScore(); //-99.89 1 13.554
+        removeVehicle();
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
-      } else if (x == "score_submit_s3") {
+        hideScoreBoard();
+      }
+       else if (x == "score_submit_s3") {
         console.log("UPLOADING SCORE TO FIREBASE....");
         uploadScore(); //-99.89 1 13.554
+        removeVehicle();
         camera.setAttribute("position", { x: -99.89, y: 1, z: 13.554 });
-      } else if (x == "leaderboard_view") {
+        hideScoreBoard();
+      }
+       else if (x == "leaderboard_view") {
       }
       document.getElementById("VehicleMenu").setAttribute("visible", "false");
       document.getElementById("MainMenu").setAttribute("visible", "true");
@@ -1692,6 +1914,44 @@ AFRAME.registerComponent("score-listener", {
       }
       setScenario(window.scenario);
       document.getElementById("scoreUI").setAttribute("visible", "false");
+      document.getElementById("q1Selected").setAttribute("visible", "false");
+      document.getElementById("q2Selected").setAttribute("visible", "false");
     });
   }
 });
+
+function removeVehicle(){
+  var v = document.getElementById("user_vehicle");
+  v.parentNode.removeChild(v);
+}
+
+function hideScoreBoard(){
+  var s1board = document.getElementById("score_s1");
+  var s1ScoreVal = document.getElementById("scoreText_s1");
+  var s1ScoreSubmit = document.getElementById("score_submit_s1");
+  var s1ScoreValue = document.getElementById("scoreval_s1");
+
+  //setattribute visible = false
+  s1board.setAttribute("visible", "false");
+  s1ScoreVal.setAttribute("visible", "false");
+  s1ScoreSubmit.setAttribute("visible", "false");
+  s1ScoreValue.setAttribute("visible", "false");
+
+  var s2board = document.getElementById("score_2");
+  var s2ScoreVal = document.getElementById("scoreText_s2");
+  var s2ScoreSubmit = document.getElementById("score_submit_s2");
+  var s2ScoreValue = document.getElementById("scoreval_s2");
+  s2board.setAttribute("visible", "false");
+  s2ScoreVal.setAttribute("visible", "false");
+  s2ScoreSubmit.setAttribute("visible", "false");
+  s2ScoreValue.setAttribute("visible", "false");
+
+  var s3board = document.getElementById("score_3");
+  var s3ScoreVal = document.getElementById("scoreText_s3");
+  var s3ScoreSubmit = document.getElementById("score_submit_s3");
+  var s3ScoreValue = document.getElementById("scoreval_s3");
+  s3board.setAttribute("visible", "false");
+  s3ScoreVal.setAttribute("visible", "false");
+  s3ScoreSubmit.setAttribute("visible", "false");
+  s3ScoreValue.setAttribute("visible", "false");
+}
