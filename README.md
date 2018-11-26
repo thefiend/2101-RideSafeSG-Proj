@@ -25,3 +25,19 @@ Video: https://youtu.be/OhwpsiI2ZIw
    ```bash
    git clone https://github.com/thefiend/2101-RideSafeSG-Proj.git
    ```
+   
+**Open VR **
+
+   Open index.html in a browser
+
+## Guide
+### User
+- Select scenario
+- Answer Quiz
+- Submit score to leaderboard
+- View leaderboard
+
+### Admin
+- Change number of cars on road in settings
+- Change number of pedestrians in settings
+- Change sky in settings
