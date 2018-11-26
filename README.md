@@ -36,9 +36,10 @@ Video: https://youtu.be/OhwpsiI2ZIw
 - Submit score to leaderboard
 - View leaderboard
 
-**Movements and View**
+**Movements and Interaction**
 - Rotate your head to look around in the VR map
 - Movements are automatic based on a pre-defined path
+- Select quiz quiz by looking straight at the option
 
 ### Admin
 - Change number of cars on road in settings
