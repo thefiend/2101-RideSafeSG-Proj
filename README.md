@@ -8,16 +8,20 @@ The VR application will simulate various environments cyclists and PMDs will fac
 Singapore roads such as walkways, Park Connector Networks and roads. Environmental
 conditions may also be simulated including but not limited to night riding and day riding.
 
+
 ## RideSafeSG Website
 Website:
 https://jasys.xyz/ICT2101-SprintPlanning/
+
 
 ## Try it here
 Live Demo:
 https://jasys.xyz/2101-RideSafeSG-Proj/
 
+
 ## Video
 Video: https://youtu.be/OhwpsiI2ZIw
+
 
 ## How to run?
 **Clone the application**
@@ -28,6 +32,7 @@ Video: https://youtu.be/OhwpsiI2ZIw
    
 **Open VR**
    Open index.html in a browser
+
 
 ## Guide
 ### User
@@ -45,3 +50,10 @@ Video: https://youtu.be/OhwpsiI2ZIw
 - Change number of cars on road in settings
 - Change number of pedestrians in settings
 - Change sky in settings
+
+## F.A.Q
+- *Why nothing happens when I tried clicking on the option for the quiz?*
+   Try to move around until the colour of the option change and pause to do a click on the option.
+
+- *Why isn't there a menu infront of me when I clicked on the menu options?*
+   Try turning your head around to search for the next menu as some of the camera positions might not be correct.
