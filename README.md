@@ -26,8 +26,7 @@ Video: https://youtu.be/OhwpsiI2ZIw
    git clone https://github.com/thefiend/2101-RideSafeSG-Proj.git
    ```
    
-**Open VR **
-
+**Open VR**
    Open index.html in a browser
 
 ## Guide
@@ -36,6 +35,10 @@ Video: https://youtu.be/OhwpsiI2ZIw
 - Answer Quiz
 - Submit score to leaderboard
 - View leaderboard
+
+**Movements and View**
+- Rotate your head to look around in the VR map
+- Movements are automatic based on a pre-defined path
 
 ### Admin
 - Change number of cars on road in settings
